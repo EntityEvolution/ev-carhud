@@ -81,6 +81,7 @@ window.addEventListener('load', function () {
   document.getElementById("default").click();
   print(JSON.parse(localStorage.getItem("brokeBreak")))
   document.getElementById("broke-break").checked = JSON.parse(localStorage.getItem("brokeBreak"))
+  document.getElementById("freeze-break").checked = JSON.parse(localStorage.getItem("brokeFreeze"))
   broke = document.getElementById("broke-break").checked;
   if (broke && !freeze) {
     $("#gear").draggable({ disabled: false });
@@ -102,6 +103,38 @@ window.addEventListener('load', function () {
     $("#fuel-container").draggable({ disabled: true });
     $("#rpm-container").draggable({ disabled: true });
     $("#speed-container").draggable({ disabled: true });
+  }
+  freeze = document.getElementById("freeze-break").checked;
+  if (freeze) {
+    $("#wrapper").draggable({ disabled: true });
+    $("#icon-wrapper").draggable({ disabled: true });
+    $("#tab").draggable({ disabled: true });
+    if (broke) {
+      $("#gear").draggable({ disabled: true });
+      $("#right-arrow").draggable({ disabled: true });
+      $("#speedo").draggable({ disabled: true });
+      $("#seatbelt").draggable({ disabled: true });
+      $("#wrench").draggable({ disabled: true });
+      $("#left-arrow").draggable({ disabled: true });
+      $("#fuel-container").draggable({ disabled: true });
+      $("#rpm-container").draggable({ disabled: true });
+      $("#speed-container").draggable({ disabled: true });
+    }
+  } else {
+    $("#wrapper").draggable({ disabled: false });
+    $("#icon-wrapper").draggable({ disabled: false });
+    $("#tab").draggable({ disabled: false });
+    if (broke) {
+      $("#gear").draggable({ disabled: false });
+      $("#right-arrow").draggable({ disabled: false });
+      $("#speedo").draggable({ disabled: false });
+      $("#seatbelt").draggable({ disabled: false });
+      $("#wrench").draggable({ disabled: false });
+      $("#left-arrow").draggable({ disabled: false });
+      $("#fuel-container").draggable({ disabled: false });
+      $("#rpm-container").draggable({ disabled: false });
+      $("#speed-container").draggable({ disabled: false });
+    }
   }
 });
 
