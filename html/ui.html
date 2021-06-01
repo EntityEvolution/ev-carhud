@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/panel.css">
+    <link rel="stylesheet" href="./css/display.css">
     <!--<style> #wrapper, #icon-wrapper, #tab {display: none;} </style>-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -9,7 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   </head>
 
-  <body>    
+  <body>
+    <!--Panel Content-->
     <div class="tab" id="tab">
       <div class="header" id="header">
         <div class="header-text">
@@ -25,6 +27,7 @@
         </div>
       </div>
 
+        <!--Panel default Content-->
       <div id="display" class="tabcontent">
         <div class="display-wrapper">
           <div class="button-wrapper">
@@ -106,9 +109,12 @@
           </div>
         </div>
       </div>
+
+        <!--Panel Palette Tab Content-->
         <div id="colors" class="tabcontent">
           <div class="color-wrapper">
             <div class="top-color-wrapper">
+
             </div>
             <div class="footer-wrapper">
               <h5 class="footer-title">Palette</h5>
@@ -116,6 +122,8 @@
             </div>
           </div>
         </div>
+
+        <!--Movement Tab Content-->
         <div id="movement" class="tabcontent">
           <div class="movement-wrapper">
             <div class="movement-top">
@@ -141,17 +149,25 @@
                 <span class="bottom-title-text">Resizing</span>
               </div>
               <div class="reset-wrapper">
-                <select class="reset-buttons" name="cars" id="cars">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                </select>
-                <select class="reset-buttons" name="cars" id="cars">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
+                <select class="reset-buttons" name="speedBoard" id="speedBoard">
+                  <optgroup label="Speedometer">
+                    <option value="95">95%</option>
+                    <option value="default" selected>100%</option>
+                    <option value="105">105%</option>
+                    <option value="110">110%</option>
+                    <option value="115">115%</option>
+                    <option value="120">120%</option>
+                  </select>
+                </optgroup>
+                <select class="reset-buttons" name="dashboard" id="dashboard">
+                  <optgroup label="Dashboard">
+                    <option value="95">95%</option>
+                    <option value="default" selected>100%</option>
+                    <option value="105">105%</option>
+                    <option value="110">110%</option>
+                    <option value="115">115%</option>
+                    <option value="120">120%</option>
+                  </optgroup>
                 </select>
                 <button class="reset-buttons">Default</button>
               </div>
@@ -174,12 +190,14 @@
           </div>
         </div>
 
+        <!--Panel Extras Tab Content-->
         <div id="extras" class="tabcontent">
           <h3>Tokyo</h3>
           <p>Tokyo is the capital of Japan.</p>
         </div>
     </div>
 
+    <!--Main Hud Display Content-->
     <div class="wrapper" id="wrapper">
       <div id="fuel-container">
         <div id="fuel-text">100</div>
@@ -197,6 +215,7 @@
       </div>
     </div>
 
+    <!--Secondary Hud Display Content-->
     <div class="icon-wrapper" id="icon-wrapper">
       <i id="left-arrow" class="fa fa-long-arrow-alt-left"></i>
       <i id="wrench">

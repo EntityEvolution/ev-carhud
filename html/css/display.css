@@ -1,0 +1,203 @@
+
+/* Main wrapper*/
+.wrapper {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    width: 40vh;
+    height: 15vh;
+    font-size: 2vh;
+    font-family: Poo;
+    color: rgb(255, 255, 255); /* Change to white */
+    text-align: center;
+    background-color: black;
+  }
+  
+  /* Speed styling */
+  #speed-container {
+    margin: 3px;
+    width: 50%;
+    height: 90%;
+    background-color: transparent;
+    position: absolute;
+    display: flex;
+    order: 2;
+  }
+  
+  #speed-text {
+    top: 45%;
+    position: absolute;
+    left: 24.5%;
+    width: 50%;
+  }
+  
+  #speed-text-unit {
+    top: 60%;
+    left: 39%;
+    position: absolute;
+    font-size: 65%;
+  }
+  
+  /* Fuel styling*/
+  #fuel-container {
+    margin: 3px;
+    width: 25%;
+    left: 4%;
+    background-color: transparent;
+    transform: scaleX(-1);
+    display: flex;
+    order: 1;
+  }
+  
+  #fuel-text {
+    top: 50%;
+    left: 50%;
+    width: 15%;
+    position: absolute; 
+    font-size: 65%;
+    transform: scaleX(-1);
+  }
+  
+  #fuel-text-unit {
+    top: 60%;
+    left: 26%;
+    position: absolute; 
+    font-size: 55%;
+    transform: scaleX(-1);
+  }
+  
+  /* RPM styling */
+  #rpm-container {
+    margin: 3px;
+    width: 25%;
+    right: 4%;
+    background-color: transparent;
+    display: flex;
+    order: 3;
+  }
+  
+  #rpm-text {
+    top: 50%;
+    left: 12%;
+    width: 80%;
+    position: absolute; 
+    font-size: 65%;
+  }
+  
+  #rpm-text-unit {
+    top: 60%;
+    right: 30%;
+    position: absolute; 
+    font-size: 55%;
+  }
+  
+  /* Fa circles */
+  .icon-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 40vh;
+    height: 4vh;
+    background-color: orange;
+    vertical-align: middle;
+    font-size: 2vh;
+  }
+  
+  
+  #wrench {
+    margin: 0.35%;
+    background-color: rgba(168, 168, 168, 0.596);
+    text-align: center;
+    height: 50%;
+    margin-top: 1%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+    font-size: 80%;
+  }
+  
+  #left-arrow {
+    margin: 0.35%;
+    background-color: rgba(168, 168, 168, 0.596);
+    text-align: center;
+    height: 50%;
+    margin-top: 1%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+  }
+  
+  #right-arrow {
+    margin: 0.35%;
+    background-color: rgba(168, 168, 168, 0.596);
+    text-align: center;
+    height: 50%;
+    margin-top: 1%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+  }
+  
+  .speedo {
+    margin: 0.35%;
+    background-color: rgba(168, 168, 168, 0.596);
+    height: 50%;
+    width: 50%;
+    margin-top: 1%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+    font-family: Neue;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  #tacho {
+    transform: translate(0%, -15%);
+    font-size: 95%;
+  }
+  
+  .gear {
+    margin: 0.35%;
+    background-color: rgba(168, 168, 168, 0.596);
+    height: 50%;
+    margin-top: 1%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+    font-size: 100%;
+    font-family: Neue;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  .gear-text {
+    position: relative;
+    top: -10%;
+  }
+  
+  .seatbelt {
+    margin: 0.35%;
+    background-color: rgba(168, 168, 168, 0.596);
+    height: 50%;
+    margin-top: 1%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+    font-family: Neue;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  .seatbelt-icon {
+    position: relative;
+    top: -7%;
+    right: 5%;
+    width: 110%;
+  }

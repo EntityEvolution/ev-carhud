@@ -78,8 +78,7 @@ window.addEventListener('load', function () {
   document.getElementById("speed-text-unit").innerHTML = Config.SpeedUnit
   document.getElementById("fuel-text-unit").innerHTML = Config.FuelUnit
   document.getElementById("rpm-text-unit").innerHTML = Config.RPMUnit
-  document.getElementById("default").click();
-  print(JSON.parse(localStorage.getItem("brokeBreak")))
+  document.getElementById("arrows").click();
   document.getElementById("broke-break").checked = JSON.parse(localStorage.getItem("brokeBreak"))
   document.getElementById("freeze-break").checked = JSON.parse(localStorage.getItem("brokeFreeze"))
   broke = document.getElementById("broke-break").checked;
@@ -277,7 +276,7 @@ window.addEventListener("message", function (event) {
 });
 
 $("#restore").click(function() { $("#tab").animate({ top: "5%", left: "50%" }); });
-$("#close").click(function () { $.post('https://pe-carhud/close');});
+$("#close").click(function () { $.post(`https://${GetParentResourceName()}/close`);});
 
 let freeze = false;
 let broke = false;
