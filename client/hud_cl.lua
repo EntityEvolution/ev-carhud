@@ -57,7 +57,7 @@ CreateThread(function()
 end)
 
 -- NUI & Events
-RegisterNUICallback('close', function(event)
+RegisterNUICallback('close', function()
     if not inVehicle then
         SendNUIMessage({ action = 'hide' })
     elseif inVehicle then
