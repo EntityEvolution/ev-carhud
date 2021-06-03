@@ -93,10 +93,6 @@ RegisterCommand('carhud', function()
     end
 end)
 
-RegisterCommand('a', function()
-    SendNUIMessage({action = 'setSlidersBack'})
-end)
-
 RegisterKeyMapping('carhud', 'Open the car hud menu', 'keyboard', 'f6')
 
 -- Handler
