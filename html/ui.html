@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <!--Basic identifier stuf-->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="FiveM Car Hud by EV">
+    <title>Car Hud</title>
+
+    <!--CSS and images links-->
     <link rel="stylesheet" href="./css/panel.css">
     <link rel="stylesheet" href="./css/display.css">
-    <!--<style> #wrapper, #icon-wrapper, #tab {display: none;} </style>-->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!--<style> #wrapper, #icon-wrapper, #tab {display: none;} </style>-->
+
+    <!--jQuery core-->
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -192,8 +208,9 @@
 
         <!--Panel Extras Tab Content-->
         <div id="extras" class="tabcontent">
-          <h3>Tokyo</h3>
-          <p>Tokyo is the capital of Japan.</p>
+          <div class="extras-wrapper">
+
+          </div>
         </div>
     </div>
 
@@ -223,7 +240,7 @@
       </i>
       
       <span id="seatbelt" class="seatbelt">
-        <img src="./img/seatbelt.png" class="seatbelt-icon"></img>
+        <img src="./img/seatbelt.png" alt="Belt" class="seatbelt-icon"></img>
       </span>
       <span id="speedo" class="speedo">
         <span id="tacho" class="fas fa-tachometer-alt"></span>
