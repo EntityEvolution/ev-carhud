@@ -70,7 +70,7 @@
 .fa-television {
   position: relative;
   text-align: center;
-  padding: 82.25% 22%;
+  padding: 5.3vh 22%;
   transition: 0.3s;
   border-right: 3px solid rgb(96, 103, 107);
 }
@@ -78,7 +78,7 @@
 .fa-arrows-alt {
   position: relative;
   text-align: center;
-  padding: 82.25% 27%;
+  padding: 5.3vh 27%;
   transition: 0.3s;
   border-right: 3px solid rgb(96, 103, 107);
 }
@@ -86,7 +86,7 @@
 .fa-road {
   position: relative;
   text-align: center;
-  padding: 91% 24.5%;
+  padding: 5.2vh 24.5%;
   transition: 0.3s;
   border-right: 3px solid rgb(96, 103, 107);
   border-bottom-left-radius: 4px;
