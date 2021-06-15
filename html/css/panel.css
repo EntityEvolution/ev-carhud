@@ -75,14 +75,6 @@
   border-right: 3px solid rgb(96, 103, 107);
 }
 
-.fa-palette {
-  position: relative;
-  text-align: center;
-  padding: 85.25% 27%;
-  transition: 0.3s;
-  border-right: 3px solid rgb(96, 103, 107);
-}
-
 .fa-arrows-alt {
   position: relative;
   text-align: center;
@@ -101,10 +93,6 @@
 }
 
 .fa-television:hover {
-  background-color: rgb(96, 103, 107);
-}
-
-.fa-palette:hover {
   background-color: rgb(96, 103, 107);
 }
 

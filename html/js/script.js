@@ -543,23 +543,13 @@ function openTab(event, target) {
 }
 document.getElementById("default").onclick = function() {
   document.getElementById("default").style.background="rgb(96, 103, 107)",
-  document.getElementById("palette").style.background="",
   document.getElementById("arrows").style.background="",
   document.getElementById("road").style.background=""
   openTab(event, 'display')
 };
 
-document.getElementById("palette").onclick = function() {
-  document.getElementById("default").style.background="",
-  document.getElementById("palette").style.background="rgb(96, 103, 107)",
-  document.getElementById("arrows").style.background="",
-  document.getElementById("road").style.background=""
-  openTab(event, 'colors')
-};
-
 document.getElementById("arrows").onclick = function() {
   document.getElementById("default").style.background="",
-  document.getElementById("palette").style.background="",
   document.getElementById("arrows").style.background="rgb(96, 103, 107)",
   document.getElementById("road").style.background=""
   openTab(event, 'movement')
@@ -567,7 +557,6 @@ document.getElementById("arrows").onclick = function() {
 
 document.getElementById("road").onclick = function() {
   document.getElementById("default").style.background="",
-  document.getElementById("palette").style.background="",
   document.getElementById("arrows").style.background="",
   document.getElementById("road").style.background="rgb(96, 103, 107)"
   openTab(event, 'extras')

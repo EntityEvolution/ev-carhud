@@ -14,16 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
     <!--<style> #wrapper, #icon-wrapper, #tab {display: none;} </style>-->
-
-    <!--jQuery core-->
-    <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"></script>
-    <script
-    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-    crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -37,7 +27,6 @@
         </div>
         <div class="header-buttons">
             <span class="fa fa-television" id="default"></span>
-            <span class="fas fa-palette" id="palette"></span>
             <span class="fas fa-arrows-alt" id="arrows"></span>
             <span class="fas fa-road" id="road"></span>
         </div>
@@ -126,19 +115,6 @@
         </div>
       </div>
 
-        <!--Panel Palette Tab Content-->
-        <div id="colors" class="tabcontent">
-          <div class="color-wrapper">
-            <div class="top-color-wrapper">
-
-            </div>
-            <div class="footer-wrapper">
-              <h5 class="footer-title">Palette</h5>
-              <p class="footer-description">Change color of your HUD elements and save them</p>
-            </div>
-          </div>
-        </div>
-
         <!--Movement Tab Content-->
         <div id="movement" class="tabcontent">
           <div class="movement-wrapper">
@@ -193,12 +169,11 @@
                 <span class="bottom-title-text">Readjust</span>
               </div>
               <div class="reset-wrapper">
-                <button class="reset-buttons">Colors</button>
-                <button class="reset-buttons">Positions</button>
+                <button class="reset-buttons">Speedo</button>
+                <button class="reset-buttons">Buttons</button>
                 <button class="reset-buttons">Switches</button>
               </div>
             </div>
-
             <div class="footer-wrapper">
               <h5 class="footer-title">Movement</h5>
                 <p class="footer-description">Change size, move, and save position for your HUD</p>
@@ -250,6 +225,15 @@
       </span>
       <i id="right-arrow" class="fa fa-long-arrow-alt-right"></i>
     </div>
+        <!--jQuery core-->
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
     <script>
       function updateTextInput(val) {
           document.getElementById('icon-wrapper').style.width = `${val}vh`;
