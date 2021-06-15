@@ -276,7 +276,7 @@ window.addEventListener("message", function (event) {
 });
 
 $("#restore").click(function() { $("#tab").animate({ top: "5%", left: "50%" }); });
-$("#close").click(function () { $.post(`https://${GetParentResourceName()}/close`);});
+$("#close").click(function() { $.post(`https://${GetParentResourceName()}/close`);});
 
 let freeze = false;
 let broke = false;
@@ -344,6 +344,7 @@ $("#save-break").click( () => {
   localStorage.setItem("brokeBreak", broke);
   localStorage.setItem("brokeFreeze", freeze);
 })
+
 
 
 // Save sliders
@@ -449,13 +450,8 @@ $("#check-right").click( () => {
 // Close with control key
 document.onkeyup = function (event) {
   if (event.key == 'Escape') {
-    $.post('https://pe-carhud/close');
+    $.post('https://ev-carhud/close');
   }
-};
-
-// Dev function
-function print(value) {
-  console.log(value);
 };
 
 // Stackoverflow Answer to absolute draggable
@@ -541,6 +537,7 @@ function openTab(event, target) {
   }
   document.getElementById(target).style.display = "block";
 }
+
 document.getElementById("default").onclick = function() {
   document.getElementById("default").style.background="rgb(96, 103, 107)",
   document.getElementById("arrows").style.background="",

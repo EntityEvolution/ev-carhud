@@ -9,9 +9,3 @@ Config.MaxFuel = 100
 Config.SpeedUnit = "KMH" 
 Config.RPMUnit = "RPM"
 Config.FuelUnit = "FUEL"
-
-/*
-$("#draggable").draggable({ disabled: true });          
-
-$("#draggable").draggable({ disabled: false });
-*/
