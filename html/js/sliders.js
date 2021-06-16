@@ -17,28 +17,8 @@ const freezeBreak = doc.getElementById('freeze-break')
 let broke = false;
 let freeze = false;
 
-const setSliders = ()=> {
-  checkFuel.checked = getId("sliderFuel")
-  checkSpeed.checked = getId("sliderSpeed")
-  checkRpm.checked = getId("sliderRpm")
-  checkSeatbelt.checked = getId("sliderSeatbelt")
-  checkTacho.checked = getId("sliderTacho")
-  checkCogs.checked = getId("sliderCogs")
-  checkLeft.checked = getId("sliderLeft")
-  checkWrench.checked = getId("sliderWrench")
-  checkRight.checked = getId("sliderRight")
-
-  freezeBreak.checked = getId("freezeBreak")
-  brokeBreak.checked = getId("brokeBreak")
-  freeze = freezeBreak.checked
-  broke = brokeBreak.checked
-  
-  dragBreak()
-}
-
 // Set sliders to change onclick
 window.addEventListener('load', ()=> {
-  setSliders()
   checkFuel.addEventListener('click', ()=> {
     fuel = doc.getElementById('check-fuel').checked
     const container = doc.getElementById('fuel-container')
@@ -137,7 +117,7 @@ window.addEventListener('load', ()=> {
 
   checkRight.addEventListener('click', ()=> {
     right = doc.getElementById('check-right').checked
-    const element = doc.getElementById('right')
+    const element = doc.getElementById('right-arrow')
     if (right) {
       element.style.display = 'block'
       saveId("sliderRight", right)
@@ -280,6 +260,24 @@ let dragBreak = ()=> {
   }
 }
 
+const setSliders = ()=> {
+  checkFuel.checked = getId("sliderFuel")
+  checkSpeed.checked = getId("sliderSpeed")
+  checkRpm.checked = getId("sliderRpm")
+  checkSeatbelt.checked = getId("sliderSeatbelt")
+  checkTacho.checked = getId("sliderTacho")
+  checkCogs.checked = getId("sliderCogs")
+  checkLeft.checked = getId("sliderLeft")
+  checkWrench.checked = getId("sliderWrench")
+  checkRight.checked = getId("sliderRight")
+
+  freezeBreak.checked = getId("brokeFreeze")
+  brokeBreak.checked = getId("brokeBreak")
+  freeze = freezeBreak.checked
+  broke = brokeBreak.checked
+  
+  dragBreak()
+}
 
 
 // Short localstorage
@@ -288,6 +286,6 @@ function saveId(item, check) {
 }
 
 function getId(item) {
-  let storage = localStorage.getItem(JSON.parse(item));
+  let storage = JSON.parse(localStorage.getItem(item));
   return storage
 }

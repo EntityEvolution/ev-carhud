@@ -79,6 +79,7 @@ window.addEventListener('load', function () {
   document.getElementById("fuel-text-unit").innerHTML = Config.FuelUnit
   document.getElementById("rpm-text-unit").innerHTML = Config.RPMUnit
   document.getElementById("arrows").click();
+  setSliders()
 });
 
 // Gauge data
