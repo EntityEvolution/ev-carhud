@@ -219,10 +219,6 @@ window.addEventListener("message", function (event) {
   }
 });
 
-$("#restore").click(function() { $("#tab").animate({ top: "5%", left: "50%" }); });
-$("#close").click(function() { $.post(`https://${GetParentResourceName()}/close`);});
-
-// Close with control key
 document.onkeyup = function (event) {
   if (event.key == 'Escape') {
     $.post('https://ev-carhud/close');
