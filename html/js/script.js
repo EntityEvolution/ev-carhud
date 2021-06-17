@@ -26,7 +26,7 @@ let gauge = new ProgressBar.SemiCircle('#speed-container', {
 });
 
 // Fuel
-let fuel = new ProgressBar.SemiCircle('#fuel-container', {
+let gas = new ProgressBar.SemiCircle('#fuel-container', {
   strokeWidth: 6,
   color: '#FFEA82',
   trailColor: '#ccc',
@@ -50,7 +50,7 @@ let fuel = new ProgressBar.SemiCircle('#fuel-container', {
 });
 
 // RPM
-let rpm = new ProgressBar.SemiCircle('#rpm-container', {
+let rev = new ProgressBar.SemiCircle('#rpm-container', {
   strokeWidth: 6,
   color: '#FFEA82',
   trailColor: '#ccc',
@@ -78,8 +78,8 @@ window.addEventListener('load', function () {
   document.getElementById("speed-text-unit").innerHTML = Config.SpeedUnit
   document.getElementById("fuel-text-unit").innerHTML = Config.FuelUnit
   document.getElementById("rpm-text-unit").innerHTML = Config.RPMUnit
-  document.getElementById("arrows").click();
-  setSliders()
+  document.getElementById("default").click();
+  setSliders();
 });
 
 // Gauge data
@@ -91,8 +91,8 @@ window.addEventListener("message", function (event) {
       $("#fuel-text").text(event.data.fuel)
       $("#rpm-text").text(event.data.rpm)
       gauge.set(event.data.speed/Config.MaxSpeed)
-      rpm.set(event.data.rpm/Config.MaxRPM)
-      fuel.set(event.data.fuel/Config.MaxFuel)
+      rev.set(event.data.rpm/Config.MaxRPM)
+      gas.set(event.data.fuel/Config.MaxFuel)
     break;
 
     case "show":

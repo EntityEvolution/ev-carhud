@@ -14,8 +14,12 @@ const saveBreak = doc.getElementById('save-break')
 const brokeBreak = doc.getElementById('broke-break')
 const freezeBreak = doc.getElementById('freeze-break')
 
+let fuel, speed, rpm, seatbelt, tacho, cogs, left, wrench, right;
+
 let broke = false;
 let freeze = false;
+
+fuel = speed = rpm = seatbelt = tacho = cogs = left = wrench = right = true
 
 // Set sliders to change onclick
 window.addEventListener('load', ()=> {
@@ -32,7 +36,7 @@ window.addEventListener('load', ()=> {
   })
 
   checkSpeed.addEventListener('click', ()=> {
-    speed = doc.getElementById('check-fuel').checked
+    speed = doc.getElementById('check-speed').checked
     const container = doc.getElementById('speed-container')
     if (speed) {
       container.style.display = 'flex'
@@ -80,7 +84,7 @@ window.addEventListener('load', ()=> {
   })
 
   checkCogs.addEventListener('click', ()=> {
-    cogs = doc.getElementById('check-tacho').checked
+    cogs = doc.getElementById('check-cogs').checked
     const element = doc.getElementById('gear')
     if (cogs) {
       element.style.display = 'block'
@@ -276,9 +280,37 @@ const setSliders = ()=> {
   freeze = freezeBreak.checked
   broke = brokeBreak.checked
   
-  dragBreak()
+  dragBreak();
+  setDisplay();
 }
 
+const setDisplay = ()=> {
+  setContainer('sliderFuel', 'check-fuel', 'fuel-container');
+  setContainer('sliderSpeed', 'check-speed', 'speed-container');
+  setContainer('sliderRpm', 'check-rpm', 'rpm-container');
+  
+  setContainer('sliderSeatbelt', 'check-seatbelt', 'seatbelt');
+  setContainer('sliderTacho', 'check-tacho', 'speedo');
+  setContainer('sliderCogs', 'check-cogs', 'gear');
+  
+  setContainer('sliderLeft', 'check-left', 'left-arrow');
+  setContainer('sliderWrench', 'check-wrench', 'wrench');
+  setContainer('sliderRight', 'check-right', 'right-arrow');
+}
+
+function setContainer(slider, check, container) {
+  if (getId(slider) == null) {
+    doc.getElementById(check).checked = true;
+    return
+  } else {
+    doc.getElementById(check).checked = getId(slider)
+    if (getId(slider)) {
+      doc.getElementById(container).style.display = "flex";
+    } else {
+      doc.getElementById(container).style.display = "none"
+    }
+  }
+}
 
 // Short localstorage
 function saveId(item, check) {
