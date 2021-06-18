@@ -1,5 +1,9 @@
 // Variables
 const doc = document;
+
+const wrapDash = doc.getElementById('wrapper')
+const wrapIcon = doc.getElementById('icon-wrapper')
+
 const checkFuel = doc.getElementById('check-fuel');
 const checkSpeed = doc.getElementById('check-speed');
 const checkRpm = doc.getElementById('check-rpm');
@@ -13,6 +17,8 @@ const checkRight = doc.getElementById('check-right')
 const saveBreak = doc.getElementById('save-break')
 const brokeBreak = doc.getElementById('broke-break')
 const freezeBreak = doc.getElementById('freeze-break')
+
+const dashSelect = doc.getElementById('dashboard')
 
 let fuel, speed, rpm, seatbelt, tacho, cogs, left, wrench, right;
 
@@ -212,14 +218,28 @@ window.addEventListener('load', ()=> {
   })
 
   // Tab listeners
-  doc.getElementById('restore').addEventListener('click', function() {
+  doc.getElementById('restore').addEventListener('click', ()=> {
     $("#tab").animate({ top: "5%", left: "50%" }); 
   })
 
-  doc.getElementById('close').addEventListener('click', function() {
-    $.post(`https://${GetParentResourceName()}/close`);
+  doc.getElementById('close').addEventListener('click', ()=> {
+    $.post(`https://ev-carhud/close`);
   })
 })
+
+// Selection size
+window.addEventListener('load', ()=> {
+  dashSelect.addEventListener('change', (event)=> {
+    let val = dashSelect.value
+    switch (val) {
+      case "95":
+        wrapDash.style.width = '90%';
+        wrapDash.style.width = '90%';
+      break;
+    };
+  $('#selection').blur();
+  });
+});
 
 let dragBreak = ()=> {
   if (freeze) {
@@ -311,6 +331,7 @@ const setDisplay = ()=> {
   setContainer('sliderRight', 'check-right', 'right-arrow');
 }
 
+// Set containers functions
 function setContainer(slider, check, container) {
   if (getId(slider) == null) {
     doc.getElementById(check).checked = true;
@@ -339,6 +360,7 @@ function setFlexContainer(slider, check, container) {
   }
 }
 
+// Reset buttons functions
 const resetSpeedo = ()=> {
   saveId('topDisplay', '81%');
   saveId('leftDisplay', '0px');
