@@ -75,12 +75,11 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
 
 // Set to draggable on page load
 window.addEventListener('load', function () {
-  document.getElementById("speed-text-unit").innerHTML = Config.SpeedUnit
-  document.getElementById("fuel-text-unit").innerHTML = Config.FuelUnit
-  document.getElementById("rpm-text-unit").innerHTML = Config.RPMUnit
-  document.getElementById("arrows").click();
+  doc.getElementById("speed-text-unit").innerHTML = Config.SpeedUnit
+  doc.getElementById("fuel-text-unit").innerHTML = Config.FuelUnit
+  doc.getElementById("rpm-text-unit").innerHTML = Config.RPMUnit
+  doc.getElementById("arrows").click();
   setSliders();
-  
 });
 
 // Gauge data
@@ -106,103 +105,7 @@ window.addEventListener("message", function (event) {
     break;
     
     case "setSlidersBack":
-      document.getElementById("check-fuel").checked = JSON.parse(localStorage.getItem("sliderFuel"));
-      document.getElementById("check-speed").checked = JSON.parse(localStorage.getItem("sliderSpeed"));
-      document.getElementById("check-rpm").checked = JSON.parse(localStorage.getItem("sliderRpm"));
 
-      document.getElementById("check-seatbelt").checked = JSON.parse(localStorage.getItem("sliderSeatbelt"));
-      document.getElementById("check-tacho").checked = JSON.parse(localStorage.getItem("sliderTacho"));
-      document.getElementById("check-cogs").checked = JSON.parse(localStorage.getItem("sliderCogs"));
-
-      document.getElementById("check-left").checked = JSON.parse(localStorage.getItem("sliderLeft"));
-      document.getElementById("check-wrench").checked = JSON.parse(localStorage.getItem("sliderWrench"));
-      document.getElementById("check-right").checked = JSON.parse(localStorage.getItem("sliderRight"));
-
-      document.getElementById("broke-break").checked = JSON.parse(localStorage.getItem("brokeBreak"))
-      broke = document.getElementById("broke-break").checked;
-      if (broke && !freeze) {
-        $("#gear").draggable({ disabled: false });
-        $("#right-arrow").draggable({ disabled: false });
-        $("#speedo").draggable({ disabled: false });
-        $("#seatbelt").draggable({ disabled: false });
-        $("#wrench").draggable({ disabled: false });
-        $("#left-arrow").draggable({ disabled: false });
-        $("#fuel-container").draggable({ disabled: false });
-        $("#rpm-container").draggable({ disabled: false });
-        $("#speed-container").draggable({ disabled: false });
-      } else {
-        $("#gear").draggable({ disabled: true });
-        $("#right-arrow").draggable({ disabled: true });
-        $("#speedo").draggable({ disabled: true });
-        $("#seatbelt").draggable({ disabled: true });
-        $("#wrench").draggable({ disabled: true });
-        $("#left-arrow").draggable({ disabled: true });
-        $("#fuel-container").draggable({ disabled: true });
-        $("#rpm-container").draggable({ disabled: true });
-        $("#speed-container").draggable({ disabled: true });
-      }
-      let test = document.getElementById("check-fuel").checked;
-      if (test) {
-        document.getElementById("fuel-container").style.display = "flex"
-      } else {
-        document.getElementById("fuel-container").style.display = "none"
-      }
-
-      let speed = document.getElementById("check-speed").checked;
-      if (speed) {
-        document.getElementById("speed-container").style.display = "flex"
-      } else {
-        document.getElementById("speed-container").style.display = "none"
-      }
-
-      let tests = document.getElementById("check-rpm").checked;
-      if (tests) {
-        document.getElementById("rpm-container").style.display = "flex"
-      } else {
-        document.getElementById("rpm-container").style.display = "none"
-      }
-
-      let seatbelt = document.getElementById("check-seatbelt").checked;
-      if (seatbelt) {
-        document.getElementById("seatbelt").style.display = "block"
-      } else {
-        document.getElementById("seatbelt").style.display = "none"
-      }
-
-      let tacho = document.getElementById("check-tacho").checked;
-      if (tacho) {
-        document.getElementById("speedo").style.display = "block"
-      } else {
-        document.getElementById("speedo").style.display = "none"
-      }
-
-      let cogs = document.getElementById("check-cogs").checked;
-      if (cogs) {
-        document.getElementById("gear").style.display = "block"
-      } else {
-        document.getElementById("gear").style.display = "none"
-      }
-
-      let left = document.getElementById("check-left").checked;
-      if (left) {
-        document.getElementById("left-arrow").style.display = "block"
-      } else {
-        document.getElementById("left-arrow").style.display = "none"
-      }
-
-      let wrench = document.getElementById("check-wrench").checked;
-      if (wrench) {
-        document.getElementById("wrench").style.display = "block"
-      } else {
-        document.getElementById("wrench").style.display = "none"
-      }
-
-      let right = document.getElementById("check-right").checked;
-      if (right) {
-        document.getElementById("right-arrow").style.display = "block"
-      } else {
-        document.getElementById("right-arrow").style.display = "none"
-      }
     break;
 
     case "preview":
@@ -293,6 +196,51 @@ $("#icon-wrapper").draggable({
       __recoupLeft = left - ui.position.left;
       __recoupTop = top - ui.position.top;
   }
+});
+
+$("#fuel-container").on("dragstop", function(event, ui) {
+  saveId('dragFuelTop', ui.position.top)
+  saveId('dragFuelLeft', ui.position.left)
+});
+
+$("#speed-container").on("dragstop", function(event, ui) {
+  saveId('dragSpeedTop', ui.position.top)
+  saveId('dragSpeedLeft', ui.position.left)
+});
+
+$("#rpm-container").on("dragstop", function(event, ui) {
+  saveId('dragRpmTop', ui.position.top)
+  saveId('dragRpmLeft', ui.position.left)
+});
+
+$("#seatbelt").on("dragstop", function(event, ui) {
+  saveId('dragSeatbeltTop', ui.position.top)
+  saveId('dragSeatbeltLeft', ui.position.left)
+});
+
+$("#speedo").on("dragstop", function(event, ui) {
+  saveId('dragSpeedoTop', ui.position.top)
+  saveId('dragSpeedoLeft', ui.position.left)
+});
+
+$("#gear").on("dragstop", function(event, ui) {
+  saveId('dragGearTop', ui.position.top)
+  saveId('dragGearLeft', ui.position.left)
+});
+
+$("#left-arrow").on("dragstop", function(event, ui) {
+  saveId('dragLeftArrowTop', ui.position.top)
+  saveId('dragLeftArrowLeft', ui.position.left)
+});
+
+$("#wrench").on("dragstop", function(event, ui) {
+  saveId('dragWrenchTop', ui.position.top)
+  saveId('dragWrenchLeft', ui.position.left)
+});
+
+$("#right-arrow").on("dragstop", function(event, ui) {
+  saveId('dragRightArrowTop', ui.position.top)
+  saveId('dragRightArrowLeft', ui.position.left)
 });
 
 // Tabs selector
