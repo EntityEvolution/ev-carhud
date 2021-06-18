@@ -198,6 +198,19 @@ window.addEventListener('load', ()=> {
     }
   })
 
+  // Reset drags
+  doc.getElementById('reset-speedo').addEventListener('click', ()=> {
+    resetSpeedo();
+  })
+  
+  doc.getElementById('reset-buttons').addEventListener('click', ()=> {
+    resetButtons();
+  })
+
+  doc.getElementById('reset-switches').addEventListener('click', ()=> {
+    resetSwitches();
+  })
+
   // Tab listeners
   doc.getElementById('restore').addEventListener('click', function() {
     $("#tab").animate({ top: "5%", left: "50%" }); 
@@ -324,6 +337,64 @@ function setFlexContainer(slider, check, container) {
       doc.getElementById(container).style.display = "none"
     }
   }
+}
+
+const resetSpeedo = ()=> {
+  saveId('topDisplay', '81%');
+  saveId('leftDisplay', '0px');
+  saveId('dragFuelTop', '0px');
+  saveId('dragFuelLeft', '14.5px');
+  saveId('dragSpeedTop', '0px');
+  saveId('dragSpeedLeft', '0px');
+  saveId('dragRpmTop', '0px');
+  saveId('dragRpmLeft', '-14.5px');
+
+  $("#wrapper").animate({ top: "81%", left: "50%" });
+  $("#fuel-container").animate({ top: "0px", left: "14.5px" });
+  $("#speed-container").animate({ top: "0px", left: "0px" });
+  $("#rpm-container").animate({ top: "0px", left: "-14.5px" });
+}
+
+const resetButtons = ()=> {
+  saveId('topIcons', '0px');
+  saveId('leftIcons', '50%');
+  saveId('dragSeatbeltTop', '0px');
+  saveId('dragSeatbeltLeft', '0px');
+  saveId('dragSpeedoTop', '0px');
+  saveId('dragSpeedoLeft', '0px');
+  saveId('dragGearTop', '0px');
+  saveId('dragGearLeft', '0px');
+  saveId('dragLeftArrowTop', '0px');
+  saveId('dragLeftArrowLeft', '0px');
+  saveId('dragWrenchTop', '0px');
+  saveId('dragWrenchLeft', '0px');
+  saveId('dragRightArrowTop', '0px');
+  saveId('dragRightArrowLeft', '0px');
+
+  $("#icon-wrapper").animate({ top: "94%", left: "50%" });
+  $("#seatbelt").animate({ top: "0px", left: "0px" });
+  $("#speedo").animate({ top: "0px", left: "0px" });
+  $("#gear").animate({ top: "0px", left: "0px" });
+  $("#left-arrow").animate({ top: "0px", left: "0px" });
+  $("#wrench").animate({ top: "0px", left: "0px" });
+  $("#right-arrow").animate({ top: "0px", left: "0px" });
+}
+
+const resetSwitches = ()=> {
+  saveId('sliderFuel', true);
+  saveId('sliderSpeed', true);
+  saveId('sliderRpm', true);
+  saveId('sliderSeatbelt', true);
+  saveId('slider', true);
+  saveId('sliderTacho', true);
+  saveId('sliderCogs', true);
+  saveId('sliderLeft', true);
+  saveId('sliderWrench', true);
+  saveId('sliderRight', true);
+  saveId('brokeFreeze', false);
+  saveId('brokeBreak', false);
+
+  setSliders();
 }
 
 // Short localstorage
