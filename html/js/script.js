@@ -78,8 +78,9 @@ window.addEventListener('load', function () {
   document.getElementById("speed-text-unit").innerHTML = Config.SpeedUnit
   document.getElementById("fuel-text-unit").innerHTML = Config.FuelUnit
   document.getElementById("rpm-text-unit").innerHTML = Config.RPMUnit
-  document.getElementById("default").click();
+  document.getElementById("arrows").click();
   setSliders();
+  
 });
 
 // Gauge data
@@ -236,8 +237,6 @@ $("#tab").draggable({
       ui.position.top = ui.originalPosition.top + (__dy);
       ui.position.left += __recoupLeft;
       ui.position.top += __recoupTop;
-      localStorage.setItem("left", ui.position.left)
-      localStorage.setItem("top", ui.position.top)
   },
   start: function (event, ui) {
       $(this).css('cursor', 'pointer');
@@ -259,8 +258,8 @@ $("#wrapper").draggable({
       ui.position.top = ui.originalPosition.top + (__dy);
       ui.position.left += __recoupLeft;
       ui.position.top += __recoupTop;
-      localStorage.setItem("left", ui.position.left)
-      localStorage.setItem("top", ui.position.top)
+      saveId('leftDisplay', ui.position.left);
+      saveId('topDisplay', ui.position.top);
   },
   start: function (event, ui) {
       $(this).css('cursor', 'pointer');
@@ -282,8 +281,8 @@ $("#icon-wrapper").draggable({
       ui.position.top = ui.originalPosition.top + (__dy);
       ui.position.left += __recoupLeft;
       ui.position.top += __recoupTop;
-      localStorage.setItem("left", ui.position.left)
-      localStorage.setItem("top", ui.position.top)
+      saveId('leftIcons', ui.position.left);
+      saveId('topIcons', ui.position.top);
   },
   start: function (event, ui) {
       $(this).css('cursor', 'pointer');

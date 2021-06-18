@@ -285,9 +285,9 @@ const setSliders = ()=> {
 }
 
 const setDisplay = ()=> {
-  setContainer('sliderFuel', 'check-fuel', 'fuel-container');
-  setContainer('sliderSpeed', 'check-speed', 'speed-container');
-  setContainer('sliderRpm', 'check-rpm', 'rpm-container');
+  setFlexContainer('sliderFuel', 'check-fuel', 'fuel-container');
+  setFlexContainer('sliderSpeed', 'check-speed', 'speed-container');
+  setFlexContainer('sliderRpm', 'check-rpm', 'rpm-container');
   
   setContainer('sliderSeatbelt', 'check-seatbelt', 'seatbelt');
   setContainer('sliderTacho', 'check-tacho', 'speedo');
@@ -299,6 +299,20 @@ const setDisplay = ()=> {
 }
 
 function setContainer(slider, check, container) {
+  if (getId(slider) == null) {
+    doc.getElementById(check).checked = true;
+    return
+  } else {
+    doc.getElementById(check).checked = getId(slider)
+    if (getId(slider)) {
+      doc.getElementById(container).style.display = "block";
+    } else {
+      doc.getElementById(container).style.display = "none"
+    }
+  }
+}
+
+function setFlexContainer(slider, check, container) {
   if (getId(slider) == null) {
     doc.getElementById(check).checked = true;
     return
@@ -319,5 +333,10 @@ function saveId(item, check) {
 
 function getId(item) {
   let storage = JSON.parse(localStorage.getItem(item));
+  return storage
+}
+
+function getNum(item) {
+  let storage = localStorage.getItem(item);
   return storage
 }
