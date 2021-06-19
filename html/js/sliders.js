@@ -227,19 +227,7 @@ window.addEventListener('load', ()=> {
   })
 })
 
-// Selection size
-window.addEventListener('load', ()=> {
-  dashSelect.addEventListener('change', (event)=> {
-    let val = dashSelect.value
-    switch (val) {
-      case "95":
-        wrapDash.style.width = '90%';
-        wrapDash.style.width = '90%';
-      break;
-    };
-  $('#selection').blur();
-  });
-});
+
 
 let dragBreak = ()=> {
   if (freeze) {
