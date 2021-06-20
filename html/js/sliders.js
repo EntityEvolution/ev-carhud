@@ -19,13 +19,19 @@ const brokeBreak = doc.getElementById('broke-break')
 const freezeBreak = doc.getElementById('freeze-break')
 
 const dashSelect = doc.getElementById('dashboard')
+const langSelect = doc.getElementById('langPick')
+
+const defaultTab = doc.getElementById('default')
+const arrowsTab = doc.getElementById('arrows')
+const roadTab = doc.getElementById('road')
 
 let fuel, speed, rpm, seatbelt, tacho, cogs, left, wrench, right;
+fuel = speed = rpm = seatbelt = tacho = cogs = left = wrench = right = true
 
 let broke = false;
 let freeze = false;
 
-fuel = speed = rpm = seatbelt = tacho = cogs = left = wrench = right = true
+
 
 // Set sliders to change onclick
 window.addEventListener('load', ()=> {
@@ -217,6 +223,11 @@ window.addEventListener('load', ()=> {
     resetSwitches();
   })
 
+  doc.getElementById('reset-visual').addEventListener('click', ()=> {
+    dashSelect.value = '200'
+    langSelect.value = 'en'
+  })
+
   // Tab listeners
   doc.getElementById('restore').addEventListener('click', ()=> {
     $("#tab").animate({ top: "5%", left: "50%" }); 
@@ -225,9 +236,49 @@ window.addEventListener('load', ()=> {
   doc.getElementById('close').addEventListener('click', ()=> {
     $.post(`https://ev-carhud/close`);
   })
+
+  dashSelect.addEventListener('change', ()=> {
+    let val = dashSelect.value
+    switch (val) {
+      case '50':
+        msChange(val)
+      break;
+
+      case '100':
+        msChange(val)
+      break;
+
+      case '200':
+        msChange(val)
+      break;
+
+      case '250':
+        msChange(val)
+      break;
+
+      case '500':
+        msChange(val)
+      break;
+
+      case '1000':
+        msChange(val)
+      break;
+    }
+  });
+
+  langSelect.addEventListener('change', ()=> {
+    let val = langSelect.value
+    switch (val) {
+      case 'esp':
+        console.log('esp')
+      break;
+
+      case 'en':
+        console.log('en')
+      break;
+    }
+  })
 })
-
-
 
 let dragBreak = ()=> {
   if (freeze) {
@@ -420,4 +471,9 @@ function getId(item) {
 function getNum(item) {
   let storage = localStorage.getItem(item);
   return storage
+}
+
+function msChange(num) {
+  let post = $.post('https://ev-carhud/refresh', JSON.stringify({refresh: num}));
+  return post
 }

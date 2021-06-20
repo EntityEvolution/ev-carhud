@@ -1,11 +1,7 @@
 -- Variables
-local speedNumber
+local speedNumber = 3.6
 local inVehicle
-if Config.MPH then
-    speedNumber = 2.23693629
-elseif Config.KPH then
-    speedNumber = 3.6
-end
+local refreshTime = 200
 
 local isOpen, isForceOpen = false, false
 
@@ -27,7 +23,7 @@ CreateThread(function()
                 rpm = rpm
             })
         end
-        Wait(Config.RefreshTime)
+        Wait(refreshTime)
     end
 end)
 
@@ -58,14 +54,22 @@ end)
 
 -- NUI & Events
 RegisterNUICallback('close', function()
-    if not inVehicle then
-        SendNUIMessage({ action = 'hide' })
-    elseif inVehicle then
-        SendNUIMessage({ action = 'hideMenu' })
+    if isOpen then
+        if not inVehicle then
+            SendNUIMessage({ action = 'hide' })
+        elseif inVehicle then
+            SendNUIMessage({ action = 'hideMenu' })
+        end
+        SetNuiFocus(false, false)
+        isOpen = false
+        isForceOpen = false
     end
-    SetNuiFocus(false, false)
-    isOpen = false
-    isForceOpen = false
+end)
+
+RegisterNUICallback('speedChange', function(data)
+    if isOpen then
+        speedNumber = data -- 2.23693629
+    end
 end)
 
 -- Commands

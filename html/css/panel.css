@@ -652,5 +652,12 @@ input:checked + .slider-move {
   color: rgb(218, 218, 218);
 }
 
-
 /* Extras Wrapper */
+.extras-container {
+  position: absolute;
+  background-color: red;
+  top: 8%;
+  left: 12.5%;
+  width: 87.5%;
+  height: 92%;
+}

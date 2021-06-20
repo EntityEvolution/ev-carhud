@@ -43,9 +43,9 @@ let gas = new ProgressBar.SemiCircle('#fuel-container', {
   to: {color: 'rgb(255, 135, 31)'},
 
   // Set default step function for all animate calls
-  step: (state, fuel) => {
-    fuel.path.setAttribute('stroke', state.color);
-    let value = Math.round(fuel.value() * 100);
+  step: (state, gas) => {
+    gas.path.setAttribute('stroke', state.color);
+    let value = Math.round(gas.value() * 100);
   }
 });
 
@@ -67,18 +67,18 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
   to: {color: 'rgb(0, 68, 255)'},
 
   // Set default step function for all animate calls
-  step: (state, rpm) => {
-    rpm.path.setAttribute('stroke', state.color);
-    let value = Math.round(rpm.value() * 100);
+  step: (state, rev) => {
+    rev.path.setAttribute('stroke', state.color);
+    let value = Math.round(rev.value() * 100);
   }
 });
 
 // Set to draggable on page load
-window.addEventListener('load', function () {
+window.addEventListener('load', ()=> {
   doc.getElementById("speed-text-unit").innerHTML = Config.SpeedUnit
   doc.getElementById("fuel-text-unit").innerHTML = Config.FuelUnit
   doc.getElementById("rpm-text-unit").innerHTML = Config.RPMUnit
-  doc.getElementById("arrows").click();
+  doc.getElementById("road").click();
   setSliders();
 });
 
@@ -96,8 +96,8 @@ window.addEventListener("message", function (event) {
     break;
 
     case "show":
-      document.getElementById("wrapper").style.display = "flex";
-      document.getElementById("icon-wrapper").style.display = "flex";
+      wrapDash.style.display = "flex";
+      wrapIcon.style.display = "flex";
     break;
 
     case "showMenu":
@@ -109,7 +109,9 @@ window.addEventListener("message", function (event) {
     break;
 
     case "preview":
-      fuel.animate(1.0)
+      gauge.animate(0.9)
+      gas.animate(0.9)
+      rev.animate(0.9)
     break;
 
     case "hide":
@@ -124,7 +126,7 @@ window.addEventListener("message", function (event) {
   }
 });
 
-document.onkeyup = function (event) {
+doc.onkeyup = function(event) {
   if (event.key == 'Escape') {
     $.post('https://ev-carhud/close');
   }
@@ -257,23 +259,23 @@ function openTab(event, target) {
   document.getElementById(target).style.display = "block";
 }
 
-document.getElementById("default").onclick = function() {
-  document.getElementById("default").style.background="rgb(96, 103, 107)",
-  document.getElementById("arrows").style.background="",
-  document.getElementById("road").style.background=""
-  openTab(event, 'display')
-};
+defaultTab.addEventListener('click', () => {
+  defaultTab.style.background = 'rgb(96, 103, 107)';
+  arrowsTab.style.background = '';
+  roadTab.style.background = '';
+  openTab(event, 'display');
+});
 
-document.getElementById("arrows").onclick = function() {
-  document.getElementById("default").style.background="",
-  document.getElementById("arrows").style.background="rgb(96, 103, 107)",
-  document.getElementById("road").style.background=""
-  openTab(event, 'movement')
-};
+arrowsTab.addEventListener('click', ()=> {
+  defaultTab.style.background = '';
+  arrowsTab.style.background = 'rgb(96, 103, 107)';
+  roadTab.style.background = '';
+  openTab(event, 'movement');
+});
 
-document.getElementById("road").onclick = function() {
-  document.getElementById("default").style.background="",
-  document.getElementById("arrows").style.background="",
-  document.getElementById("road").style.background="rgb(96, 103, 107)"
-  openTab(event, 'extras')
-};
+roadTab.addEventListener('click', ()=> {
+  defaultTab.style.background = '';
+  arrowsTab.style.background = '';
+  roadTab.style.background = 'rgb(96, 103, 107)';
+  openTab(event, 'extras');
+});

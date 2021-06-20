@@ -141,27 +141,23 @@
                 <span class="bottom-title-text">Visual</span>
               </div>
               <div class="reset-wrapper">
-                <select class="reset-buttons" name="speedBoard" id="speedBoard">
-                  <optgroup label="Speedometer">
-                    <option value="90">90%</option>
-                    <option value="95">95%</option>
-                    <option value="default" selected>100%</option>
-                    <option value="105">105%</option>
-                    <option value="110">110%</option>
-                    <option value="115">115%</option>
+                <select class="reset-buttons" name="langPick" id="langPick">
+                  <optgroup label="Language">
+                    <option value="es">ESP</option>
+                    <option value="en" selected>EN</option>
                   </select>
                 </optgroup>
                 <select class="reset-buttons" name="dashboard" id="dashboard">
-                  <optgroup label="Dashboard">
-                    <option value="90">90%</option>
-                    <option value="95">95%</option>
-                    <option value="default" selected>100%</option>
-                    <option value="105">105%</option>
-                    <option value="110">110%</option>
-                    <option value="115">115%</option>
+                  <optgroup label="Refresh Rate">
+                    <option value="50">50ms</option>
+                    <option value="100">100ms</option>
+                    <option value="200" selected>200ms</option>
+                    <option value="250">250ms</option>
+                    <option value="500">500ms</option>
+                    <option value="700">700ms</option>
                   </optgroup>
                 </select>
-                <button class="reset-buttons">Default</button>
+                <button id="reset-visual" class="reset-buttons">Default</button>
               </div>
             </div>
             <div class="movement-bottom">
@@ -176,7 +172,7 @@
             </div>
             <div class="footer-wrapper">
               <h5 class="footer-title">Movement</h5>
-                <p class="footer-description">Change size, move, and save position for your HUD</p>
+                <p class="footer-description">Readjust, move, and change language of your HUD</p>
             </div>
           </div>
         </div>
@@ -184,7 +180,11 @@
         <!--Panel Extras Tab Content-->
         <div id="extras" class="tabcontent">
           <div class="extras-wrapper">
+            <div class="extras-container">
+              <div class="extras-flex-container">
 
+              </div>
+            </div>
           </div>
         </div>
     </div>
