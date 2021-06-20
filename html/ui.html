@@ -191,8 +191,20 @@
                   <option value="kmh" selected>KMH</option>
                 </optgroup>
               </select>
-              <button>hOLA</button>
-              <button>hOLA</button>
+              <select class="preview-picker" name="preview" id="preview">
+                <optgroup label="Preview">
+                  <option value="0-two">0.2</option>
+                  <option value="0-four">0.4</option>
+                  <option value="0-six">0.6</option>
+                  <option value="0-eight" selected>0.8</option>
+                  <option value="one">1.0</option>
+                </optgroup>
+              </select>
+              <label class="switch-break" >
+                <input id="freeze-break" type="checkbox" checked>
+                <span class="slider-move"></span>
+                <span class="move-text">Lights</span>
+              </label>
             </div>
             <div class="extras-flex-title-container">Title</div>
             <div class="extras-flex-container">
@@ -200,14 +212,16 @@
               <button>hOLA</button>
               <button>hOLA</button>
             </div>
-            <div class="extras-flex-title-container">Title</div>
+            <div class="extras-flex-title-container">GPS</div>
             <div class="extras-flex-container">
+              <button>Start</button>
               <select class="mileage-picker" name="mileage" id="mileage">
                 <optgroup label="Mileage">
                   <option value="mph">MPH</option>
                   <option value="kmh" selected>KMH</option>
                 </optgroup>
               </select>
+              <button>Cancel</button>
             </div>
           </div>
         </div>
