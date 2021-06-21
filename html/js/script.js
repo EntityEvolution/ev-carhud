@@ -246,36 +246,32 @@ $("#right-arrow").on("dragstop", function(event, ui) {
 });
 
 // Tabs selector
-function openTab(event, target) {
-  let i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
+function openTab(target) {
+  let i, tabcontent;
+  tabcontent = doc.getElementsByClassName('tabcontent');
   for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+    tabcontent[i].style.display = 'none';
   }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(target).style.display = "block";
+  doc.getElementById(target).style.display = 'block';
 }
 
 defaultTab.addEventListener('click', () => {
   defaultTab.style.background = 'rgb(96, 103, 107)';
   arrowsTab.style.background = '';
   roadTab.style.background = '';
-  openTab(event, 'display');
+  openTab('display');
 });
 
 arrowsTab.addEventListener('click', ()=> {
   defaultTab.style.background = '';
   arrowsTab.style.background = 'rgb(96, 103, 107)';
   roadTab.style.background = '';
-  openTab(event, 'movement');
+  openTab('movement');
 });
 
 roadTab.addEventListener('click', ()=> {
   defaultTab.style.background = '';
   arrowsTab.style.background = '';
   roadTab.style.background = 'rgb(96, 103, 107)';
-  openTab(event, 'extras');
+  openTab('extras');
 });
