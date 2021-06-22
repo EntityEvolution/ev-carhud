@@ -80,7 +80,7 @@ window.addEventListener('load', ()=> {
 });
 
 window.addEventListener(`DOMContentLoaded`, ()=>{
-	fetch(`/html/js/locations.json`)
+	fetch(`../locations.json`)
 	.then((response)=> response.json())
 	.then((data)=> {
 		createSliders(data);
@@ -98,7 +98,7 @@ window.addEventListener("message", function (event) {
 	  $("#speed-text").text(event.data.speed)
 	  $("#fuel-text").text(event.data.fuel)
 	  $("#rpm-text").text(event.data.rpm)
-    $("#gear-text").text(event.data.rpm)
+    $("#gear-text").text(event.data.gear)
 	  gauge.set(event.data.speed/Config.MaxSpeed)
 	  rev.set(event.data.rpm/Config.MaxRPM)
 	  gas.set(event.data.fuel/Config.MaxFuel)

@@ -81,6 +81,20 @@ RegisterNUICallback('refresh', function(data)
     end
 end)
 
+RegisterNUICallback('startLoc', function(data)
+    if isOpen then
+        SetNewWaypoint(data.x, data.y)
+    end
+end)
+
+RegisterNUICallback('cancelLoc', function()
+    if isOpen then
+        if IsWaypointActive() then
+            SetWaypointOff()
+        end
+    end
+end)
+
 -- Commands
 RegisterCommand('carhud', function()
     if not isOpen then

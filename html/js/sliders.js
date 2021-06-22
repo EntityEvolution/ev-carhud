@@ -33,6 +33,8 @@ let freeze = false;
 
 let previewValue = 0.8
 
+let currentWaypointX, currentWaypointY;
+
 // Set sliders to change onclick
 window.addEventListener('load', ()=> {
   checkFuel.addEventListener('click', ()=> {
@@ -212,77 +214,86 @@ window.addEventListener('load', ()=> {
 
   // Reset drags
   doc.getElementById('reset-speedo').addEventListener('click', ()=> {
-	resetSpeedo();
+		resetSpeedo();
   })
   
   doc.getElementById('reset-buttons').addEventListener('click', ()=> {
-	resetButtons();
+		resetButtons();
   })
 
   doc.getElementById('reset-switches').addEventListener('click', ()=> {
-	resetSwitches();
+		resetSwitches();
   })
 
   doc.getElementById('reset-visual').addEventListener('click', ()=> {
-	dashSelect.value = '200';
-	msChange('200', 'refresh');
-	langSelect.value = 'en';
-	pickLanguage('en');
+		dashSelect.value = '200';
+		msChange('200', 'refresh');
+		langSelect.value = 'en';
+		pickLanguage('en');
   })
+
+  // GPS Buttons
+  doc.getElementById('extras-start').addEventListener('click', ()=> {
+		$.post('https://ev-carhud/startLoc', JSON.stringify({"x" : currentWaypointX, "y" : currentWaypointY}));
+  })
+
+  doc.getElementById('extras-cancel').addEventListener('click', ()=> {
+		$.post('https://ev-carhud/cancelLoc');
+	})
 
   // Tab listeners
   doc.getElementById('restore').addEventListener('click', ()=> {
-	$("#tab").animate({ top: "5%", left: "50%" }); 
+		$("#tab").animate({ top: "5%", left: "50%" }); 
   })
 
   doc.getElementById('close').addEventListener('click', ()=> {
-	$.post(`https://ev-carhud/close`);
+		$.post(`https://ev-carhud/close`);
   })
 
   dashSelect.addEventListener('change', ()=> {
-	let val = dashSelect.value
-	switch (val) {
-	  case '50':
-		msChange(val, 'refresh')
-	  break;
+		let val = dashSelect.value
+		switch (val) {
+			case '50':
+			msChange(val, 'refresh')
+			break;
 
-	  case '100':
-		msChange(val, 'refresh')
-	  break;
+			case '100':
+			msChange(val, 'refresh')
+			break;
 
-	  case '200':
-		msChange(val, 'refresh')
-	  break;
+			case '200':
+			msChange(val, 'refresh')
+			break;
 
-	  case '250':
-		msChange(val, 'refresh')
-	  break;
+			case '250':
+			msChange(val, 'refresh')
+			break;
 
-	  case '500':
-		msChange(val, 'refresh')
-	  break;
+			case '500':
+			msChange(val, 'refresh')
+			break;
 
-	  case '700':
-		msChange(val, 'refresh')
-	  break;
-	}
+			case '700':
+			msChange(val, 'refresh')
+			break;
+		}
   });
 
   langSelect.addEventListener('change', ()=> {
-	let val = langSelect.value
-	switch (val) {
-	  case 'es':
-		pickLanguage('es');
-	  break;
+		let val = langSelect.value
+		switch (val) {
+			case 'es':
+			pickLanguage('es');
+			break;
 
-	  case 'fr':
-		pickLanguage('fr');
-	  break;
+			case 'fr':
+			pickLanguage('fr');
+			break;
 
-	  case 'en':
-		pickLanguage('en');
-	  break;
-	}
+			case 'en':
+			pickLanguage('en');
+			break;
+		}
   });
 
   doc.getElementById('mileage').addEventListener('change', ()=> {
@@ -548,15 +559,23 @@ function pickLanguage(lang) {
 	});
 }
 
+// Create sliders
 function createSliders(data) {
+
 	const location = doc.getElementById('location');
-	location.addEventListener(`change`, ()=> console.log(location.options[location.selectedIndex].id))
-    data.forEach(dataItem => {
+	data.forEach(dataItem => {
 		const div = doc.createElement('option');
 		div.text = dataItem.location;
 		location.add(div)
-		div.id = dataItem.coords;
-    });
+		div.x = dataItem.x;
+		div.y = dataItem.y
+	});
+	location.addEventListener(`change`, ()=>
+		currentWaypointX = location.options[location.selectedIndex].x,
+		currentWaypointY = location.options[location.selectedIndex].y
+	)
+	currentWaypointX = location.options[location.selectedIndex].x,
+	currentWaypointY = location.options[location.selectedIndex].y
 }
 
 

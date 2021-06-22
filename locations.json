@@ -1,10 +1,12 @@
 [
     {
       "location": "Police",
-      "coords": "10, 20"
+      "x": 214.78,
+      "y" : -848.821
     },
     {
       "location": "Ambulance",
-      "coords": "10, 10"
+      "x": 214.78,
+      "y" : -848.821
     }
   ]
