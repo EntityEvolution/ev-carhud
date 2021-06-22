@@ -570,7 +570,7 @@ const changeLanguage = (data)=> {
 
 		// Display Wrapper
 		doc.getElementById('rpm-text-unit').innerHTML = data.rpm
-		doc.getElementById('fuel-text-unit').innerHTML = data.fuel
+		doc.getElementById('fuel-text-unit').innerHTML = data.fuel_s
 
 		// Movements subtitles
 		doc.getElementById('top-movement').innerHTML = data.movement_sub

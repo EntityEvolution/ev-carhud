@@ -8,7 +8,8 @@
     "extras" : "Extras",
     "extras_description" : "Extra settings for customization of your HUD",
 
-    "fuel" : "FUEL",
+    "fuel_s" : "FUEL",
+    "fuel" : "Fuel",
     "rpm" : "RPM",
     "speed" : "Speed",
     "belt" : "Speed",
