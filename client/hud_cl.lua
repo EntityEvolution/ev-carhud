@@ -17,6 +17,11 @@ CreateThread(function()
                 speed = math.floor(GetEntitySpeed(vehicle) * speedNumber)
                 rpm = math.floor(GetVehicleCurrentRpm(vehicle) * 10000)
                 gear = GetVehicleCurrentGear(vehicle)
+                if (speed == 0) and (gear == 0) then
+                    gear = 'N'
+                elseif speed and (gear == 0) then
+                    gear = 'R'
+                end
             end
             SendNUIMessage({
                 action = "hud",
