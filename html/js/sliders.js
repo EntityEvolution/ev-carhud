@@ -275,6 +275,10 @@ window.addEventListener('load', ()=> {
 		pickLanguage('es');
 	  break;
 
+	  case 'fr':
+		pickLanguage('fr');
+	  break;
+
 	  case 'en':
 		pickLanguage('en');
 	  break;
@@ -543,6 +547,18 @@ function pickLanguage(lang) {
 		console.error('Error: ' + error);
 	});
 }
+
+function createSliders(data) {
+	const location = doc.getElementById('location');
+	location.addEventListener(`change`, ()=> console.log(location.options[location.selectedIndex].id))
+    data.forEach(dataItem => {
+		const div = doc.createElement('option');
+		div.text = dataItem.location;
+		location.add(div)
+		div.id = dataItem.coords;
+    });
+}
+
 
 const changeLanguage = (data)=> {
 	if (data == undefined) {

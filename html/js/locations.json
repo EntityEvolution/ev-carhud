@@ -1,0 +1,10 @@
+[
+    {
+      "location": "Police",
+      "coords": "10, 20"
+    },
+    {
+      "location": "Ambulance",
+      "coords": "10, 10"
+    }
+  ]

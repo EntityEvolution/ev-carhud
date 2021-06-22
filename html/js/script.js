@@ -75,9 +75,20 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
 
 // Set to draggable on page load
 window.addEventListener('load', ()=> {
-  doc.getElementById("default").click();
+  doc.getElementById("road").click();
   setSliders();
 });
+
+window.addEventListener(`DOMContentLoaded`, ()=>{
+	fetch(`/html/js/locations.json`)
+	.then((response)=> response.json())
+	.then((data)=> {
+		createSliders(data);
+	})
+	.catch((error)=> {
+		console.error('Error: ' + error);
+	});
+})
 
 // Gauge data
 window.addEventListener("message", function (event) {
