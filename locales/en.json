@@ -1,3 +1,19 @@
+
 {
-    "settings" : "Settings"
+    "settings" : "Settings",
+    "display" : "Display",
+    "display_description" : "Toggle parts of your HUD on / off by pressing a button",
+    "movement" : "Movement",
+    "movement_description" : "Readjust, move, and change language of your HUD",
+    "extras" : "Extras",
+    "extras_description" : "Extra settings for customization of your HUD",
+
+    "fuel" : "Fuel",
+    "rpm" : "RPM",
+    "belt" : "Speed",
+    "limiter" : "Limiter",
+    "gears" : "Gears",
+    "motor" : "Motor",
+    "right_signal" : "R Signal",
+    "left_signal" : "L Signal"
 }

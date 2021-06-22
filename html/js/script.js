@@ -7,8 +7,8 @@ let gauge = new ProgressBar.SemiCircle('#speed-container', {
   easing: 'easeInOut',
   svgStyle: null,
   text: {
-    value: '',
-    alignToBottom: false
+	value: '',
+	alignToBottom: false
   },
 
   // Gradient
@@ -17,11 +17,11 @@ let gauge = new ProgressBar.SemiCircle('#speed-container', {
 
   // Set default step function for all animate calls
   step: (state, gauge) => {
-    gauge.path.setAttribute('stroke', state.color);
-    let value = Math.round(gauge.value() * 300);
-    if (value === 0) {
-    } else {
-    }
+	gauge.path.setAttribute('stroke', state.color);
+	let value = Math.round(gauge.value() * 300);
+	if (value === 0) {
+	} else {
+	}
   }
 });
 
@@ -34,8 +34,8 @@ let gas = new ProgressBar.SemiCircle('#fuel-container', {
   easing: 'easeInOut',
   svgStyle: null,
   text: {
-    value: '',
-    alignToBottom: false
+	value: '',
+	alignToBottom: false
   },
 
   // Gradient
@@ -44,8 +44,8 @@ let gas = new ProgressBar.SemiCircle('#fuel-container', {
 
   // Set default step function for all animate calls
   step: (state, gas) => {
-    gas.path.setAttribute('stroke', state.color);
-    let value = Math.round(gas.value() * 100);
+	gas.path.setAttribute('stroke', state.color);
+	let value = Math.round(gas.value() * 100);
   }
 });
 
@@ -58,8 +58,8 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
   easing: 'easeInOut',
   svgStyle: null,
   text: {
-    value: '',
-    alignToBottom: false
+	value: '',
+	alignToBottom: false
   },
 
   // Gradient
@@ -68,16 +68,13 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
 
   // Set default step function for all animate calls
   step: (state, rev) => {
-    rev.path.setAttribute('stroke', state.color);
-    let value = Math.round(rev.value() * 100);
+	rev.path.setAttribute('stroke', state.color);
+	let value = Math.round(rev.value() * 100);
   }
 });
 
 // Set to draggable on page load
 window.addEventListener('load', ()=> {
-  doc.getElementById("speed-text-unit").innerHTML = Config.SpeedUnit
-  doc.getElementById("fuel-text-unit").innerHTML = Config.FuelUnit
-  doc.getElementById("rpm-text-unit").innerHTML = Config.RPMUnit
   doc.getElementById("road").click();
   setSliders();
 });
@@ -85,50 +82,48 @@ window.addEventListener('load', ()=> {
 // Gauge data
 window.addEventListener("message", function (event) {
   switch (event.data.action) {
-    // Receive Data
-    case "hud":
-      $("#speed-text").text(event.data.speed)
-      $("#fuel-text").text(event.data.fuel)
-      $("#rpm-text").text(event.data.rpm)
-      gauge.set(event.data.speed/Config.MaxSpeed)
-      rev.set(event.data.rpm/Config.MaxRPM)
-      gas.set(event.data.fuel/Config.MaxFuel)
-    break;
+	// Receive Data
+	case "hud":
+	  $("#speed-text").text(event.data.speed)
+	  $("#fuel-text").text(event.data.fuel)
+	  $("#rpm-text").text(event.data.rpm)
+	  gauge.set(event.data.speed/Config.MaxSpeed)
+	  rev.set(event.data.rpm/Config.MaxRPM)
+	  gas.set(event.data.fuel/Config.MaxFuel)
+	break;
 
-    case "show":
-      wrapDash.style.display = "flex";
-      wrapIcon.style.display = "flex";
-    break;
+	case "show":
+	  wrapDash.style.display = "flex";
+	  wrapIcon.style.display = "flex";
+	break;
 
-    case "showMenu":
-      $("#tab").show();
-    break;
-    
-    case "setSlidersBack":
+	case "showMenu":
+	  $("#tab").show();
+	break;
+	
+	case "setSlidersBack":
 
-    break;
+	break;
 
-    case "preview":
-      gauge.animate(0.9)
-      gas.animate(0.9)
-      rev.animate(0.9)
-    break;
+	case "preview":
+	  setPreview();
+	break;
 
-    case "hide":
-      $("#wrapper").fadeOut();
-      $("#icon-wrapper").fadeOut();
-      $("#tab").fadeOut();
-    break;
+	case "hide":
+	  $("#wrapper").fadeOut();
+	  $("#icon-wrapper").fadeOut();
+	  $("#tab").fadeOut();
+	break;
 
-    case "hideMenu":
-      $("#tab").fadeOut();
-    break;
+	case "hideMenu":
+	  $("#tab").fadeOut();
+	break;
   }
 });
 
 doc.onkeyup = function(event) {
   if (event.key == 'Escape') {
-    $.post('https://ev-carhud/close');
+	$.post('https://ev-carhud/close');
   }
 };
 
@@ -136,67 +131,67 @@ doc.onkeyup = function(event) {
 $("#tab").draggable({
   zIndex: 100,
   drag: function (event, ui) {
-      __dx = ui.position.left - ui.originalPosition.left;
-      __dy = ui.position.top - ui.originalPosition.top;
-      ui.position.left = ui.originalPosition.left + (__dx);
-      ui.position.top = ui.originalPosition.top + (__dy);
-      ui.position.left += __recoupLeft;
-      ui.position.top += __recoupTop;
+	  __dx = ui.position.left - ui.originalPosition.left;
+	  __dy = ui.position.top - ui.originalPosition.top;
+	  ui.position.left = ui.originalPosition.left + (__dx);
+	  ui.position.top = ui.originalPosition.top + (__dy);
+	  ui.position.left += __recoupLeft;
+	  ui.position.top += __recoupTop;
   },
   start: function (event, ui) {
-      $(this).css('cursor', 'pointer');
-      let left = parseInt($(this).css('left'), 10);
-      left = isNaN(left) ? 0 : left;
-      let top = parseInt($(this).css('top'), 10);
-      top = isNaN(top) ? 0 : top;
-      __recoupLeft = left - ui.position.left;
-      __recoupTop = top - ui.position.top;
+	  $(this).css('cursor', 'pointer');
+	  let left = parseInt($(this).css('left'), 10);
+	  left = isNaN(left) ? 0 : left;
+	  let top = parseInt($(this).css('top'), 10);
+	  top = isNaN(top) ? 0 : top;
+	  __recoupLeft = left - ui.position.left;
+	  __recoupTop = top - ui.position.top;
   }
 });
 
 $("#wrapper").draggable({
   zIndex: 100,
   drag: function (event, ui) {
-      __dx = ui.position.left - ui.originalPosition.left;
-      __dy = ui.position.top - ui.originalPosition.top;
-      ui.position.left = ui.originalPosition.left + (__dx);
-      ui.position.top = ui.originalPosition.top + (__dy);
-      ui.position.left += __recoupLeft;
-      ui.position.top += __recoupTop;
-      saveId('leftDisplay', ui.position.left);
-      saveId('topDisplay', ui.position.top);
+	  __dx = ui.position.left - ui.originalPosition.left;
+	  __dy = ui.position.top - ui.originalPosition.top;
+	  ui.position.left = ui.originalPosition.left + (__dx);
+	  ui.position.top = ui.originalPosition.top + (__dy);
+	  ui.position.left += __recoupLeft;
+	  ui.position.top += __recoupTop;
+	  saveId('leftDisplay', ui.position.left);
+	  saveId('topDisplay', ui.position.top);
   },
   start: function (event, ui) {
-      $(this).css('cursor', 'pointer');
-      let left = parseInt($(this).css('left'), 10);
-      left = isNaN(left) ? 0 : left;
-      let top = parseInt($(this).css('top'), 10);
-      top = isNaN(top) ? 0 : top;
-      __recoupLeft = left - ui.position.left;
-      __recoupTop = top - ui.position.top;
+	  $(this).css('cursor', 'pointer');
+	  let left = parseInt($(this).css('left'), 10);
+	  left = isNaN(left) ? 0 : left;
+	  let top = parseInt($(this).css('top'), 10);
+	  top = isNaN(top) ? 0 : top;
+	  __recoupLeft = left - ui.position.left;
+	  __recoupTop = top - ui.position.top;
   }
 });
 
 $("#icon-wrapper").draggable({
   zIndex: 100,
   drag: function (event, ui) {
-      __dx = ui.position.left - ui.originalPosition.left;
-      __dy = ui.position.top - ui.originalPosition.top;
-      ui.position.left = ui.originalPosition.left + (__dx);
-      ui.position.top = ui.originalPosition.top + (__dy);
-      ui.position.left += __recoupLeft;
-      ui.position.top += __recoupTop;
-      saveId('leftIcons', ui.position.left);
-      saveId('topIcons', ui.position.top);
+	  __dx = ui.position.left - ui.originalPosition.left;
+	  __dy = ui.position.top - ui.originalPosition.top;
+	  ui.position.left = ui.originalPosition.left + (__dx);
+	  ui.position.top = ui.originalPosition.top + (__dy);
+	  ui.position.left += __recoupLeft;
+	  ui.position.top += __recoupTop;
+	  saveId('leftIcons', ui.position.left);
+	  saveId('topIcons', ui.position.top);
   },
   start: function (event, ui) {
-      $(this).css('cursor', 'pointer');
-      let left = parseInt($(this).css('left'), 10);
-      left = isNaN(left) ? 0 : left;
-      let top = parseInt($(this).css('top'), 10);
-      top = isNaN(top) ? 0 : top;
-      __recoupLeft = left - ui.position.left;
-      __recoupTop = top - ui.position.top;
+	  $(this).css('cursor', 'pointer');
+	  let left = parseInt($(this).css('left'), 10);
+	  left = isNaN(left) ? 0 : left;
+	  let top = parseInt($(this).css('top'), 10);
+	  top = isNaN(top) ? 0 : top;
+	  __recoupLeft = left - ui.position.left;
+	  __recoupTop = top - ui.position.top;
   }
 });
 
@@ -250,7 +245,7 @@ function openTab(target) {
   let i, tabcontent;
   tabcontent = doc.getElementsByClassName('tabcontent');
   for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = 'none';
+	tabcontent[i].style.display = 'none';
   }
   doc.getElementById(target).style.display = 'block';
 }

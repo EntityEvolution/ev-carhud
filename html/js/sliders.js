@@ -31,308 +31,359 @@ fuel = speed = rpm = seatbelt = tacho = cogs = left = wrench = right = true
 let broke = false;
 let freeze = false;
 
-
+let previewValue = 0.8
 
 // Set sliders to change onclick
 window.addEventListener('load', ()=> {
   checkFuel.addEventListener('click', ()=> {
-    fuel = doc.getElementById('check-fuel').checked
-    const container = doc.getElementById('fuel-container')
-    if (fuel) {
-      container.style.display = 'flex'
-      saveId("sliderFuel", fuel)
-    } else {
-      container.style.display = 'none'
-      saveId("sliderFuel", fuel)
-    }
+	fuel = doc.getElementById('check-fuel').checked
+	const container = doc.getElementById('fuel-container')
+	if (fuel) {
+	  container.style.display = 'flex'
+	  saveId("sliderFuel", fuel)
+	} else {
+	  container.style.display = 'none'
+	  saveId("sliderFuel", fuel)
+	}
   })
 
   checkSpeed.addEventListener('click', ()=> {
-    speed = doc.getElementById('check-speed').checked
-    const container = doc.getElementById('speed-container')
-    if (speed) {
-      container.style.display = 'flex'
-      saveId("sliderSpeed", speed)
-    } else {
-      container.style.display = 'none'
-      saveId("sliderSpeed", speed)
-    }
+	speed = doc.getElementById('check-speed').checked
+	const container = doc.getElementById('speed-container')
+	if (speed) {
+	  container.style.display = 'flex'
+	  saveId("sliderSpeed", speed)
+	} else {
+	  container.style.display = 'none'
+	  saveId("sliderSpeed", speed)
+	}
   })
 
   checkRpm.addEventListener('click', ()=> {
-    rpm = doc.getElementById('check-rpm').checked
-    const container = doc.getElementById('rpm-container')
-    if (rpm) {
-      container.style.display = 'flex'
-      saveId("sliderRpm", rpm)
-    } else {
-      container.style.display = 'none'
-      saveId("sliderRpm", rpm)
-    }
+	rpm = doc.getElementById('check-rpm').checked
+	const container = doc.getElementById('rpm-container')
+	if (rpm) {
+	  container.style.display = 'flex'
+	  saveId("sliderRpm", rpm)
+	} else {
+	  container.style.display = 'none'
+	  saveId("sliderRpm", rpm)
+	}
   })
 
   checkSeatbelt.addEventListener('click', ()=> {
-    seatbelt = doc.getElementById('check-seatbelt').checked
-    const element = doc.getElementById('seatbelt')
-    if (seatbelt) {
-      element.style.display = 'block'
-      saveId("sliderSeatbelt", seatbelt)
-    } else {
-      element.style.display = 'none'
-      saveId("sliderSeatbelt", seatbelt)
-    }
+	seatbelt = doc.getElementById('check-seatbelt').checked
+	const element = doc.getElementById('seatbelt')
+	if (seatbelt) {
+	  element.style.display = 'block'
+	  saveId("sliderSeatbelt", seatbelt)
+	} else {
+	  element.style.display = 'none'
+	  saveId("sliderSeatbelt", seatbelt)
+	}
   })
 
   checkTacho.addEventListener('click', ()=> {
-    tacho = doc.getElementById('check-tacho').checked
-    const element = doc.getElementById('speedo')
-    if (tacho) {
-      element.style.display = 'block'
-      saveId("sliderTacho", tacho)
-    } else {
-      element.style.display = 'none'
-      saveId("sliderTacho", tacho)
-    }
+	tacho = doc.getElementById('check-tacho').checked
+	const element = doc.getElementById('speedo')
+	if (tacho) {
+	  element.style.display = 'block'
+	  saveId("sliderTacho", tacho)
+	} else {
+	  element.style.display = 'none'
+	  saveId("sliderTacho", tacho)
+	}
   })
 
   checkCogs.addEventListener('click', ()=> {
-    cogs = doc.getElementById('check-cogs').checked
-    const element = doc.getElementById('gear')
-    if (cogs) {
-      element.style.display = 'block'
-      saveId("sliderCogs", cogs)
-    } else {
-      element.style.display = 'none'
-      saveId("sliderCogs", cogs)
-    }
+	cogs = doc.getElementById('check-cogs').checked
+	const element = doc.getElementById('gear')
+	if (cogs) {
+	  element.style.display = 'block'
+	  saveId("sliderCogs", cogs)
+	} else {
+	  element.style.display = 'none'
+	  saveId("sliderCogs", cogs)
+	}
   })
 
   checkLeft.addEventListener('click', ()=> {
-    left = doc.getElementById('check-left').checked
-    const element = doc.getElementById('left-arrow')
-    if (left) {
-      element.style.display = 'block'
-      saveId("sliderLeft", left)
-    } else {
-      element.style.display = 'none'
-      saveId("sliderLeft", left)
-    }
+	left = doc.getElementById('check-left').checked
+	const element = doc.getElementById('left-arrow')
+	if (left) {
+	  element.style.display = 'block'
+	  saveId("sliderLeft", left)
+	} else {
+	  element.style.display = 'none'
+	  saveId("sliderLeft", left)
+	}
   })
 
   checkWrench.addEventListener('click', ()=> {
-    wrench = doc.getElementById('check-wrench').checked
-    const element = doc.getElementById('wrench')
-    if (wrench) {
-      element.style.display = 'block'
-      saveId("sliderWrench", wrench)
-    } else {
-      element.style.display = 'none'
-      saveId("sliderWrench", wrench)
-    }
+	wrench = doc.getElementById('check-wrench').checked
+	const element = doc.getElementById('wrench')
+	if (wrench) {
+	  element.style.display = 'block'
+	  saveId("sliderWrench", wrench)
+	} else {
+	  element.style.display = 'none'
+	  saveId("sliderWrench", wrench)
+	}
   })
 
   checkRight.addEventListener('click', ()=> {
-    right = doc.getElementById('check-right').checked
-    const element = doc.getElementById('right-arrow')
-    if (right) {
-      element.style.display = 'block'
-      saveId("sliderRight", right)
-    } else {
-      element.style.display = 'none'
-      saveId("sliderRight", right)
-    }
+	right = doc.getElementById('check-right').checked
+	const element = doc.getElementById('right-arrow')
+	if (right) {
+	  element.style.display = 'block'
+	  saveId("sliderRight", right)
+	} else {
+	  element.style.display = 'none'
+	  saveId("sliderRight", right)
+	}
   })
 
   // Save break and freeze
   saveBreak.addEventListener('click', ()=> {
-    saveId("brokeBreak", broke);
-    saveId("brokeFreeze", freeze)
+	saveId("brokeBreak", broke);
+	saveId("brokeFreeze", freeze)
   })
 
   // Sliders for breaking drag
   freezeBreak.addEventListener('click', ()=> {
-    freeze = document.getElementById("freeze-break").checked;
-    if (freeze) {
-      $("#wrapper").draggable({ disabled: true });
-      $("#icon-wrapper").draggable({ disabled: true });
-      $("#tab").draggable({ disabled: true });
-      if (broke) {
-        $("#gear").draggable({ disabled: true });
-        $("#right-arrow").draggable({ disabled: true });
-        $("#speedo").draggable({ disabled: true });
-        $("#seatbelt").draggable({ disabled: true });
-        $("#wrench").draggable({ disabled: true });
-        $("#left-arrow").draggable({ disabled: true });
-        $("#fuel-container").draggable({ disabled: true });
-        $("#rpm-container").draggable({ disabled: true });
-        $("#speed-container").draggable({ disabled: true });
-      }
-    } else {
-      $("#wrapper").draggable({ disabled: false });
-      $("#icon-wrapper").draggable({ disabled: false });
-      $("#tab").draggable({ disabled: false });
-      if (broke) {
-        $("#gear").draggable({ disabled: false });
-        $("#right-arrow").draggable({ disabled: false });
-        $("#speedo").draggable({ disabled: false });
-        $("#seatbelt").draggable({ disabled: false });
-        $("#wrench").draggable({ disabled: false });
-        $("#left-arrow").draggable({ disabled: false });
-        $("#fuel-container").draggable({ disabled: false });
-        $("#rpm-container").draggable({ disabled: false });
-        $("#speed-container").draggable({ disabled: false });
-      }
-    }
+	freeze = document.getElementById("freeze-break").checked;
+	if (freeze) {
+	  $("#wrapper").draggable({ disabled: true });
+	  $("#icon-wrapper").draggable({ disabled: true });
+	  $("#tab").draggable({ disabled: true });
+	  if (broke) {
+		$("#gear").draggable({ disabled: true });
+		$("#right-arrow").draggable({ disabled: true });
+		$("#speedo").draggable({ disabled: true });
+		$("#seatbelt").draggable({ disabled: true });
+		$("#wrench").draggable({ disabled: true });
+		$("#left-arrow").draggable({ disabled: true });
+		$("#fuel-container").draggable({ disabled: true });
+		$("#rpm-container").draggable({ disabled: true });
+		$("#speed-container").draggable({ disabled: true });
+	  }
+	} else {
+	  $("#wrapper").draggable({ disabled: false });
+	  $("#icon-wrapper").draggable({ disabled: false });
+	  $("#tab").draggable({ disabled: false });
+	  if (broke) {
+		$("#gear").draggable({ disabled: false });
+		$("#right-arrow").draggable({ disabled: false });
+		$("#speedo").draggable({ disabled: false });
+		$("#seatbelt").draggable({ disabled: false });
+		$("#wrench").draggable({ disabled: false });
+		$("#left-arrow").draggable({ disabled: false });
+		$("#fuel-container").draggable({ disabled: false });
+		$("#rpm-container").draggable({ disabled: false });
+		$("#speed-container").draggable({ disabled: false });
+	  }
+	}
   })
 
   brokeBreak.addEventListener('click', ()=> {
-    broke = document.getElementById("broke-break").checked;
-    if (broke && !freeze) {
-      $("#gear").draggable({ disabled: false });
-      $("#right-arrow").draggable({ disabled: false });
-      $("#speedo").draggable({ disabled: false });
-      $("#seatbelt").draggable({ disabled: false });
-      $("#wrench").draggable({ disabled: false });
-      $("#left-arrow").draggable({ disabled: false });
-      $("#fuel-container").draggable({ disabled: false });
-      $("#rpm-container").draggable({ disabled: false });
-      $("#speed-container").draggable({ disabled: false });
-    } else {
-      $("#gear").draggable({ disabled: true });
-      $("#right-arrow").draggable({ disabled: true });
-      $("#speedo").draggable({ disabled: true });
-      $("#seatbelt").draggable({ disabled: true });
-      $("#wrench").draggable({ disabled: true });
-      $("#left-arrow").draggable({ disabled: true });
-      $("#fuel-container").draggable({ disabled: true });
-      $("#rpm-container").draggable({ disabled: true });
-      $("#speed-container").draggable({ disabled: true });
-    }
+	broke = document.getElementById("broke-break").checked;
+	if (broke && !freeze) {
+	  $("#gear").draggable({ disabled: false });
+	  $("#right-arrow").draggable({ disabled: false });
+	  $("#speedo").draggable({ disabled: false });
+	  $("#seatbelt").draggable({ disabled: false });
+	  $("#wrench").draggable({ disabled: false });
+	  $("#left-arrow").draggable({ disabled: false });
+	  $("#fuel-container").draggable({ disabled: false });
+	  $("#rpm-container").draggable({ disabled: false });
+	  $("#speed-container").draggable({ disabled: false });
+	} else {
+	  $("#gear").draggable({ disabled: true });
+	  $("#right-arrow").draggable({ disabled: true });
+	  $("#speedo").draggable({ disabled: true });
+	  $("#seatbelt").draggable({ disabled: true });
+	  $("#wrench").draggable({ disabled: true });
+	  $("#left-arrow").draggable({ disabled: true });
+	  $("#fuel-container").draggable({ disabled: true });
+	  $("#rpm-container").draggable({ disabled: true });
+	  $("#speed-container").draggable({ disabled: true });
+	}
   })
 
   // Reset drags
   doc.getElementById('reset-speedo').addEventListener('click', ()=> {
-    resetSpeedo();
+	resetSpeedo();
   })
   
   doc.getElementById('reset-buttons').addEventListener('click', ()=> {
-    resetButtons();
+	resetButtons();
   })
 
   doc.getElementById('reset-switches').addEventListener('click', ()=> {
-    resetSwitches();
+	resetSwitches();
   })
 
   doc.getElementById('reset-visual').addEventListener('click', ()=> {
-    dashSelect.value = '200'
-    langSelect.value = 'en'
+	dashSelect.value = '200'
+	langSelect.value = 'en'
   })
 
   // Tab listeners
   doc.getElementById('restore').addEventListener('click', ()=> {
-    $("#tab").animate({ top: "5%", left: "50%" }); 
+	$("#tab").animate({ top: "5%", left: "50%" }); 
   })
 
   doc.getElementById('close').addEventListener('click', ()=> {
-    $.post(`https://ev-carhud/close`);
+	$.post(`https://ev-carhud/close`);
   })
 
   dashSelect.addEventListener('change', ()=> {
-    let val = dashSelect.value
-    switch (val) {
-      case '50':
-        msChange(val)
-      break;
+	let val = dashSelect.value
+	switch (val) {
+	  case '50':
+		msChange(val, 'refresh')
+	  break;
 
-      case '100':
-        msChange(val)
-      break;
+	  case '100':
+		msChange(val, 'refresh')
+	  break;
 
-      case '200':
-        msChange(val)
-      break;
+	  case '200':
+		msChange(val, 'refresh')
+	  break;
 
-      case '250':
-        msChange(val)
-      break;
+	  case '250':
+		msChange(val, 'refresh')
+	  break;
 
-      case '500':
-        msChange(val)
-      break;
+	  case '500':
+		msChange(val, 'refresh')
+	  break;
 
-      case '700':
-        msChange(val)
-      break;
-    }
+	  case '700':
+		msChange(val, 'refresh')
+	  break;
+	}
   });
 
   langSelect.addEventListener('change', ()=> {
-    let val = langSelect.value
-    switch (val) {
-      case 'esp':
-        console.log('esp')
-      break;
+	let val = langSelect.value
+	switch (val) {
+	  case 'esp':
+		console.log('esp')
+	  break;
 
-      case 'en':
-        console.log('en')
-      break;
-    }
-  })
+	  case 'en':
+		console.log('en')
+	  break;
+	}
+  });
+
+  doc.getElementById('mileage').addEventListener('change', ()=> {
+	let val = doc.getElementById('mileage').value
+	switch (val) {
+	  case 'mph':
+		msChange('2.23693629', 'speedChange')
+		doc.getElementById("speed-text-unit").innerHTML = 'MPH'
+	  break;
+
+	  case 'kmh':
+		msChange('3.6', 'speedChange')
+		doc.getElementById("speed-text-unit").innerHTML = 'KMH'
+	  break;
+	}
+  });
+
+  doc.getElementById('preview').addEventListener('change', ()=> {
+	let val = doc.getElementById('preview').value
+	switch (val) {
+		case '0-two':
+			previewValue = 0.2;
+			setPreview();
+		break;
+
+		case '0-four':
+			previewValue = 0.4;
+			setPreview();
+		break;
+
+		case '0-six':
+			previewValue = 0.6;
+			setPreview();
+		break;
+
+		case '0-eight':
+			previewValue = 0.8;
+			setPreview();
+		break;
+
+		case 'one':
+			previewValue = 1.0;
+			setPreview();
+		break;
+	}
+  });
 })
+
+const setPreview = ()=> {
+	gauge.animate(previewValue)
+	gas.animate(previewValue)
+	rev.animate(previewValue)
+}
 
 let dragBreak = ()=> {
   if (freeze) {
-      $("#wrapper").draggable({ disabled: true });
-      $("#icon-wrapper").draggable({ disabled: true });
-      $("#tab").draggable({ disabled: true });
-      if (broke) {
-        $("#gear").draggable({ disabled: true });
-        $("#right-arrow").draggable({ disabled: true });
-        $("#speedo").draggable({ disabled: true });
-        $("#seatbelt").draggable({ disabled: true });
-        $("#wrench").draggable({ disabled: true });
-        $("#left-arrow").draggable({ disabled: true });
-        $("#fuel-container").draggable({ disabled: true });
-        $("#rpm-container").draggable({ disabled: true });
-        $("#speed-container").draggable({ disabled: true });
-      }
-    } else {
-      $("#wrapper").draggable({ disabled: false });
-      $("#icon-wrapper").draggable({ disabled: false });
-      $("#tab").draggable({ disabled: false });
-      if (broke) {
-        $("#gear").draggable({ disabled: false });
-        $("#right-arrow").draggable({ disabled: false });
-        $("#speedo").draggable({ disabled: false });
-        $("#seatbelt").draggable({ disabled: false });
-        $("#wrench").draggable({ disabled: false });
-        $("#left-arrow").draggable({ disabled: false });
-        $("#fuel-container").draggable({ disabled: false });
-        $("#rpm-container").draggable({ disabled: false });
-        $("#speed-container").draggable({ disabled: false });
-      }
-    }
+	  $("#wrapper").draggable({ disabled: true });
+	  $("#icon-wrapper").draggable({ disabled: true });
+	  $("#tab").draggable({ disabled: true });
+	  if (broke) {
+		$("#gear").draggable({ disabled: true });
+		$("#right-arrow").draggable({ disabled: true });
+		$("#speedo").draggable({ disabled: true });
+		$("#seatbelt").draggable({ disabled: true });
+		$("#wrench").draggable({ disabled: true });
+		$("#left-arrow").draggable({ disabled: true });
+		$("#fuel-container").draggable({ disabled: true });
+		$("#rpm-container").draggable({ disabled: true });
+		$("#speed-container").draggable({ disabled: true });
+	  }
+	} else {
+	  $("#wrapper").draggable({ disabled: false });
+	  $("#icon-wrapper").draggable({ disabled: false });
+	  $("#tab").draggable({ disabled: false });
+	  if (broke) {
+		$("#gear").draggable({ disabled: false });
+		$("#right-arrow").draggable({ disabled: false });
+		$("#speedo").draggable({ disabled: false });
+		$("#seatbelt").draggable({ disabled: false });
+		$("#wrench").draggable({ disabled: false });
+		$("#left-arrow").draggable({ disabled: false });
+		$("#fuel-container").draggable({ disabled: false });
+		$("#rpm-container").draggable({ disabled: false });
+		$("#speed-container").draggable({ disabled: false });
+	  }
+	}
 
   if (broke && !freeze) {
-    $("#gear").draggable({ disabled: false });
-    $("#right-arrow").draggable({ disabled: false });
-    $("#speedo").draggable({ disabled: false });
-    $("#seatbelt").draggable({ disabled: false });
-    $("#wrench").draggable({ disabled: false });
-    $("#left-arrow").draggable({ disabled: false });
-    $("#fuel-container").draggable({ disabled: false });
-    $("#rpm-container").draggable({ disabled: false });
-    $("#speed-container").draggable({ disabled: false });
+	$("#gear").draggable({ disabled: false });
+	$("#right-arrow").draggable({ disabled: false });
+	$("#speedo").draggable({ disabled: false });
+	$("#seatbelt").draggable({ disabled: false });
+	$("#wrench").draggable({ disabled: false });
+	$("#left-arrow").draggable({ disabled: false });
+	$("#fuel-container").draggable({ disabled: false });
+	$("#rpm-container").draggable({ disabled: false });
+	$("#speed-container").draggable({ disabled: false });
   } else {
-    $("#gear").draggable({ disabled: true });
-    $("#right-arrow").draggable({ disabled: true });
-    $("#speedo").draggable({ disabled: true });
-    $("#seatbelt").draggable({ disabled: true });
-    $("#wrench").draggable({ disabled: true });
-    $("#left-arrow").draggable({ disabled: true });
-    $("#fuel-container").draggable({ disabled: true });
-    $("#rpm-container").draggable({ disabled: true });
-    $("#speed-container").draggable({ disabled: true });
+	$("#gear").draggable({ disabled: true });
+	$("#right-arrow").draggable({ disabled: true });
+	$("#speedo").draggable({ disabled: true });
+	$("#seatbelt").draggable({ disabled: true });
+	$("#wrench").draggable({ disabled: true });
+	$("#left-arrow").draggable({ disabled: true });
+	$("#fuel-container").draggable({ disabled: true });
+	$("#rpm-container").draggable({ disabled: true });
+	$("#speed-container").draggable({ disabled: true });
   }
 }
 
@@ -373,29 +424,29 @@ const setDisplay = ()=> {
 // Set containers functions
 function setContainer(slider, check, container) {
   if (getId(slider) == null) {
-    doc.getElementById(check).checked = true;
-    return
+	doc.getElementById(check).checked = true;
+	return
   } else {
-    doc.getElementById(check).checked = getId(slider)
-    if (getId(slider)) {
-      doc.getElementById(container).style.display = "block";
-    } else {
-      doc.getElementById(container).style.display = "none"
-    }
+	doc.getElementById(check).checked = getId(slider)
+	if (getId(slider)) {
+	  doc.getElementById(container).style.display = "block";
+	} else {
+	  doc.getElementById(container).style.display = "none"
+	}
   }
 }
 
 function setFlexContainer(slider, check, container) {
   if (getId(slider) == null) {
-    doc.getElementById(check).checked = true;
-    return
+	doc.getElementById(check).checked = true;
+	return
   } else {
-    doc.getElementById(check).checked = getId(slider)
-    if (getId(slider)) {
-      doc.getElementById(container).style.display = "flex";
-    } else {
-      doc.getElementById(container).style.display = "none"
-    }
+	doc.getElementById(check).checked = getId(slider)
+	if (getId(slider)) {
+	  doc.getElementById(container).style.display = "flex";
+	} else {
+	  doc.getElementById(container).style.display = "none"
+	}
   }
 }
 
@@ -473,7 +524,26 @@ function getNum(item) {
   return storage
 }
 
-function msChange(num) {
-  let post = $.post('https://ev-carhud/refresh', num);
+function msChange(num, cbname) {
+  let post = $.post(`https://ev-carhud/${cbname}`, num);
   return post
+}
+
+window.addEventListener(`DOMContentLoaded`, ()=>{
+	fetch('/locales/en.json')
+	.then((response)=> response.json())
+	.then((data)=> {
+		changeLanguage(data);
+	})
+	.catch((error)=> {
+		console.error('Error: ' + error);
+	});
+})
+
+const changeLanguage = (data)=> {
+	if (data == undefined) {
+		return console.error('data is undefined')
+	} else {
+		doc.getElementById('settings').innerHTML = data.settings
+	}
 }

@@ -69,13 +69,13 @@ end)
 
 RegisterNUICallback('speedChange', function(data)
     if isOpen then
-        speedNumber = data -- 2.23693629
+        speedNumber = data
     end
 end)
 
 RegisterNUICallback('refresh', function(data)
     if isOpen then
-        refreshTime = data -- 2.23693629
+        refreshTime = data
     end
 end)
 
@@ -83,7 +83,7 @@ end)
 RegisterCommand('carhud', function()
     if not isOpen then
         isOpen = true
-        if not IsPedInAnyVehicle(ped, false) then
+        if not IsPedInAnyVehicle(ped, false) and GetEntitySpeed(GetVehiclePedIsIn(ped, false)) == 0 then
             if not isForceOpen then
                 isForceOpen = true
                 SendNUIMessage({action = 'show'})
