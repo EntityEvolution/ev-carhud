@@ -4,11 +4,12 @@ local inVehicle
 local refreshTime = 200
 
 local isOpen, isForceOpen = false, false
+local ped
 
 -- Threads
 CreateThread(function()
     while true do
-        local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+        local vehicle = GetVehiclePedIsIn(ped, false)
         if inVehicle then
             local fuel, speed, rpm
             if DoesEntityExist(vehicle) then
@@ -29,8 +30,8 @@ end)
 
 CreateThread(function()
     while true do
-        local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-        if IsPedInAnyVehicle(PlayerPedId(), false) and GetPedInVehicleSeat(vehicle, -1) == PlayerPedId() and not isForceOpen then
+        local vehicle = GetVehiclePedIsIn(ped, false)
+        if IsPedInAnyVehicle(ped, false) and GetPedInVehicleSeat(vehicle, -1) == ped and not isForceOpen then
             inVehicle = true
             SendNUIMessage({
                 action = "show"
@@ -72,11 +73,17 @@ RegisterNUICallback('speedChange', function(data)
     end
 end)
 
+RegisterNUICallback('refresh', function(data)
+    if isOpen then
+        refreshTime = data -- 2.23693629
+    end
+end)
+
 -- Commands
 RegisterCommand('carhud', function()
     if not isOpen then
         isOpen = true
-        if not IsPedInAnyVehicle(PlayerPedId(), false) then
+        if not IsPedInAnyVehicle(ped, false) then
             if not isForceOpen then
                 isForceOpen = true
                 SendNUIMessage({action = 'show'})
@@ -103,6 +110,9 @@ RegisterKeyMapping('carhud', 'Open the car hud menu', 'keyboard', 'f6')
 AddEventHandler('playerSpawned', function()
 	Wait(3000)
     SendNUIMessage({action = 'setSlidersBack'})
+    if ped == nil then
+        ped = ped
+    end
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)
@@ -110,5 +120,8 @@ AddEventHandler('onResourceStart', function(resourceName)
 		Wait(3000)
         SendNUIMessage({action = 'setSlidersBack'})
         print("Values set back")
+        if ped == nil then
+            ped = PlayerPedId()
+        end
 	end
 end)

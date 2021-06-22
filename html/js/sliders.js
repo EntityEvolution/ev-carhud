@@ -260,7 +260,7 @@ window.addEventListener('load', ()=> {
         msChange(val)
       break;
 
-      case '1000':
+      case '700':
         msChange(val)
       break;
     }
@@ -474,6 +474,6 @@ function getNum(item) {
 }
 
 function msChange(num) {
-  let post = $.post('https://ev-carhud/refresh', JSON.stringify({refresh: num}));
+  let post = $.post('https://ev-carhud/refresh', num);
   return post
 }

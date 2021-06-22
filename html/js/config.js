@@ -1,7 +1,7 @@
 Config = {}
 
 // Max unit it displays
-Config.MaxSpeed = 250,
+Config.MaxSpeed = 350,
 Config.MaxRPM = 10000,
 Config.MaxFuel = 100
 

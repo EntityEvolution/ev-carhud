@@ -669,6 +669,13 @@ input:checked + .slider-move {
   height: 15%;
 }
 
+.extras-title {
+  position: absolute;
+  top: -40%;
+  left: 2%;
+  font-size: 50%;
+}
+
 .extras-flex-title-container {
   display: flex;
   justify-content: space-evenly;

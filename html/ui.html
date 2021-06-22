@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!--Basic identifier stuf-->
+<head>
+    <!--Basic identifier stuff-->
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description" content="FiveM Car Hud by EV">
@@ -14,270 +14,271 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
     <!--<style> #wrapper, #icon-wrapper, #tab {display: none;} </style>-->
-  </head>
+</head>
 
-  <body>
-    <!--Panel Content-->
-    <div class="tab" id="tab">
-      <div class="header" id="header">
+<body>
+<!--Panel Content-->
+<div class="tab" id="tab">
+    <div class="header" id="header">
         <div class="header-text">
-          <span>Settings</span>
-          <span class="fa fa-times" id="close"></span>
-          <span class="fa fa-window-restore" id="restore"></span>
+            <span>Settings</span>
+            <span class="fa fa-times" id="close"></span>
+            <span class="fa fa-window-restore" id="restore"></span>
         </div>
         <div class="header-buttons">
             <span class="fa fa-television" id="default"></span>
             <span class="fas fa-arrows-alt" id="arrows"></span>
             <span class="fas fa-road" id="road"></span>
         </div>
-      </div>
+    </div>
 
-        <!--Panel default Content-->
-      <div id="display" class="tabcontent">
+    <!--Panel default Content-->
+    <div id="display" class="tabcontent">
         <div class="display-wrapper">
-          <div class="button-wrapper">
-            <label class="switch" >
-              <input id="check-fuel" type="checkbox" checked>
-              <span class="slider"></span>
-              <span id="slider-fuel" class="fas fa-gas-pump"></span>
-            </label>
+            <div class="button-wrapper">
+                <label class="switch">
+                    <input id="check-fuel" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <span id="slider-fuel" class="fas fa-gas-pump"></span>
+                </label>
 
-            <label class="switch" >
-              <input id="check-speed" type="checkbox" checked>
-              <span class="slider"></span>
-              <img id="slider-speed" src="./img/speedometer.png"></img>
-            </label>
+                <label class="switch">
+                    <input id="check-speed" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <img id="slider-speed" src="./img/speedometer.png" alt="Speedo"></img>
+                </label>
 
-            <label class="switch" >
-              <input id="check-rpm" type="checkbox" checked>
-              <span class="slider"></span>
-              <img id="slider-rpm" src="./img/rpm.png"></img>
-            </label>
-          </div>
-          <div class="switch-text-wrapper-bottom">
-            <span class="switch-text-left">L Signal</span>
-            <span class="switch-text-center-two">Motor</span>
-            <span class="switch-text-right">R Signal</span>
-         </div>
-          <div class="button-wrapper-right">
-            <label class="switch" >
-              <input id="check-seatbelt" type="checkbox" checked>
-              <span class="slider"></span>
-              <img id="slider-seatbelt" src="./img/seatbelt.png"></img>
-            </label>
+                <label class="switch">
+                    <input id="check-rpm" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <img id="slider-rpm" src="./img/rpm.png"></img>
+                </label>
+            </div>
+            <div class="switch-text-wrapper-bottom">
+                <span class="switch-text-left">L Signal</span>
+                <span class="switch-text-center-two">Motor</span>
+                <span class="switch-text-right">R Signal</span>
+            </div>
+            <div class="button-wrapper-right">
+                <label class="switch">
+                    <input id="check-seatbelt" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <img id="slider-seatbelt" src="./img/seatbelt.png"></img>
+                </label>
 
-            <label class="switch" >
-              <input id="check-tacho" type="checkbox" checked>
-              <span class="slider"></span>
-              <span id="slider-tacho" class="fa fa-tachometer-alt"></span>
-            </label>
+                <label class="switch">
+                    <input id="check-tacho" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <span id="slider-tacho" class="fa fa-tachometer-alt"></span>
+                </label>
 
-            <label class="switch" >
-              <input id="check-cogs" type="checkbox" checked>
-              <span class="slider"></span>
-              <span id="slider-cogs" class="fa fa-cogs"></span>
-            </label>
-          </div>
-          <div class="switch-text-wrapper-center">
-            <span class="switch-text-left">Belt</span>
-            <span class="switch-text-center-one">Limiter</span>
-            <span class="switch-text-right">Gears</span>
-         </div>
+                <label class="switch">
+                    <input id="check-cogs" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <span id="slider-cogs" class="fa fa-cogs"></span>
+                </label>
+            </div>
+            <div class="switch-text-wrapper-center">
+                <span class="switch-text-left">Belt</span>
+                <span class="switch-text-center-one">Limiter</span>
+                <span class="switch-text-right">Gears</span>
+            </div>
 
-          <div class="button-wrapper-left">
-            <label class="switch" >
-              <input id="check-left" type="checkbox" checked>
-              <span class="slider"></span>
-              <span id="slider-left" class="fa fa-long-arrow-alt-left"></span>
-            </label>
+            <div class="button-wrapper-left">
+                <label class="switch">
+                    <input id="check-left" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <span id="slider-left" class="fa fa-long-arrow-alt-left"></span>
+                </label>
 
-            <label class="switch" >
-              <input id="check-wrench" type="checkbox" checked>
-              <span class="slider"></span>
-              <span id="slider-wrench" class="fa fa-wrench"></span>
-            </label>
+                <label class="switch">
+                    <input id="check-wrench" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <span id="slider-wrench" class="fa fa-wrench"></span>
+                </label>
 
-            <label class="switch" >
-              <input id="check-right" type="checkbox" checked>
-              <span class="slider"></span>
-              <span id="slider-right" class="fa fa-long-arrow-alt-right"></span>
-            </label>
-          </div>
-          <div class="switch-text-wrapper">
-             <span class="switch-text-left">Fuel</span>
-             <span class="switch-text-center">Speed</span>
-             <span class="switch-text-right">RPM</span>
-          </div>
-          <div class="button-header-text">
-            <h5 class="header-title">Display</h5>
-            <p class="header-description">Toggle parts of your HUD on / off by pressing a button</p>
-          </div>
+                <label class="switch">
+                    <input id="check-right" type="checkbox" checked>
+                    <span class="slider"></span>
+                    <span id="slider-right" class="fa fa-long-arrow-alt-right"></span>
+                </label>
+            </div>
+            <div class="switch-text-wrapper">
+                <span class="switch-text-left">Fuel</span>
+                <span class="switch-text-center">Speed</span>
+                <span class="switch-text-right">RPM</span>
+            </div>
+            <div class="button-header-text">
+                <h5 class="header-title">Display</h5>
+                <p class="header-description">Toggle parts of your HUD on / off by pressing a button</p>
+            </div>
         </div>
-      </div>
+    </div>
 
-        <!--Movement Tab Content-->
-        <div id="movement" class="tabcontent">
-          <div class="movement-wrapper">
+    <!--Movement Tab Content-->
+    <div id="movement" class="tabcontent">
+        <div class="movement-wrapper">
             <div class="movement-top">
-              <div class="movement-bottom-title">
-                <span class="bottom-title-text">Movement</span>
-              </div>
-              <div class="reset-wrapper">
-                <label class="switch-break" >
-                  <input id="broke-break" type="checkbox">
-                  <span class="slider-move"></span>
-                  <span class="move-text">Break</span>
-                </label>
-                <label class="switch-break" >
-                  <input id="freeze-break" type="checkbox">
-                  <span class="slider-move"></span>
-                  <span class="move-text">Freeze</span>
-                </label>
-                <button id="save-break" class="reset-buttons">Save</button>
-              </div>
+                <div class="movement-bottom-title">
+                    <span class="bottom-title-text">Movement</span>
+                </div>
+                <div class="reset-wrapper">
+                    <label class="switch-break">
+                        <input id="broke-break" type="checkbox">
+                        <span class="slider-move"></span>
+                        <span class="move-text">Break</span>
+                    </label>
+                    <label class="switch-break">
+                        <input id="freeze-break" type="checkbox">
+                        <span class="slider-move"></span>
+                        <span class="move-text">Freeze</span>
+                    </label>
+                    <button id="save-break" class="reset-buttons">Save</button>
+                </div>
             </div>
             <div class="movement-middle">
-              <div class="movement-bottom-title">
-                <span class="bottom-title-text">Visual</span>
-              </div>
-              <div class="reset-wrapper">
-                <select class="reset-buttons" name="langPick" id="langPick">
-                  <optgroup label="Language">
-                    <option value="es">ESP</option>
-                    <option value="en" selected>EN</option>
-                  </select>
-                </optgroup>
-                <select class="reset-buttons" name="dashboard" id="dashboard">
-                  <optgroup label="Refresh Rate">
-                    <option value="50">50ms</option>
-                    <option value="100">100ms</option>
-                    <option value="200" selected>200ms</option>
-                    <option value="250">250ms</option>
-                    <option value="500">500ms</option>
-                    <option value="700">700ms</option>
-                  </optgroup>
-                </select>
-                <button id="reset-visual" class="reset-buttons">Default</button>
-              </div>
+                <div class="movement-bottom-title">
+                    <span class="bottom-title-text">Visual</span>
+                </div>
+                <div class="reset-wrapper">
+                    <select class="reset-buttons" name="langPick" id="langPick">
+                        <optgroup label="Language">
+                            <option value="es">ESP</option>
+                            <option value="en" selected>EN</option>
+                        </optgroup>
+                    </select>
+                    <select class="reset-buttons" name="dashboard" id="dashboard">
+                        <optgroup label="Refresh Rate">
+                            <option value="50">50ms</option>
+                            <option value="100">100ms</option>
+                            <option value="200" selected>200ms</option>
+                            <option value="250">250ms</option>
+                            <option value="500">500ms</option>
+                            <option value="700">700ms</option>
+                        </optgroup>
+                    </select>
+                    <button id="reset-visual" class="reset-buttons">Default</button>
+                </div>
             </div>
             <div class="movement-bottom">
-              <div class="movement-bottom-title">
-                <span class="bottom-title-text">Readjust</span>
-              </div>
-              <div class="reset-wrapper">
-                <button id="reset-speedo" class="reset-buttons">Speedo</button>
-                <button id="reset-buttons" class="reset-buttons">Buttons</button>
-                <button id="reset-switches" class="reset-buttons">Switches</button>
-              </div>
+                <div class="movement-bottom-title">
+                    <span class="bottom-title-text">Readjust</span>
+                </div>
+                <div class="reset-wrapper">
+                    <button id="reset-speedo" class="reset-buttons">Speedo</button>
+                    <button id="reset-buttons" class="reset-buttons">Buttons</button>
+                    <button id="reset-switches" class="reset-buttons">Switches</button>
+                </div>
             </div>
             <div class="footer-wrapper">
-              <h5 class="footer-title">Movement</h5>
+                <h5 class="footer-title">Movement</h5>
                 <p class="footer-description">Readjust, move, and change language of your HUD</p>
             </div>
-          </div>
         </div>
+    </div>
 
-        <!--Panel Extras Tab Content-->
-        <div id="extras" class="tabcontent">
-          <div class="extras-container">
+    <!--Panel Extras Tab Content-->
+    <div id="extras" class="tabcontent">
+        <div class="extras-container">
             <div class="extras-title-container">
-
+                <h5 class="extras-title">Extras</h5>
+                <p class="header-description">Extra settings for customization of your HUD</p>
+            </div>
+            <div class="extras-flex-title-container">Extra Hud</div>
+            <div class="extras-flex-container">
+                <select class="mileage-picker" name="mileage" id="mileage">
+                    <optgroup label="Mileage">
+                        <option value="mph">MPH</option>
+                        <option value="kmh" selected>KMH</option>
+                    </optgroup>
+                </select>
+                <select class="preview-picker" name="preview" id="preview">
+                    <optgroup label="Preview">
+                        <option value="0-two">0.2</option>
+                        <option value="0-four">0.4</option>
+                        <option value="0-six">0.6</option>
+                        <option value="0-eight" selected>0.8</option>
+                        <option value="one">1.0</option>
+                    </optgroup>
+                </select>
+                <label class="switch-break">
+                    <input id="lights-break" type="checkbox" checked>
+                    <span class="slider-move"></span>
+                    <span class="move-text">Lights</span>
+                </label>
             </div>
             <div class="extras-flex-title-container">Title</div>
             <div class="extras-flex-container">
-              <select class="mileage-picker" name="mileage" id="mileage">
-                <optgroup label="Mileage">
-                  <option value="mph">MPH</option>
-                  <option value="kmh" selected>KMH</option>
-                </optgroup>
-              </select>
-              <select class="preview-picker" name="preview" id="preview">
-                <optgroup label="Preview">
-                  <option value="0-two">0.2</option>
-                  <option value="0-four">0.4</option>
-                  <option value="0-six">0.6</option>
-                  <option value="0-eight" selected>0.8</option>
-                  <option value="one">1.0</option>
-                </optgroup>
-              </select>
-              <label class="switch-break" >
-                <input id="freeze-break" type="checkbox" checked>
-                <span class="slider-move"></span>
-                <span class="move-text">Lights</span>
-              </label>
-            </div>
-            <div class="extras-flex-title-container">Title</div>
-            <div class="extras-flex-container">
-              <button>hOLA</button>
-              <button>hOLA</button>
-              <button>hOLA</button>
+                <button>hOLA</button>
+                <button>hOLA</button>
+                <button>hOLA</button>
             </div>
             <div class="extras-flex-title-container">GPS</div>
             <div class="extras-flex-container">
-              <button>Start</button>
-              <select class="mileage-picker" name="mileage" id="mileage">
-                <optgroup label="Mileage">
-                  <option value="mph">MPH</option>
-                  <option value="kmh" selected>KMH</option>
-                </optgroup>
-              </select>
-              <button>Cancel</button>
+                <button>Start</button>
+                <select class="location-picker" name="location" id="location">
+                    <optgroup label="Mileage">
+                        <option value="mph">MPH</option>
+                        <option value="kmh" selected>KMH</option>
+                    </optgroup>
+                </select>
+                <button>Cancel</button>
             </div>
-          </div>
         </div>
     </div>
+</div>
 
-    <!--Main Hud Display Content-->
-    <div class="wrapper" id="wrapper">
-      <div id="fuel-container">
+<!--Main Hud Display Content-->
+<div class="wrapper" id="wrapper">
+    <div id="fuel-container">
         <div id="fuel-text">100</div>
         <div id="fuel-text-unit">FUEL</div>
-      </div>
+    </div>
 
-      <div id="rpm-container">
+    <div id="rpm-container">
         <div id="rpm-text">12345</div>
         <div id="rpm-text-unit">RPM</div>
-      </div>
-      
-      <div id="speed-container">
-        <div id="speed-text">123</div>
-        <div id="speed-text-unit">MPH</div>
-      </div>
     </div>
 
-    <!--Secondary Hud Display Content-->
-    <div class="icon-wrapper" id="icon-wrapper">
-      <i id="left-arrow" class="fa fa-long-arrow-alt-left"></i>
-      <i id="wrench">
+    <div id="speed-container">
+        <div id="speed-text">123</div>
+        <div id="speed-text-unit">MPH</div>
+    </div>
+</div>
+
+<!--Secondary Hud Display Content-->
+<div class="icon-wrapper" id="icon-wrapper">
+    <i id="left-arrow" class="fa fa-long-arrow-alt-left"></i>
+    <i id="wrench">
         <span id="wrench-wrap" class="fa fa-wrench"></span>
-      </i>
-      
-      <span id="seatbelt" class="seatbelt">
+    </i>
+
+    <span id="seatbelt" class="seatbelt">
         <img src="./img/seatbelt.png" alt="Belt" class="seatbelt-icon"></img>
       </span>
-      <span id="speedo" class="speedo">
+    <span id="speedo" class="speedo">
         <span id="tacho" class="fas fa-tachometer-alt"></span>
       </span>
-      <span id="gear" class="gear">
+    <span id="gear" class="gear">
         <span class="gear-text">N</span>
       </span>
-      <i id="right-arrow" class="fa fa-long-arrow-alt-right"></i>
-    </div>
-    
-    <!--jQuery core-->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous">
-    </script>
-    <script
-      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-      crossorigin="anonymous">
-    </script>
-    <script type="text/javascript" src="./js/progressbar.js"></script>
-    <script type="text/javascript" src="./js/config.js"></script>
-    <script type="text/javascript" src="./js/sliders.js"></script>
-    <script type="text/javascript" src="./js/script.js"></script>
-  </body>
+    <i id="right-arrow" class="fa fa-long-arrow-alt-right"></i>
+</div>
+
+<!--jQuery core-->
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+</script>
+<script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous">
+</script>
+<script type="text/javascript" src="./js/progressbar.js"></script>
+<script type="text/javascript" src="./js/config.js"></script>
+<script type="text/javascript" src="./js/sliders.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+</body>
 </html>
