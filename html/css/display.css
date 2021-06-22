@@ -63,12 +63,10 @@
 
 #fuel-text-unit {
   top: 60%;
-  left: 8%;
-  text-align: center;
+  left: 26%;
   position: absolute; 
   font-size: 55%;
   transform: scaleX(-1);
-  width: 80%;
 }
 
 /* RPM styling */
@@ -112,81 +110,72 @@
   font-size: 2vh;
 }
 
+
 #wrench {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(168, 168, 168, 0.596);
-  height: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
-  font-size: 70%;
-}
-
-#left-arrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: rgba(168, 168, 168, 0.596);
   text-align: center;
   height: 50%;
   padding: 1.5%;
   border-radius: 50%;
   width: 5%;
-  font-size: 90%;
-}
-
-#right-arrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #a8a8a898;
-  text-align: center;
-  height: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
-  font-size: 90%;
-}
-
-.speedo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #a8a8a898;
-  height: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
-}
-
-#tacho {
   font-size: 80%;
 }
 
-.gear {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #a8a8a898;
+#left-arrow {
+  background-color: rgba(168, 168, 168, 0.596);
+  text-align: center;
   height: 50%;
   padding: 1.5%;
   border-radius: 50%;
   width: 5%;
-  font-size: 90%;
+}
+
+#right-arrow {
+  background-color: rgba(168, 168, 168, 0.596);
+  text-align: center;
+  height: 50%;
+  padding: 1.5%;
+  border-radius: 50%;
+  width: 5%;
+}
+
+.speedo {
+  background-color: rgba(168, 168, 168, 0.596);
+  height: 50%;
+  width: 50%;
+  padding: 1.5%;
+  border-radius: 50%;
+  width: 5%;
   font-family: Neue;
+  text-align: center;
+  vertical-align: top;
+}
+
+#tacho {
+  transform: translate(0%, -15%);
+  font-size: 95%;
+}
+
+.gear {
+  background-color: rgba(168, 168, 168, 0.596);
+  height: 50%;
+  padding: 1.5%;
+  border-radius: 50%;
+  width: 5%;
+  font-size: 100%;
+  font-family: Neue;
+  text-align: center;
+  vertical-align: top;
 }
 
 .gear-text {
   position: relative;
+  top: -10%;
 }
 
 .seatbelt {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #a8a8a898;
+  margin: 0.35%;
+  background-color: rgba(168, 168, 168, 0.596);
   height: 50%;
   padding: 1.5%;
   border-radius: 50%;
@@ -198,5 +187,7 @@
 
 .seatbelt-icon {
   position: relative;
-  width: 85%;
+  top: -7%;
+  right: 5%;
+  width: 110%;
 }
