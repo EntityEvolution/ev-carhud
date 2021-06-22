@@ -220,61 +220,33 @@ body {
 .switch-text-left{
   color: white;
   position: relative;
-  left: -1%;
-  text-align: left;
+  left: 1%;
+  text-align: center;
   margin-right: 0%;
-  margin-top: 2%;
+  margin-top: 3%;
   font-size: 40%;
+  width: 20%;
 }
 
 .switch-text-right{
   color: white;
   position: relative;
-  right: -1%;
-  text-align: left;
+  right: 2%;
   margin-right: 0%;
-  margin-top: 2%;
+  margin-top: 3%;
   font-size: 40%;
+  text-align: center;
+  width: 20%;
 }
 
 .switch-text-center{
   color: white;
   position: relative;
-  left: 0%;
-  text-align: left;
-  margin-right: 0%;
-  margin-top: 2%;
+  right: 0.5%;
+  text-align: center;
+  margin-top: 3.5%;
   font-size: 40%;
-}
-
-.switch-text-center-one{
-  color: white;
-  position: relative;
-  left: 1%;
-  text-align: left;
-  margin-right: 0%;
-  margin-top: 2%;
-  font-size: 40%;
-}
-
-.switch-text-center-two{
-  color: white;
-  position: relative;
-  left: -0.3%;
-  text-align: left;
-  margin-right: 0%;
-  margin-top: 2%;
-  font-size: 40%;
-}
-
-.switch-text-center-two{
-  color: white;
-  position: relative;
-  left: -0.3%;
-  text-align: left;
-  margin-right: 0%;
-  margin-top: 2%;
-  font-size: 40%;
+  width: 20%;
 }
 
 /* Slider images*/
@@ -316,9 +288,10 @@ body {
 #slider-seatbelt {
   font-size: 60%;
   position: absolute;
-  top: 30%;
-  right: 25%;
-  height: 100%;
+  top: 40%;
+  right: 31%;
+  height: 80%;
+  width: auto;
   filter: invert(93%) sepia(72%) saturate(28%) hue-rotate(20deg) brightness(106%) contrast(106%);
 }
 

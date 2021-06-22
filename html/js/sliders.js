@@ -269,12 +269,12 @@ window.addEventListener('load', ()=> {
   langSelect.addEventListener('change', ()=> {
 	let val = langSelect.value
 	switch (val) {
-	  case 'esp':
-		console.log('esp')
+	  case 'es':
+		pickLanguage('es');
 	  break;
 
 	  case 'en':
-		console.log('en')
+		pickLanguage('en');
 	  break;
 	}
   });
@@ -529,8 +529,8 @@ function msChange(num, cbname) {
   return post
 }
 
-window.addEventListener(`DOMContentLoaded`, ()=>{
-	fetch('/locales/en.json')
+function pickLanguage(lang) {
+	fetch(`/locales/${lang}.json`)
 	.then((response)=> response.json())
 	.then((data)=> {
 		changeLanguage(data);
@@ -538,12 +538,66 @@ window.addEventListener(`DOMContentLoaded`, ()=>{
 	.catch((error)=> {
 		console.error('Error: ' + error);
 	});
-})
+}
 
 const changeLanguage = (data)=> {
 	if (data == undefined) {
 		return console.error('data is undefined')
 	} else {
+		// Settings
 		doc.getElementById('settings').innerHTML = data.settings
+
+		// Selectors
+		langSelect.getElementsByTagName('optgroup')[0].label = data.language
+		dashSelect.getElementsByTagName('optgroup')[0].label = data.refresh_rate
+		doc.getElementById('mileage').getElementsByTagName('optgroup')[0].label = data.mileage
+		doc.getElementById('preview').getElementsByTagName('optgroup')[0].label = data.preview
+
+		// Display Switches
+		doc.getElementById('left-arrow-text').innerHTML = data.left_signal
+		doc.getElementById('right-arrow-text').innerHTML = data.right_signal
+		doc.getElementById('wrench-text').innerHTML = data.wrench
+		doc.getElementById('seatbelt-text').innerHTML = data.belt
+		doc.getElementById('limiter-text').innerHTML = data.limiter
+		doc.getElementById('gears-text').innerHTML = data.gears
+		doc.getElementById('fuel-slider-text').innerHTML = data.fuel
+		doc.getElementById('speed-slider-text').innerHTML = data.speed
+		doc.getElementById('rpm-slider-text').innerHTML = data.rpm
+
+		// Display Wrapper
+		doc.getElementById('rpm-text-unit').innerHTML = data.rpm
+		doc.getElementById('fuel-text-unit').innerHTML = data.fuel
+
+		// Movements subtitles
+		doc.getElementById('top-movement').innerHTML = data.movement_sub
+		doc.getElementById('middle-movement').innerHTML = data.visual_sub
+		doc.getElementById('bottom-movement').innerHTML = data.readjust_sub
+
+		// Movement tab
+		doc.getElementById('broke-break-text').innerHTML = data.break
+		doc.getElementById('break-freeze-text').innerHTML = data.freeze
+		doc.getElementById('save-break').innerHTML = data.save_broke
+		doc.getElementById('reset-visual').innerHTML = data.default
+		doc.getElementById('reset-speedo').innerHTML = data.speedo
+		doc.getElementById('reset-buttons').innerHTML = data.buttons
+		doc.getElementById('reset-switches').innerHTML = data.switches
+
+		// Extras subtitles
+		doc.getElementById('extras-top-title').innerHTML = data.extra_hud
+		doc.getElementById('extras-middle-title').innerHTML = data.missing
+		doc.getElementById('extras-bottom-title').innerHTML = data.gps
+
+		// Extras Tab
+		doc.getElementById('lights-text').innerHTML = data.headlights
+		doc.getElementById('extras-start').innerHTML = data.start
+		doc.getElementById('extras-cancel').innerHTML = data.cancel
+
+		// Titles of Tabs
+		doc.getElementById('display-title').innerHTML = data.display
+		doc.getElementById('display-desc').innerHTML = data.display_description
+		doc.getElementById('movement-title').innerHTML = data.movement
+		doc.getElementById('movement-desc').innerHTML = data.movement_description
+		doc.getElementById('extras-title').innerHTML = data.extras
+		doc.getElementById('extras-desc').innerHTML = data.extras_description
 	}
 }

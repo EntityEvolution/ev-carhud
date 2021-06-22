@@ -10,10 +10,38 @@
 
     "fuel" : "Fuel",
     "rpm" : "RPM",
+    "speed" : "Speed",
     "belt" : "Speed",
     "limiter" : "Limiter",
     "gears" : "Gears",
     "motor" : "Motor",
     "right_signal" : "R Signal",
-    "left_signal" : "L Signal"
+    "wrench" : "Wrench",
+    "left_signal" : "L Signal",
+
+    "movement_sub" : "Movement",
+    "visual_sub" : "Visual",
+    "readjust_sub" : "Readjust",
+
+    "break" : "Break",
+    "freeze" : "Freeze",
+    "save_broke" : "Save",
+    "language" : "Language",
+    "refresh_rate" : "Refresh Rate",
+    "default" : "Default",
+    "speedo" : "Speedo",
+    "buttons" : "Buttons",
+    "switches" : "Switches",
+
+    "extra_hud" : "Extra Hud",
+    "missing" : "Missing",
+    "gps" : "GPS",
+
+    "mileage" : "Mileage",
+    "preview" : "Preview",
+    "headlights" : "Lights",
+
+    "start" : "Start",
+    "locations" : "Locations",
+    "cancel" : "Cancel"
 }

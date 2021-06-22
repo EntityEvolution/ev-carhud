@@ -1,3 +1,47 @@
+
 {
-    "settings" : "Ajustes"
+    "settings" : "Ajustes",
+    "display" : "Visualizacion",
+    "display_description" : "Alterna partes de tu HUD on / off presionando un boton",
+    "movement" : "Movimiento",
+    "movement_description" : "Reajusta, mueve, y cambia el lenguaje de tu HUD",
+    "extras" : "Extras",
+    "extras_description" : "Ajustes extra de personalizacion del HUD ",
+
+    "fuel" : "Gasolina",
+    "rpm" : "RPM",
+    "speed" : "Velocidad",
+    "belt" : "Cinturon",
+    "limiter" : "Limitador",
+    "gears" : "Marchas",
+    "motor" : "Motor",
+    "right_signal" : "R Signal",
+    "wrench" : "Wrench",
+    "left_signal" : "L Signal",
+
+    "movement_sub" : "Movimiento",
+    "visual_sub" : "Visual",
+    "readjust_sub" : "Reajuste",
+
+    "break" : "Romper",
+    "freeze" : "Freeze",
+    "save_broke" : "Guardar",
+    "language" : "Idioma",
+    "refresh_rate" : "Tasa de refresco",
+    "default" : "Default",
+    "speedo" : "Speedo",
+    "buttons" : "Botones",
+    "switches" : "Switches",
+
+    "extra_hud" : "Hud Extra",
+    "missing" : "Faltante",
+    "gps" : "GPS",
+
+    "mileage" : "Kilometraje",
+    "preview" : "Vista previa",
+    "headlights" : "Luces",
+
+    "start" : "Iniciar",
+    "locations" : "Locatlizaciones",
+    "cancel" : "Cancelar"
 }

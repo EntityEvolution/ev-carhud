@@ -75,7 +75,7 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
 
 // Set to draggable on page load
 window.addEventListener('load', ()=> {
-  doc.getElementById("road").click();
+  doc.getElementById("default").click();
   setSliders();
 });
 

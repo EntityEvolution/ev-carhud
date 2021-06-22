@@ -55,9 +55,9 @@
                 </label>
             </div>
             <div class="switch-text-wrapper-bottom">
-                <span class="switch-text-left">L Signal</span>
-                <span class="switch-text-center-two">Motor</span>
-                <span class="switch-text-right">R Signal</span>
+                <span id="left-arrow-text" class="switch-text-left">L Signal</span>
+                <span id="wrench-text" class="switch-text-center">Motor</span>
+                <span id="right-arrow-text" class="switch-text-right">R Signal</span>
             </div>
             <div class="button-wrapper-right">
                 <label class="switch">
@@ -79,9 +79,9 @@
                 </label>
             </div>
             <div class="switch-text-wrapper-center">
-                <span class="switch-text-left">Belt</span>
-                <span class="switch-text-center-one">Limiter</span>
-                <span class="switch-text-right">Gears</span>
+                <span id="seatbelt-text" class="switch-text-left">Belt</span>
+                <span id="limiter-text" class="switch-text-center">Limiter</span>
+                <span id="gears-text" class="switch-text-right">Gears</span>
             </div>
 
             <div class="button-wrapper-left">
@@ -104,13 +104,13 @@
                 </label>
             </div>
             <div class="switch-text-wrapper">
-                <span class="switch-text-left">Fuel</span>
-                <span class="switch-text-center">Speed</span>
-                <span class="switch-text-right">RPM</span>
+                <span id="fuel-slider-text" class="switch-text-left">Fuel</span>
+                <span id="speed-slider-text" class="switch-text-center">Speed</span>
+                <span id="rpm-slider-text" class="switch-text-right">RPM</span>
             </div>
             <div class="button-header-text">
-                <h5 class="header-title">Display</h5>
-                <p class="header-description">Toggle parts of your HUD on / off by pressing a button</p>
+                <h5 id="display-title" class="header-title">Display</h5>
+                <p id="display-desc" class="header-description">Toggle parts of your HUD on / off by pressing a button</p>
             </div>
         </div>
     </div>
@@ -120,30 +120,30 @@
         <div class="movement-wrapper">
             <div class="movement-top">
                 <div class="movement-bottom-title">
-                    <span class="bottom-title-text">Movement</span>
+                    <span id="top-movement" class="bottom-title-text">Movement</span>
                 </div>
                 <div class="reset-wrapper">
                     <label class="switch-break">
                         <input id="broke-break" type="checkbox">
                         <span class="slider-move"></span>
-                        <span class="move-text">Break</span>
+                        <span id="broke-break-text" class="move-text">Break</span>
                     </label>
                     <label class="switch-break">
                         <input id="freeze-break" type="checkbox">
                         <span class="slider-move"></span>
-                        <span class="move-text">Freeze</span>
+                        <span id="break-freeze-text" class="move-text">Freeze</span>
                     </label>
                     <button id="save-break" class="reset-buttons">Save</button>
                 </div>
             </div>
             <div class="movement-middle">
                 <div class="movement-bottom-title">
-                    <span class="bottom-title-text">Visual</span>
+                    <span id="middle-movement" class="bottom-title-text">Visual</span>
                 </div>
                 <div class="reset-wrapper">
                     <select class="reset-buttons" name="langPick" id="langPick">
                         <optgroup label="Language">
-                            <option value="es">ESP</option>
+                            <option value="es">ES</option>
                             <option value="en" selected>EN</option>
                         </optgroup>
                     </select>
@@ -162,7 +162,7 @@
             </div>
             <div class="movement-bottom">
                 <div class="movement-bottom-title">
-                    <span class="bottom-title-text">Readjust</span>
+                    <span id="bottom-movement" class="bottom-title-text">Readjust</span>
                 </div>
                 <div class="reset-wrapper">
                     <button id="reset-speedo" class="reset-buttons">Speedo</button>
@@ -171,8 +171,8 @@
                 </div>
             </div>
             <div class="footer-wrapper">
-                <h5 class="footer-title">Movement</h5>
-                <p class="footer-description">Readjust, move, and change language of your HUD</p>
+                <h5 id="movement-title" class="footer-title">Movement</h5>
+                <p id="movement-desc" class="footer-description">Readjust, move, and change language of your HUD</p>
             </div>
         </div>
     </div>
@@ -181,10 +181,10 @@
     <div id="extras" class="tabcontent">
         <div class="extras-container">
             <div class="extras-title-container">
-                <h5 class="extras-title">Extras</h5>
-                <p class="header-description">Extra settings for customization of your HUD</p>
+                <h5 id="extras-title" class="extras-title">Extras</h5>
+                <p id="extras-desc" class="header-description">Extra settings for customization of your HUD</p>
             </div>
-            <div class="extras-flex-title-container">Extra Hud</div>
+            <div id="extras-top-title" class="extras-flex-title-container">Extra Hud</div>
             <div class="extras-flex-container">
                 <select class="mileage-picker" name="mileage" id="mileage">
                     <optgroup label="Mileage">
@@ -204,25 +204,24 @@
                 <label class="switch-break">
                     <input id="lights-break" type="checkbox" checked>
                     <span class="slider-move"></span>
-                    <span class="move-text">Lights</span>
+                    <span id="lights-text" class="move-text">Lights</span>
                 </label>
             </div>
-            <div class="extras-flex-title-container">Title</div>
+            <div id="extras-middle-title" class="extras-flex-title-container">Title</div>
             <div class="extras-flex-container">
                 <button>hOLA</button>
                 <button>hOLA</button>
                 <button>hOLA</button>
             </div>
-            <div class="extras-flex-title-container">GPS</div>
+            <div id="extras-bottom-title" class="extras-flex-title-container">GPS</div>
             <div class="extras-flex-container">
-                <button>Start</button>
+                <button id="extras-start">Start</button>
                 <select class="location-picker" name="location" id="location">
-                    <optgroup label="Mileage">
+                    <optgroup label="Locations">
                         <option value="mph">MPH</option>
-                        <option value="kmh" selected>KMH</option>
                     </optgroup>
                 </select>
-                <button>Cancel</button>
+                <button id="extras-cancel">Cancel</button>
             </div>
         </div>
     </div>

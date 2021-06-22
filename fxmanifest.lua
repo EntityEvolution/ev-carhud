@@ -17,6 +17,7 @@ ui_page 'html/ui.html'
 
 files {
     'html/ui.html',
+    'locales/*.json',
     'html/js/*.js',
     'html/img/*.png',
     'html/fonts/*.ttf',
