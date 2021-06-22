@@ -110,7 +110,6 @@
   font-size: 2vh;
 }
 
-
 #wrench {
   background-color: rgba(168, 168, 168, 0.596);
   text-align: center;
@@ -118,7 +117,13 @@
   padding: 1.5%;
   border-radius: 50%;
   width: 5%;
+}
+
+#wrench-wrap {
+  position: absolute;
   font-size: 80%;
+  top: 25%;
+  left: 25%;
 }
 
 #left-arrow {
@@ -152,8 +157,8 @@
 }
 
 #tacho {
-  transform: translate(0%, -15%);
-  font-size: 95%;
+  transform: translate(0%, -25%);
+  font-size: 80%;
 }
 
 .gear {
@@ -165,7 +170,6 @@
   font-size: 100%;
   font-family: Neue;
   text-align: center;
-  vertical-align: top;
 }
 
 .gear-text {
@@ -174,7 +178,6 @@
 }
 
 .seatbelt {
-  margin: 0.35%;
   background-color: rgba(168, 168, 168, 0.596);
   height: 50%;
   padding: 1.5%;
@@ -187,7 +190,7 @@
 
 .seatbelt-icon {
   position: relative;
-  top: -7%;
-  right: 5%;
-  width: 110%;
+  top: -5%;
+  right: 0%;
+  width: 80%;
 }
