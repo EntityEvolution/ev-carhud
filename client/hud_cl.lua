@@ -11,12 +11,13 @@ CreateThread(function()
     while true do
         local vehicle = GetVehiclePedIsIn(ped, false)
         if inVehicle then
-            local fuel, speed, rpm, gear
+            local fuel, speed, rpm, gear, damage
             if DoesEntityExist(vehicle) then
                 fuel = math.floor(GetVehicleFuelLevel(vehicle))
                 speed = math.floor(GetEntitySpeed(vehicle) * speedNumber)
                 rpm = math.floor(GetVehicleCurrentRpm(vehicle) * 10000)
                 gear = GetVehicleCurrentGear(vehicle)
+                damage = math.floor(GetVehicleEngineHealth(vehicle)) / 10
                 if (speed == 0) and (gear == 0) then
                     gear = 'N'
                 elseif speed and (gear == 0) then
@@ -28,7 +29,8 @@ CreateThread(function()
                 speed = speed,
                 fuel = fuel,
                 rpm = rpm,
-                gear = gear
+                gear = gear,
+                damage = damage
             })
         end
         Wait(refreshTime)
@@ -101,7 +103,7 @@ RegisterNUICallback('cancelLoc', function()
 end)
 
 -- Commands
-RegisterCommand('carhud', function()
+RegisterCommand(Config.hudCommand, function()
     if not isOpen then
         isOpen = true
         if not IsPedInAnyVehicle(ped, false) and GetEntitySpeed(GetVehiclePedIsIn(ped, false)) == 0 then
@@ -125,7 +127,42 @@ RegisterCommand('carhud', function()
     end
 end)
 
-RegisterKeyMapping('carhud', 'Open the car hud menu', 'keyboard', 'f6')
+local limiterState
+RegisterCommand('limiter', function()
+    if not isOpen then
+        if inVehicle then
+            local currentVeh = GetVehiclePedIsIn(ped, false)
+            limiterSpeed = GetEntitySpeed(currentVeh)
+            if not limiterState then
+                limiterState = true
+                SetEntityMaxSpeed(currentVeh, limiterSpeed)
+                SendNUIMessage({
+                    action = "iconhud",
+                    limiter = limiterState
+                })
+            elseif limiterState then
+                limiterState = false
+                SetEntityMaxSpeed(currentVeh, -100.0)
+                SendNUIMessage({
+                    action = "iconhud",
+                    limiter = limiterState
+                })
+            end
+        else
+            if limiterState then
+                limiterState = false
+            end
+        end
+    end
+end)
+
+RegisterKeyMapping('limiter', 'test', 'keyboard', 'CAPITAL')
+
+if Config.useHudKey then
+    RegisterKeyMapping(Config.hudCommand, Config.hudDesc, 'keyboard', Config.hudKey)
+end
+
+
 
 -- Handler
 AddEventHandler('playerSpawned', function()

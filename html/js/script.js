@@ -1,3 +1,5 @@
+let limiterState;
+
 // Speed
 let gauge = new ProgressBar.SemiCircle('#speed-container', {
   strokeWidth: 6,
@@ -7,8 +9,8 @@ let gauge = new ProgressBar.SemiCircle('#speed-container', {
   easing: 'easeInOut',
   svgStyle: null,
   text: {
-	value: '',
-	alignToBottom: false
+    value: '',
+    alignToBottom: false
   },
 
   // Gradient
@@ -17,11 +19,8 @@ let gauge = new ProgressBar.SemiCircle('#speed-container', {
 
   // Set default step function for all animate calls
   step: (state, gauge) => {
-	gauge.path.setAttribute('stroke', state.color);
-	let value = Math.round(gauge.value() * 300);
-	if (value === 0) {
-	} else {
-	}
+    gauge.path.setAttribute('stroke', state.color);
+    let value = Math.round(gauge.value() * 300);
   }
 });
 
@@ -103,6 +102,15 @@ window.addEventListener("message", function (event) {
 	  rev.set(event.data.rpm/Config.MaxRPM)
 	  gas.set(event.data.fuel/Config.MaxFuel)
 	break;
+
+  case "iconhud":
+    limiterState = event.data.limiter
+    if (limiterState) {
+      doc.getElementById('tacho').style.color = "#90e300"
+    } else {
+      doc.getElementById('tacho').style.color = ""
+    }
+  break;
 
 	case "show":
 	  wrapDash.style.display = "flex";
