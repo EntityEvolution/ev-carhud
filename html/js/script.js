@@ -77,7 +77,6 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
 window.addEventListener('load', ()=> {
   doc.getElementById("default").click();
   setSliders();
-  this.window.localStorage.clear()
 });
 
 // Gauge data

@@ -8,7 +8,7 @@
     "extras" : "Extras",
     "extras_description" : "Ajustes extra de personalizacion del HUD ",
 
-    "fuel" : "Gasolina",
+    "fuel" : "GAS",
     "rpm" : "RPM",
     "speed" : "Velocidad",
     "belt" : "Cinturon",

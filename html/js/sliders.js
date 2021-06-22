@@ -224,8 +224,10 @@ window.addEventListener('load', ()=> {
   })
 
   doc.getElementById('reset-visual').addEventListener('click', ()=> {
-	dashSelect.value = '200'
-	langSelect.value = 'en'
+	dashSelect.value = '200';
+	msChange('200', 'refresh');
+	langSelect.value = 'en';
+	pickLanguage('en');
   })
 
   // Tab listeners
@@ -524,11 +526,13 @@ function getNum(item) {
   return storage
 }
 
+// Changing MS
 function msChange(num, cbname) {
   let post = $.post(`https://ev-carhud/${cbname}`, num);
   return post
 }
 
+// Language functions
 function pickLanguage(lang) {
 	fetch(`/locales/${lang}.json`)
 	.then((response)=> response.json())

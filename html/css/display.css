@@ -63,7 +63,8 @@
 
 #fuel-text-unit {
   top: 60%;
-  left: 26%;
+  left: 9%;
+  width: 80%;
   position: absolute; 
   font-size: 55%;
   transform: scaleX(-1);
