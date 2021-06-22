@@ -87,6 +87,7 @@ window.addEventListener("message", function (event) {
 	  $("#speed-text").text(event.data.speed)
 	  $("#fuel-text").text(event.data.fuel)
 	  $("#rpm-text").text(event.data.rpm)
+    $("#gear-text").text(event.data.rpm)
 	  gauge.set(event.data.speed/Config.MaxSpeed)
 	  rev.set(event.data.rpm/Config.MaxRPM)
 	  gas.set(event.data.fuel/Config.MaxFuel)

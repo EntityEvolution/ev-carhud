@@ -11,17 +11,19 @@ CreateThread(function()
     while true do
         local vehicle = GetVehiclePedIsIn(ped, false)
         if inVehicle then
-            local fuel, speed, rpm
+            local fuel, speed, rpm, gear
             if DoesEntityExist(vehicle) then
                 fuel = math.floor(GetVehicleFuelLevel(vehicle))
                 speed = math.floor(GetEntitySpeed(vehicle) * speedNumber)
                 rpm = math.floor(GetVehicleCurrentRpm(vehicle) * 10000)
+                gear = GetVehicleCurrentGear(vehicle)
             end
             SendNUIMessage({
                 action = "hud",
                 speed = speed,
                 fuel = fuel,
-                rpm = rpm
+                rpm = rpm,
+                gear = gear
             })
         end
         Wait(refreshTime)
