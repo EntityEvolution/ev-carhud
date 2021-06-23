@@ -1,16 +1,19 @@
 @font-face {
   font-family: Poo;
   src: url('../fonts/ZenDots-Regular.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: Neue;
   src: url('../fonts/BebasNeue-Regular.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: Cabin;
   src: url('../fonts/Cabin-VariableFont_wdth\,wght.ttf');
+  font-display: swap;
 }
 
 body {
