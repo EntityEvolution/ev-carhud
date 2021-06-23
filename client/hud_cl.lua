@@ -141,7 +141,7 @@ RegisterCommand('Limiter', function()
     if not isOpen then
         if inVehicle then
             local vehicle = GetVehiclePedIsIn(ped, false)
-            limiterSpeed = GetEntitySpeed(vehicle)
+            local limiterSpeed = GetEntitySpeed(vehicle)
             if not limiterState then
                 limiterState = true
                 SetEntityMaxSpeed(vehicle, limiterSpeed)
