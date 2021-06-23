@@ -35,12 +35,17 @@
     "switches" : "Switches",
 
     "extra_hud" : "Extra Hud",
-    "missing" : "Missing",
+    "dashboard" : "Dashboard",
     "gps" : "GPS",
 
     "mileage" : "Mileage",
     "preview" : "Preview",
     "headlights" : "Lights",
+
+    "maxspeed" : "Max Speed",
+    "map" : "Map Toggle",
+    "on" : "On",
+    "off" : "Off",
 
     "start" : "Start",
     "locations" : "Locations",

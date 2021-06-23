@@ -665,6 +665,12 @@ const changeLanguage = (data)=> {
 		doc.getElementById('mileage').getElementsByTagName('optgroup')[0].label = data.mileage
 		doc.getElementById('preview').getElementsByTagName('optgroup')[0].label = data.preview
 
+		doc.getElementById('maxspeed').getElementsByTagName('optgroup')[0].label = data.maxspeed
+		doc.getElementById('map').getElementsByTagName('optgroup')[0].label = data.map
+		doc.getElementById('location').getElementsByTagName('optgroup')[0].label = data.locations
+		doc.getElementById('map').options[0].text = data.on
+		doc.getElementById('map').options[1].text = data.off
+
 		// Display Switches
 		doc.getElementById('left-arrow-text').innerHTML = data.left_signal
 		doc.getElementById('right-arrow-text').innerHTML = data.right_signal
@@ -696,7 +702,7 @@ const changeLanguage = (data)=> {
 
 		// Extras subtitles
 		doc.getElementById('extras-top-title').innerHTML = data.extra_hud
-		doc.getElementById('extras-middle-title').innerHTML = data.missing
+		doc.getElementById('extras-middle-title').innerHTML = data.dashboard
 		doc.getElementById('extras-bottom-title').innerHTML = data.gps
 
 		// Extras Tab
