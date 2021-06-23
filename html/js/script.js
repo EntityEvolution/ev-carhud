@@ -172,7 +172,7 @@ window.addEventListener("message", function(event) {
             break;
 
         case "setSlidersBack":
-
+            setSliders();
             break;
 
         case "preview":
