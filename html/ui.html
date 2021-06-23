@@ -183,17 +183,17 @@
         <div class="extras-container">
             <div class="extras-title-container">
                 <h5 id="extras-title" class="extras-title">Extras</h5>
-                <p id="extras-desc" class="header-description">Extra settings for customization of your HUD</p>
+                <p id="extras-desc" class="extras-description">Extra settings for customization of your HUD</p>
             </div>
             <div id="extras-top-title" class="extras-flex-title-container">Extra Hud</div>
             <div class="extras-flex-container">
-                <select class="mileage-picker" name="mileage" id="mileage">
+                <select class="extras-buttons" name="mileage" id="mileage">
                     <optgroup label="Mileage">
                         <option value="mph">MPH</option>
                         <option value="kmh" selected>KMH</option>
                     </optgroup>
                 </select>
-                <select class="preview-picker" name="preview" id="preview">
+                <select class="extras-buttons" name="preview" id="preview">
                     <optgroup label="Preview">
                         <option value="0-two">0.2</option>
                         <option value="0-four">0.4</option>
@@ -202,15 +202,15 @@
                         <option value="one">1.0</option>
                     </optgroup>
                 </select>
-                <label class="switch-break">
+                <label class="switch-light">
                     <input id="lights-break" type="checkbox" checked>
-                    <span class="slider-move"></span>
-                    <span id="lights-text" class="move-text">Lights</span>
+                    <span class="slider-light"></span>
+                    <span id="lights-text" class="lights-text">Lights</span>
                 </label>
             </div>
-            <div id="extras-middle-title" class="extras-flex-title-container">Title</div>
+            <div id="extras-middle-title" class="extras-flex-title-container">Dashboard</div>
             <div class="extras-flex-container">
-                <select class="maxspeed-picker" name="maxspeed" id="maxspeed">
+                <select class="extras-buttons" name="maxspeed" id="maxspeed">
                     <optgroup label="Max Speed">
                         <option value="200">200</option>
                         <option value="250">250</option>
@@ -221,21 +221,21 @@
                         <option value="600">600</option>
                     </optgroup>
                 </select>
-                <select class="map-picker" name="map" id="map">
+                <select class="extras-buttons" name="map" id="map">
                     <optgroup label="Map Toggle">
                         <option value="on" selected>On</option>
                         <option value="off" >Off</option>
                     </optgroup>
                 </select>
-                <button>hOLA</button>
+                <button class="extras-buttons">hOLA</button>
             </div>
             <div id="extras-bottom-title" class="extras-flex-title-container">GPS</div>
             <div class="extras-flex-container">
-                <button id="extras-start">Start</button>
-                <select class="location-picker" name="location" id="location">
+                <button id="extras-start" class="extras-buttons">Start</button>
+                <select class="extras-buttons" name="location" id="location">
                     <optgroup label="Locations"></optgroup>
                 </select>
-                <button id="extras-cancel">Cancel</button>
+                <button id="extras-cancel" class="extras-buttons">Cancel</button>
             </div>
         </div>
     </div>
