@@ -474,19 +474,19 @@ let dragBreak = ()=> {
 }
 
 const setPositions = ()=> {
-	if (!null == (getNum('topDisplay') || getNum('leftDisplay'))) {
+	if ((getNum('topDisplay') || getNum('leftDisplay')) !== null) {
 		$(`#wrapper`).animate({ top: getNum('topDisplay'), left: getNum('leftDisplay')});
 	}
-	if (!null == (getNum('topIcons') || getNum('leftIcons'))) {
+	if ((getNum('topIcons') || getNum('leftIcons')) !== null) {
 		$(`#icon-wrapper`).animate({ top: getNum('topIcons'), left: getNum('leftIcons')});
 	}
-	if (!null == (getNum('dragFuelTop') || getNum('dragFuelLeft'))) {
+	if ((getNum('dragFuelTop') || getNum('dragFuelLeft')) !== null) {
 		$(`#fuel-container`).animate({ top: getNum('dragFuelTop'), left: getNum('dragFuelLeft')});
 	}
-	if (!null == (getNum('dragSpeedTop') || getNum('dragSpeedLeft'))) {
+	if ((getNum('dragSpeedTop') || getNum('dragSpeedLeft')) !== null) {
 		$(`#speed-container`).animate({ top: getNum('dragSpeedTop'), left: getNum('dragSpeedLeft')});
 	}
-	if (!null == (getNum('dragRpmTop') || getNum('dragRpmLeft'))) {
+	if ((getNum('dragRpmTop') || getNum('dragRpmLeft')) !== null) {
 		$(`#rpm-container`).animate({ top: getNum('dragRpmTop'), left: getNum('dragRpmLeft')});
 	}
 	setDrag('Seatbelt', 'seatbelt');
@@ -564,10 +564,8 @@ function setFlexContainer(slider, check, container) {
 }
 
 function setDrag(id, element) {
-	if (!null == (getNum(`drag${id}Top`) || getNum(`drag${id}Left`))) {
+	if ((getNum(`drag${id}Top`) || getNum(`drag${id}Left`)) !== null) {
 		$(`#${element}`).animate({ top: getNum(`drag${id}Top`), left: getNum(`drag${id}Left`)});
-	} else {
-		console.log('a')
 	}
 }
 // Reset buttons functions
@@ -588,7 +586,7 @@ const resetSpeedo = ()=> {
 }
 
 const resetButtons = ()=> {
-  saveId('topIcons', '0px');
+  saveId('topIcons', '94%');
   saveId('leftIcons', '50%');
   saveId('dragSeatbeltTop', '0px');
   saveId('dragSeatbeltLeft', '0px');
