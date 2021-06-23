@@ -47,10 +47,10 @@ CreateThread(function()
                     currentSpeed = 0.0
                 end
                 local headlightLow, headlightMedium, headlightHigh = GetVehicleLightsState(vehicle)
-                if (headlightMedium == 1) and not (headlightHigh == 1) then
-                    headlight = 'medium'
-                elseif (headlightLow == 1) and (headlightMedium == 1) then
+                if (headlightMedium == 1) and not (headlightHigh == 0) then
                     headlight = 'high'
+                elseif (headlightMedium == 1) and (headlightMedium == 1) then
+                    headlight = 'medium'
                 else
                     headlight = 'off'
                 end

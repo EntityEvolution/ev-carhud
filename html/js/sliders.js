@@ -634,7 +634,6 @@ function pickLanguage(lang) {
 
 // Create sliders
 function createSliders(data) {
-
 	const location = doc.getElementById('location');
 	data.forEach(dataItem => {
 		const div = doc.createElement('option');
@@ -650,7 +649,6 @@ function createSliders(data) {
 	currentWaypointX = location.options[location.selectedIndex].x,
 	currentWaypointY = location.options[location.selectedIndex].y
 }
-
 
 const changeLanguage = (data)=> {
 	if (data == undefined) {
