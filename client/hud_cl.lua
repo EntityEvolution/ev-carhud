@@ -4,10 +4,15 @@ local inVehicle
 local refreshTime = 200
 
 local isOpen, isForceOpen = false, false
-local ped
+
+local limiterState, leftState, rightState, bothState, seatbeltStatus
+
+local currentSpeed = 0.0
+local seatbeltEject, acceDueToGravity  = 170.0, 9.81
 
 -- Threads
 CreateThread(function()
+    local ped = PlayerPedId()
     while true do
         local vehicle = GetVehiclePedIsIn(ped, false)
         if inVehicle then
@@ -22,6 +27,24 @@ CreateThread(function()
                     gear = 'N'
                 elseif speed and (gear == 0) then
                     gear = 'R'
+                end
+                if not seatbeltStatus then
+                    local previousSpeed = currentSpeed
+                    currentSpeed = speed
+                    local vehicleAcceleration = (previousSpeed - currentSpeed) / GetFrameTime()
+                    local gForce = (seatbeltEject * acceDueToGravity)
+                    if speed and (previousSpeed > 45/2.237) and (GetEntitySpeedVector(vehicle, true).y > 1.0  ) and (vehicleAcceleration > gForce) then
+                        local coords = GetEntityCoords(ped)
+                        SetEntityCoords(ped, coords, true, true, true, false)
+                        SetPedToRagdoll(ped, 1000, 1000, 0, 0, 0, 0)
+                        if Config.prevDmg then
+                            SetEntityInvincible(ped, true)
+                            Wait(Config.prevDmgTime)
+                            SetEntityInvincible(ped, false)
+                        end
+                    end
+                elseif seatbeltStatus and currentSpeed > 0.0 then
+                    currentSpeed = 0.0
                 end
             end
             SendNUIMessage({
@@ -38,6 +61,7 @@ CreateThread(function()
 end)
 
 CreateThread(function()
+    local ped = PlayerPedId()
     while true do
         local vehicle = GetVehiclePedIsIn(ped, false)
         if IsPedInAnyVehicle(ped, false) and GetPedInVehicleSeat(vehicle, -1) == ped and not isForceOpen then
@@ -114,6 +138,7 @@ end)
 
 -- Commands
 RegisterCommand(Config.hudCommand, function()
+    local ped = PlayerPedId()
     if not isOpen then
         isOpen = true
         if not IsPedInAnyVehicle(ped, false) and GetEntitySpeed(GetVehiclePedIsIn(ped, false)) == 0 then
@@ -142,11 +167,10 @@ if Config.useHudKey then
 end
 
 -- HUD Parts
-local limiterState, leftState, rightState, bothState
 RegisterCommand('Limiter', function()
     if not isOpen then
         if inVehicle then
-            local vehicle = GetVehiclePedIsIn(ped, false)
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             local limiterSpeed = GetEntitySpeed(vehicle)
             if not limiterState then
                 limiterState = true
@@ -173,10 +197,33 @@ end)
 
 RegisterKeyMapping('Limiter', 'test', 'keyboard', 'CAPITAL')
 
+RegisterCommand('Seatbelt', function()
+    if not isOpen then
+        if inVehicle then
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+            if not seatbeltStatus then
+                seatbeltStatus = true
+                SendNUIMessage({
+                    action = "seatbeltHud",
+                    seatbelt = seatbeltStatus
+                })
+            elseif seatbeltStatus then
+                seatbeltStatus = false
+                SendNUIMessage({
+                    action = "seatbeltHud",
+                    seatbelt = seatbeltStatus
+                })
+            end
+        end
+    end
+end)
+
+RegisterKeyMapping('Seatbelt', 'test', 'keyboard', 'G')
+
 RegisterCommand('LeftHeadlight', function()
     if not isOpen then
         if inVehicle then
-            local vehicle = GetVehiclePedIsIn(ped, false)
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             if not leftState and not bothState then
                 leftState = true
                 SetVehicleIndicatorLights(vehicle, 1, true)
@@ -205,7 +252,7 @@ RegisterKeyMapping('LeftHeadlight', 'test', 'keyboard', 'LEFT')
 RegisterCommand('RightHeadlight', function()
     if not isOpen then
         if inVehicle then
-            local vehicle = GetVehiclePedIsIn(ped, false)
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             if not rightState and not bothState then
                 rightState = true
                 SetVehicleIndicatorLights(vehicle, 0, true)
@@ -234,7 +281,7 @@ RegisterKeyMapping('RightHeadlight', 'test', 'keyboard', 'RIGHT')
 RegisterCommand('BothHeadlights', function()
     if not isOpen then
         if inVehicle then
-            local vehicle = GetVehiclePedIsIn(ped, false)
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             if not bothState and not (leftState and rightState) then
                 bothState = true
                 if not rightState then
@@ -333,9 +380,6 @@ AddEventHandler('playerSpawned', function()
 	Wait(3000)
     DisplayRadar(true)
     SendNUIMessage({action = 'setSlidersBack'})
-    if ped == nil then
-        ped = PlayerPedId()
-    end
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)
@@ -344,8 +388,5 @@ AddEventHandler('onResourceStart', function(resourceName)
         DisplayRadar(true)
         SendNUIMessage({action = 'setSlidersBack'})
         print("Values set back")
-        if ped == nil then
-            ped = PlayerPedId()
-        end
 	end
 end)

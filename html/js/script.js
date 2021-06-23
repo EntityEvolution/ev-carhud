@@ -1,4 +1,4 @@
-let limiterState, rightLightState, leftLightState;
+let limiterState, rightLightState, leftLightState, seatbeltState;
 
 const wrenchWrap = doc.getElementById('wrench-wrap')
 
@@ -136,6 +136,22 @@ window.addEventListener("message", function(event) {
 				doc.getElementById('right-arrow').style.animation = ''
 			}
             break;
+
+        case "seatbeltHud":
+            seatbeltState = event.data.seatbelt
+            if (seatbeltState) {
+                doc.getElementById('seatbelt-icon').style.filter = 'invert(47%) sepia(76%) saturate(504%) hue-rotate(77deg) brightness(87%) contrast(93%)'
+            } else {
+                doc.getElementById('seatbelt-icon').style.filter = ''
+            }
+
+            if (rightLightState) {
+                doc.getElementById('right-arrow').style.animation = 'arrowsPulse 0.8s infinite'
+            } else {
+                doc.getElementById('right-arrow').style.animation = ''
+            }
+            break;
+
         case "show":
             wrapDash.style.display = "flex";
             wrapIcon.style.display = "flex";
