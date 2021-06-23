@@ -76,7 +76,7 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
 
 // Set to draggable on page load
 window.addEventListener('load', () => {
-    doc.getElementById("road").click();
+    doc.getElementById("default").click();
     setSliders();
 });
 
@@ -124,7 +124,6 @@ window.addEventListener("message", function(event) {
         case "lightsHud":
             leftLightState = event.data.leftState
 			rightLightState = event.data.rightState
-			console.log(rightLightState)
 			if (leftLightState) {
 				doc.getElementById('left-arrow').style.color = '#ebae34'
 			} else {

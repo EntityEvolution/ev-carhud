@@ -112,10 +112,6 @@ RegisterNUICallback('changeMap', function(data)
     end
 end)
 
-RegisterCommand('sent', function()
-    SetVehicleForwardSpeed(GetVehiclePedIsIn(ped, false), 10000.0)
-end)
-
 -- Commands
 RegisterCommand(Config.hudCommand, function()
     if not isOpen then
