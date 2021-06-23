@@ -285,6 +285,11 @@ $("#seatbelt").on("dragstop", function(event, ui) {
     saveId('dragSeatbeltLeft', ui.position.left)
 });
 
+$("#headlight").on("dragstop", function(event, ui) {
+    saveId('dragHeadlightTop', ui.position.top)
+    saveId('dragHeadlightLeft', ui.position.left)
+});
+
 $("#speedo").on("dragstop", function(event, ui) {
     saveId('dragSpeedoTop', ui.position.top)
     saveId('dragSpeedoLeft', ui.position.left)

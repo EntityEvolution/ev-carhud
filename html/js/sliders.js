@@ -18,6 +18,8 @@ const saveBreak = doc.getElementById('save-break')
 const brokeBreak = doc.getElementById('broke-break')
 const freezeBreak = doc.getElementById('freeze-break')
 
+const lightsBreak = doc.getElementById('lights-break')
+
 const dashSelect = doc.getElementById('dashboard')
 const langSelect = doc.getElementById('langPick')
 
@@ -82,6 +84,18 @@ window.addEventListener('load', ()=> {
 	} else {
 	  element.style.display = 'none'
 	  saveId("sliderSeatbelt", seatbelt)
+	}
+  })
+
+  lightsBreak.addEventListener('click', ()=> {
+	headlightsIcon = doc.getElementById('lights-break').checked
+	const element = doc.getElementById('headlight')
+	if (headlightsIcon) {
+	  element.style.display = 'block'
+	  saveId("sliderHeadlights", headlightsIcon)
+	} else {
+	  element.style.display = 'none'
+	  saveId("sliderHeadlights", headlightsIcon)
 	}
   })
 
@@ -163,6 +177,7 @@ window.addEventListener('load', ()=> {
 		$("#right-arrow").draggable({ disabled: true });
 		$("#speedo").draggable({ disabled: true });
 		$("#seatbelt").draggable({ disabled: true });
+		$("#headlight").draggable({ disabled: true });
 		$("#wrench").draggable({ disabled: true });
 		$("#left-arrow").draggable({ disabled: true });
 		$("#fuel-container").draggable({ disabled: true });
@@ -178,6 +193,7 @@ window.addEventListener('load', ()=> {
 		$("#right-arrow").draggable({ disabled: false });
 		$("#speedo").draggable({ disabled: false });
 		$("#seatbelt").draggable({ disabled: false });
+		$("#headlight").draggable({ disabled: false });
 		$("#wrench").draggable({ disabled: false });
 		$("#left-arrow").draggable({ disabled: false });
 		$("#fuel-container").draggable({ disabled: false });
@@ -194,6 +210,7 @@ window.addEventListener('load', ()=> {
 	  $("#right-arrow").draggable({ disabled: false });
 	  $("#speedo").draggable({ disabled: false });
 	  $("#seatbelt").draggable({ disabled: false });
+	  $("#headlight").draggable({ disabled: false });
 	  $("#wrench").draggable({ disabled: false });
 	  $("#left-arrow").draggable({ disabled: false });
 	  $("#fuel-container").draggable({ disabled: false });
@@ -204,6 +221,7 @@ window.addEventListener('load', ()=> {
 	  $("#right-arrow").draggable({ disabled: true });
 	  $("#speedo").draggable({ disabled: true });
 	  $("#seatbelt").draggable({ disabled: true });
+	  $("#headlight").draggable({ disabled: true });
 	  $("#wrench").draggable({ disabled: true });
 	  $("#left-arrow").draggable({ disabled: true });
 	  $("#fuel-container").draggable({ disabled: true });
@@ -405,6 +423,7 @@ let dragBreak = ()=> {
 		$("#right-arrow").draggable({ disabled: true });
 		$("#speedo").draggable({ disabled: true });
 		$("#seatbelt").draggable({ disabled: true });
+		$("#headlight").draggable({ disabled: true });
 		$("#wrench").draggable({ disabled: true });
 		$("#left-arrow").draggable({ disabled: true });
 		$("#fuel-container").draggable({ disabled: true });
@@ -420,6 +439,7 @@ let dragBreak = ()=> {
 		$("#right-arrow").draggable({ disabled: false });
 		$("#speedo").draggable({ disabled: false });
 		$("#seatbelt").draggable({ disabled: false });
+		$("#headlight").draggable({ disabled: false });
 		$("#wrench").draggable({ disabled: false });
 		$("#left-arrow").draggable({ disabled: false });
 		$("#fuel-container").draggable({ disabled: false });
@@ -433,6 +453,7 @@ let dragBreak = ()=> {
 	$("#right-arrow").draggable({ disabled: false });
 	$("#speedo").draggable({ disabled: false });
 	$("#seatbelt").draggable({ disabled: false });
+	$("#headlight").draggable({ disabled: false });
 	$("#wrench").draggable({ disabled: false });
 	$("#left-arrow").draggable({ disabled: false });
 	$("#fuel-container").draggable({ disabled: false });
@@ -443,6 +464,7 @@ let dragBreak = ()=> {
 	$("#right-arrow").draggable({ disabled: true });
 	$("#speedo").draggable({ disabled: true });
 	$("#seatbelt").draggable({ disabled: true });
+	$("#headlight").draggable({ disabled: true });
 	$("#wrench").draggable({ disabled: true });
 	$("#left-arrow").draggable({ disabled: true });
 	$("#fuel-container").draggable({ disabled: true });
@@ -456,6 +478,7 @@ const setSliders = ()=> {
   checkSpeed.checked = getId("sliderSpeed")
   checkRpm.checked = getId("sliderRpm")
   checkSeatbelt.checked = getId("sliderSeatbelt")
+  lightsBreak.checked = getId("sliderHeadlights")
   checkTacho.checked = getId("sliderTacho")
   checkCogs.checked = getId("sliderCogs")
   checkLeft.checked = getId("sliderLeft")
@@ -477,6 +500,7 @@ const setDisplay = ()=> {
   setFlexContainer('sliderRpm', 'check-rpm', 'rpm-container');
   
   setContainer('sliderSeatbelt', 'check-seatbelt', 'seatbelt');
+  setContainer('sliderHeadlights', 'lights-break', 'headlight');
   setContainer('sliderTacho', 'check-tacho', 'speedo');
   setContainer('sliderCogs', 'check-cogs', 'gear');
   
@@ -536,6 +560,8 @@ const resetButtons = ()=> {
   saveId('leftIcons', '50%');
   saveId('dragSeatbeltTop', '0px');
   saveId('dragSeatbeltLeft', '0px');
+  saveId('dragHeadlightTop', '0px');
+  saveId('dragHeadlightLeft', '0px');
   saveId('dragSpeedoTop', '0px');
   saveId('dragSpeedoLeft', '0px');
   saveId('dragGearTop', '0px');
@@ -561,7 +587,7 @@ const resetSwitches = ()=> {
   saveId('sliderSpeed', true);
   saveId('sliderRpm', true);
   saveId('sliderSeatbelt', true);
-  saveId('slider', true);
+  saveId('sliderHeadlights', true);
   saveId('sliderTacho', true);
   saveId('sliderCogs', true);
   saveId('sliderLeft', true);
