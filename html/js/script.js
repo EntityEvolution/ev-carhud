@@ -1,6 +1,7 @@
-let limiterState, rightLightState, leftLightState, seatbeltState;
+let limiterState, rightLightState, leftLightState, seatbeltState, headlightState;
 
 const wrenchWrap = doc.getElementById('wrench-wrap')
+const headId = doc.getElementById('headlight-icon')
 
 // Speed
 let gauge = new ProgressBar.SemiCircle('#speed-container', {
@@ -110,6 +111,15 @@ window.addEventListener("message", function(event) {
             rev.set(event.data.rpm / Config.MaxRPM)
             gas.set(event.data.fuel / Config.MaxFuel)
             changeWrench(event.data.damage)
+            
+            headlightState = event.data.headlight
+            if (headlightState == 'high') {
+                headId.style.filter = 'invert(47%) sepia(76%) saturate(504%) hue-rotate(77deg) brightness(87%) contrast(93%)'
+            } else if (headlightState == 'medium') {
+                headId.style.filter = 'invert(70%) sepia(33%) saturate(4092%) hue-rotate(2deg) brightness(107%) contrast(104%)'
+            } else {
+                headId.style.filter = ''
+            }
             break;
 
         case "iconhud":

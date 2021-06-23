@@ -5,15 +5,15 @@ local refreshTime = 200
 
 local isOpen, isForceOpen = false, false
 
-local limiterState, leftState, rightState, bothState, seatbeltStatus
+local limiterState, leftState, rightState, bothState, seatbeltStatus, headlight
 
 local currentSpeed = 0.0
 local seatbeltEject, acceDueToGravity  = 170.0, 9.81
 
 -- Threads
 CreateThread(function()
-    local ped = PlayerPedId()
     while true do
+        local ped = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(ped, false)
         if inVehicle then
             local fuel, speed, rpm, gear, damage
@@ -33,7 +33,7 @@ CreateThread(function()
                     currentSpeed = speed
                     local vehicleAcceleration = (previousSpeed - currentSpeed) / GetFrameTime()
                     local gForce = (seatbeltEject * acceDueToGravity)
-                    if speed and (previousSpeed > 45/2.237) and (GetEntitySpeedVector(vehicle, true).y > 1.0  ) and (vehicleAcceleration > gForce) then
+                    if speed and (previousSpeed > 45 / 2.237) and (GetEntitySpeedVector(vehicle, true).y > 1.0) and (vehicleAcceleration > gForce) then
                         local coords = GetEntityCoords(ped)
                         SetEntityCoords(ped, coords, true, true, true, false)
                         SetPedToRagdoll(ped, 1000, 1000, 0, 0, 0, 0)
@@ -43,8 +43,16 @@ CreateThread(function()
                             SetEntityInvincible(ped, false)
                         end
                     end
-                elseif seatbeltStatus and currentSpeed > 0.0 then
+                elseif seatbeltStatus and (currentSpeed > 0.0) then
                     currentSpeed = 0.0
+                end
+                local headlightLow, headlightMedium, headlightHigh = GetVehicleLightsState(vehicle)
+                if (headlightMedium == 1) and not (headlightHigh == 1) then
+                    headlight = 'medium'
+                elseif (headlightLow == 1) and (headlightMedium == 1) then
+                    headlight = 'high'
+                else
+                    headlight = 'off'
                 end
             end
             SendNUIMessage({
@@ -53,7 +61,8 @@ CreateThread(function()
                 fuel = fuel,
                 rpm = rpm,
                 gear = gear,
-                damage = damage
+                damage = damage,
+                headlight = headlight
             })
         end
         Wait(refreshTime)
@@ -61,10 +70,10 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    local ped = PlayerPedId()
     while true do
+        local ped = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(ped, false)
-        if IsPedInAnyVehicle(ped, false) and GetPedInVehicleSeat(vehicle, -1) == ped and not isForceOpen then
+        if IsPedInAnyVehicle(ped, false) and (GetPedInVehicleSeat(vehicle, -1) == ped) and not isForceOpen and not IsEntityDead(ped) then
             inVehicle = true
             SendNUIMessage({
                 action = "show"
@@ -167,7 +176,7 @@ if Config.useHudKey then
 end
 
 -- HUD Parts
-RegisterCommand('Limiter', function()
+RegisterCommand(Config.limiterCommand, function()
     if not isOpen then
         if inVehicle then
             local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -195,9 +204,9 @@ RegisterCommand('Limiter', function()
     end
 end)
 
-RegisterKeyMapping('Limiter', 'test', 'keyboard', 'CAPITAL')
+RegisterKeyMapping(Config.limiterCommand, Config.limiterDesc, 'keyboard', Config.limiterKey)
 
-RegisterCommand('Seatbelt', function()
+RegisterCommand(Config.seatbeltCommand, function()
     if not isOpen then
         if inVehicle then
             local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -218,9 +227,9 @@ RegisterCommand('Seatbelt', function()
     end
 end)
 
-RegisterKeyMapping('Seatbelt', 'test', 'keyboard', 'G')
+RegisterKeyMapping(Config.seatbeltCommand, Config.seatbeltDesc, 'keyboard', Config.seatbeltKey)
 
-RegisterCommand('LeftHeadlight', function()
+RegisterCommand(Config.leftCommand, function()
     if not isOpen then
         if inVehicle then
             local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -247,9 +256,9 @@ RegisterCommand('LeftHeadlight', function()
     end
 end)
 
-RegisterKeyMapping('LeftHeadlight', 'test', 'keyboard', 'LEFT')
+RegisterKeyMapping(Config.leftCommand, Config.leftDesc, 'keyboard', Config.leftKey)
 
-RegisterCommand('RightHeadlight', function()
+RegisterCommand(Config.rightCommand, function()
     if not isOpen then
         if inVehicle then
             local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -276,9 +285,9 @@ RegisterCommand('RightHeadlight', function()
     end
 end)
 
-RegisterKeyMapping('RightHeadlight', 'test', 'keyboard', 'RIGHT')
+RegisterKeyMapping(Config.rightCommand, Config.rightDesc, 'keyboard', Config.rightKey)
 
-RegisterCommand('BothHeadlights', function()
+RegisterCommand(Config.bothCommand, function()
     if not isOpen then
         if inVehicle then
             local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -320,7 +329,7 @@ RegisterCommand('BothHeadlights', function()
     end
 end)
 
-RegisterKeyMapping('BothHeadlights', 'test', 'keyboard', 'UP')
+RegisterKeyMapping(Config.bothCommand, Config.bothDesc, 'keyboard', Config.bothKey)
 
 -- Syncing headlights
 RegisterNetEvent('ev-carhud:sync')
