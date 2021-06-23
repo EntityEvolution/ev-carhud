@@ -1,5 +1,4 @@
 /* Main wrapper*/
-
 .wrapper {
     display: flex;
     justify-content: center;
@@ -18,7 +17,6 @@
 
 
 /* Speed styling */
-
 #speed-container {
     margin: 3px;
     width: 50%;
@@ -43,13 +41,11 @@
     font-size: 65%;
 }
 
-
 /* Fuel styling*/
-
 #fuel-container {
     margin: 3px;
     width: 25%;
-    left: 4%;
+    left: 2%;
     background-color: transparent;
     transform: scaleX(-1);
     display: flex;
@@ -74,13 +70,11 @@
     transform: scaleX(-1);
 }
 
-
 /* RPM styling */
-
 #rpm-container {
     margin: 3px;
     width: 25%;
-    right: 4%;
+    right: 2%;
     background-color: transparent;
     display: flex;
     order: 3;
@@ -101,9 +95,7 @@
     font-size: 55%;
 }
 
-
 /* Fa circles */
-
 .icon-wrapper {
     display: flex;
     justify-content: space-evenly;
@@ -116,10 +108,11 @@
     height: 4vh;
     vertical-align: middle;
     font-size: 2vh;
+    color: #222222d5;
 }
 
 #wrench {
-    background-color: rgba(168, 168, 168, 0.596);
+    background-color: #bababa50;
     text-align: center;
     height: 50%;
     padding: 1.5%;
@@ -135,7 +128,7 @@
 }
 
 #left-arrow {
-    background-color: rgba(168, 168, 168, 0.596);
+    background-color: #bababa50;
     text-align: center;
     height: 50%;
     padding: 1.5%;
@@ -144,7 +137,7 @@
 }
 
 #right-arrow {
-    background-color: rgba(168, 168, 168, 0.596);
+    background-color: #bababa50;
     text-align: center;
     height: 50%;
     padding: 1.5%;
@@ -153,7 +146,7 @@
 }
 
 .speedo {
-    background-color: rgba(168, 168, 168, 0.596);
+    background-color: #bababa50;
     height: 50%;
     width: 50%;
     padding: 1.5%;
@@ -170,7 +163,7 @@
 }
 
 .gear {
-    background-color: rgba(168, 168, 168, 0.596);
+    background-color: #bababa50;
     height: 50%;
     padding: 1.5%;
     border-radius: 50%;
@@ -186,7 +179,7 @@
 }
 
 .seatbelt {
-    background-color: rgba(168, 168, 168, 0.596);
+    background-color: #bababa50;
     height: 50%;
     padding: 1.5%;
     border-radius: 50%;
@@ -201,4 +194,16 @@
     top: -5%;
     right: 0%;
     width: 80%;
+}
+
+@keyframes arrowsPulse {
+    0% {
+        color: #bababa50;
+    }
+    50% {
+        color: #219c31;
+    }
+    100% {
+        color: #bababa50;
+    }
 }

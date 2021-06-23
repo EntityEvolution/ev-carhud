@@ -519,16 +519,16 @@ const resetSpeedo = ()=> {
   saveId('topDisplay', '81%');
   saveId('leftDisplay', '0px');
   saveId('dragFuelTop', '0px');
-  saveId('dragFuelLeft', '14.5px');
+  saveId('dragFuelLeft', '9px');
   saveId('dragSpeedTop', '0px');
   saveId('dragSpeedLeft', '0px');
   saveId('dragRpmTop', '0px');
-  saveId('dragRpmLeft', '-14.5px');
+  saveId('dragRpmLeft', '-9px');
 
   $("#wrapper").animate({ top: "81%", left: "50%" });
-  $("#fuel-container").animate({ top: "0px", left: "14.5px" });
+  $("#fuel-container").animate({ top: "0px", left: "9px" });
   $("#speed-container").animate({ top: "0px", left: "0px" });
-  $("#rpm-container").animate({ top: "0px", left: "-14.5px" });
+  $("#rpm-container").animate({ top: "0px", left: "-9px" });
 }
 
 const resetButtons = ()=> {

@@ -6,7 +6,7 @@ const wrenchWrap = doc.getElementById('wrench-wrap')
 let gauge = new ProgressBar.SemiCircle('#speed-container', {
     strokeWidth: 6,
     color: '#FFEA82',
-    trailColor: '#eee',
+    trailColor: 'rgba(30, 30, 30, 0.8)',
     trailWidth: 5,
     easing: 'easeInOut',
     svgStyle: null,
@@ -30,7 +30,7 @@ let gauge = new ProgressBar.SemiCircle('#speed-container', {
 let gas = new ProgressBar.SemiCircle('#fuel-container', {
     strokeWidth: 6,
     color: '#FFEA82',
-    trailColor: '#ccc',
+    trailColor: 'rgba(30, 30, 30, 0.8)',
     trailWidth: 4,
     easing: 'easeInOut',
     svgStyle: null,
@@ -54,7 +54,7 @@ let gas = new ProgressBar.SemiCircle('#fuel-container', {
 let rev = new ProgressBar.SemiCircle('#rpm-container', {
     strokeWidth: 6,
     color: '#FFEA82',
-    trailColor: '#ccc',
+    trailColor: 'rgba(30, 30, 30, 0.8)',
     trailWidth: 4,
     easing: 'easeInOut',
     svgStyle: null,
@@ -64,8 +64,8 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
     },
 
     // Gradient
-    from: { color: 'rgb(230, 5, 35)' },
-    to: { color: 'rgb(0, 68, 255)' },
+    from: { color: '#ffe229' },
+    to: { color: '#ff2970' },
 
     // Set default step function for all animate calls
     step: (state, rev) => {
@@ -115,7 +115,7 @@ window.addEventListener("message", function(event) {
         case "iconhud":
             limiterState = event.data.limiter
             if (limiterState) {
-                doc.getElementById('tacho').style.color = "#90e300"
+                doc.getElementById('tacho').style.color = "#219c31"
             } else {
                 doc.getElementById('tacho').style.color = ""
             }
@@ -125,15 +125,15 @@ window.addEventListener("message", function(event) {
             leftLightState = event.data.leftState
 			rightLightState = event.data.rightState
 			if (leftLightState) {
-				doc.getElementById('left-arrow').style.color = '#ebae34'
+				doc.getElementById('left-arrow').style.animation = 'arrowsPulse 0.8s infinite'
 			} else {
-				doc.getElementById('left-arrow').style.color = ''
+				doc.getElementById('left-arrow').style.animation = ''
 			}
 
 			if (rightLightState) {
-				doc.getElementById('right-arrow').style.color = '#ebae34'
+				doc.getElementById('right-arrow').style.animation = 'arrowsPulse 0.8s infinite'
 			} else {
-				doc.getElementById('right-arrow').style.color = ''
+				doc.getElementById('right-arrow').style.animation = ''
 			}
             break;
         case "show":
@@ -297,7 +297,7 @@ function openTab(target) {
 // Wrench colors
 function changeWrench(target) {
     if (target >= 95) {
-        wrenchWrap.style.color = '#429900'
+        wrenchWrap.style.color = '#219c31'
     } else if (target >= 90) {
         wrenchWrap.style.color = '#6e9900'
     } else if (target >= 80) {
