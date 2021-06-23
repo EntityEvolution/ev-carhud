@@ -386,6 +386,7 @@ end)
 
 -- Handler
 AddEventHandler('playerSpawned', function()
+    TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})
 	Wait(3000)
     DisplayRadar(true)
     SendNUIMessage({action = 'setSlidersBack'})
@@ -393,6 +394,7 @@ end)
 
 AddEventHandler('onResourceStart', function(resourceName)
 	if (GetCurrentResourceName() == resourceName) then
+        TriggerEvent('chat:addSuggestion', '/' .. Config.hudCommand, Config.hudDesc, {})
 		Wait(3000)
         DisplayRadar(true)
         SendNUIMessage({action = 'setSlidersBack'})
