@@ -1,197 +1,204 @@
-
 /* Main wrapper*/
+
 .wrapper {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 4%;
-  left: 50%;
-  transform: translate(-50%, -0%);
-  width: 40vh;
-  height: 15vh;
-  font-size: 2vh;
-  font-family: Poo;
-  color: rgb(255, 255, 255); /* Change to white */
-  text-align: center;
-  background-color: black;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    width: 40vh;
+    height: 15vh;
+    font-size: 2vh;
+    font-family: Poo;
+    color: rgb(255, 255, 255);
+    /* Change to white */
+    text-align: center;
 }
-  
+
+
 /* Speed styling */
+
 #speed-container {
-  margin: 3px;
-  width: 50%;
-  height: 90%;
-  background-color: transparent;
-  position: absolute;
-  display: flex;
-  order: 2;
+    margin: 3px;
+    width: 50%;
+    height: 90%;
+    background-color: transparent;
+    position: absolute;
+    display: flex;
+    order: 2;
 }
 
 #speed-text {
-  top: 45%;
-  position: absolute;
-  left: 24.5%;
-  width: 50%;
+    top: 45%;
+    position: absolute;
+    left: 24.5%;
+    width: 50%;
 }
 
 #speed-text-unit {
-  top: 60%;
-  left: 39%;
-  position: absolute;
-  font-size: 65%;
+    top: 60%;
+    left: 39%;
+    position: absolute;
+    font-size: 65%;
 }
 
+
 /* Fuel styling*/
+
 #fuel-container {
-  margin: 3px;
-  width: 25%;
-  left: 4%;
-  background-color: transparent;
-  transform: scaleX(-1);
-  display: flex;
-  order: 1;
+    margin: 3px;
+    width: 25%;
+    left: 4%;
+    background-color: transparent;
+    transform: scaleX(-1);
+    display: flex;
+    order: 1;
 }
 
 #fuel-text {
-  top: 50%;
-  left: 50%;
-  width: 15%;
-  position: absolute; 
-  font-size: 65%;
-  transform: scaleX(-1);
+    top: 50%;
+    left: 50%;
+    width: 15%;
+    position: absolute;
+    font-size: 65%;
+    transform: scaleX(-1);
 }
 
 #fuel-text-unit {
-  top: 60%;
-  left: 9%;
-  width: 80%;
-  position: absolute; 
-  font-size: 55%;
-  transform: scaleX(-1);
+    top: 60%;
+    left: 9%;
+    width: 80%;
+    position: absolute;
+    font-size: 55%;
+    transform: scaleX(-1);
 }
 
+
 /* RPM styling */
+
 #rpm-container {
-  margin: 3px;
-  width: 25%;
-  right: 4%;
-  background-color: transparent;
-  display: flex;
-  order: 3;
+    margin: 3px;
+    width: 25%;
+    right: 4%;
+    background-color: transparent;
+    display: flex;
+    order: 3;
 }
 
 #rpm-text {
-  top: 50%;
-  left: 12%;
-  width: 80%;
-  position: absolute; 
-  font-size: 65%;
+    top: 50%;
+    left: 12%;
+    width: 80%;
+    position: absolute;
+    font-size: 65%;
 }
 
 #rpm-text-unit {
-  top: 60%;
-  right: 30%;
-  position: absolute; 
-  font-size: 55%;
+    top: 60%;
+    right: 30%;
+    position: absolute;
+    font-size: 55%;
 }
 
+
 /* Fa circles */
+
 .icon-wrapper {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  position: absolute;
-  bottom: 2%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  width: 40vh;
-  height: 4vh;
-  background-color: orange;
-  vertical-align: middle;
-  font-size: 2vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 40vh;
+    height: 4vh;
+    vertical-align: middle;
+    font-size: 2vh;
 }
 
 #wrench {
-  background-color: rgba(168, 168, 168, 0.596);
-  text-align: center;
-  height: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
+    background-color: rgba(168, 168, 168, 0.596);
+    text-align: center;
+    height: 50%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
 }
 
 #wrench-wrap {
-  position: absolute;
-  font-size: 80%;
-  top: 25%;
-  left: 25%;
+    position: absolute;
+    font-size: 80%;
+    top: 25%;
+    left: 25%;
 }
 
 #left-arrow {
-  background-color: rgba(168, 168, 168, 0.596);
-  text-align: center;
-  height: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
+    background-color: rgba(168, 168, 168, 0.596);
+    text-align: center;
+    height: 50%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
 }
 
 #right-arrow {
-  background-color: rgba(168, 168, 168, 0.596);
-  text-align: center;
-  height: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
+    background-color: rgba(168, 168, 168, 0.596);
+    text-align: center;
+    height: 50%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
 }
 
 .speedo {
-  background-color: rgba(168, 168, 168, 0.596);
-  height: 50%;
-  width: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
-  font-family: Neue;
-  text-align: center;
-  vertical-align: top;
+    background-color: rgba(168, 168, 168, 0.596);
+    height: 50%;
+    width: 50%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+    font-family: Neue;
+    text-align: center;
+    vertical-align: top;
 }
 
 #tacho {
-  transform: translate(0%, -25%);
-  font-size: 80%;
+    transform: translate(0%, -25%);
+    font-size: 80%;
 }
 
 .gear {
-  background-color: rgba(168, 168, 168, 0.596);
-  height: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
-  font-size: 100%;
-  font-family: Neue;
-  text-align: center;
+    background-color: rgba(168, 168, 168, 0.596);
+    height: 50%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+    font-size: 100%;
+    font-family: Neue;
+    text-align: center;
 }
 
 .gear-text {
-  position: relative;
-  top: -10%;
+    position: relative;
+    top: -10%;
 }
 
 .seatbelt {
-  background-color: rgba(168, 168, 168, 0.596);
-  height: 50%;
-  padding: 1.5%;
-  border-radius: 50%;
-  width: 5%;
-  font-family: Neue;
-  text-align: center;
-  vertical-align: top;
+    background-color: rgba(168, 168, 168, 0.596);
+    height: 50%;
+    padding: 1.5%;
+    border-radius: 50%;
+    width: 5%;
+    font-family: Neue;
+    text-align: center;
+    vertical-align: top;
 }
 
 .seatbelt-icon {
-  position: relative;
-  top: -5%;
-  right: 0%;
-  width: 80%;
+    position: relative;
+    top: -5%;
+    right: 0%;
+    width: 80%;
 }

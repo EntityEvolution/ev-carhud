@@ -18,7 +18,7 @@ CreateThread(function()
                 rpm = math.floor(GetVehicleCurrentRpm(vehicle) * 10000)
                 gear = GetVehicleCurrentGear(vehicle)
                 damage = math.floor(GetVehicleEngineHealth(vehicle)) / 10
-                if (speed == 0) and (gear == 0) then
+                if (speed == 0) and (gear == 0 or 1) then
                     gear = 'N'
                 elseif speed and (gear == 0) then
                     gear = 'R'
@@ -102,6 +102,10 @@ RegisterNUICallback('cancelLoc', function()
     end
 end)
 
+RegisterCommand('sent', function()
+    SetVehicleForwardSpeed(GetVehiclePedIsIn(ped, false), 10000.0)
+end)
+
 -- Commands
 RegisterCommand(Config.hudCommand, function()
     if not isOpen then
@@ -127,22 +131,27 @@ RegisterCommand(Config.hudCommand, function()
     end
 end)
 
-local limiterState
-RegisterCommand('limiter', function()
+if Config.useHudKey then
+    RegisterKeyMapping(Config.hudCommand, Config.hudDesc, 'keyboard', Config.hudKey)
+end
+
+-- HUD Parts
+local limiterState, leftState, rightState, bothState
+RegisterCommand('Limiter', function()
     if not isOpen then
         if inVehicle then
-            local currentVeh = GetVehiclePedIsIn(ped, false)
-            limiterSpeed = GetEntitySpeed(currentVeh)
+            local vehicle = GetVehiclePedIsIn(ped, false)
+            limiterSpeed = GetEntitySpeed(vehicle)
             if not limiterState then
                 limiterState = true
-                SetEntityMaxSpeed(currentVeh, limiterSpeed)
+                SetEntityMaxSpeed(vehicle, limiterSpeed)
                 SendNUIMessage({
                     action = "iconhud",
                     limiter = limiterState
                 })
             elseif limiterState then
                 limiterState = false
-                SetEntityMaxSpeed(currentVeh, -100.0)
+                SetEntityMaxSpeed(vehicle, -100.0)
                 SendNUIMessage({
                     action = "iconhud",
                     limiter = limiterState
@@ -156,20 +165,169 @@ RegisterCommand('limiter', function()
     end
 end)
 
-RegisterKeyMapping('limiter', 'test', 'keyboard', 'CAPITAL')
+RegisterKeyMapping('Limiter', 'test', 'keyboard', 'CAPITAL')
 
-if Config.useHudKey then
-    RegisterKeyMapping(Config.hudCommand, Config.hudDesc, 'keyboard', Config.hudKey)
-end
+RegisterCommand('LeftHeadlight', function()
+    if not isOpen then
+        if inVehicle then
+            local vehicle = GetVehiclePedIsIn(ped, false)
+            if not leftState and not bothState then
+                leftState = true
+                SetVehicleIndicatorLights(vehicle, 1, true)
+                TriggerServerEvent('ev-carhud:sync', 'left')
+                SendNUIMessage({
+                    action = "lightsHud",
+                    leftState = leftState,
+                    rightState = rightState
+                })
+            elseif leftState and not bothState then
+                leftState = false
+                SetVehicleIndicatorLights(vehicle, 1, false)
+                TriggerServerEvent('ev-carhud:sync', 'left')
+                SendNUIMessage({
+                    action = "lightsHud",
+                    leftState = leftState,
+                    rightState = rightState
+                })
+            end
+        end
+    end
+end)
 
+RegisterKeyMapping('LeftHeadlight', 'test', 'keyboard', 'LEFT')
 
+RegisterCommand('RightHeadlight', function()
+    if not isOpen then
+        if inVehicle then
+            local vehicle = GetVehiclePedIsIn(ped, false)
+            if not rightState and not bothState then
+                rightState = true
+                SetVehicleIndicatorLights(vehicle, 0, true)
+                TriggerServerEvent('ev-carhud:sync', 'right')
+                SendNUIMessage({
+                    action = "lightsHud",
+                    leftState = leftState,
+                    rightState = rightState
+                })
+            elseif rightState and not bothState then
+                rightState = false
+                SetVehicleIndicatorLights(vehicle, 0, false)
+                TriggerServerEvent('ev-carhud:sync', 'right')
+                SendNUIMessage({
+                    action = "lightsHud",
+                    leftState = leftState,
+                    rightState = rightState
+                })
+            end
+        end
+    end
+end)
+
+RegisterKeyMapping('RightHeadlight', 'test', 'keyboard', 'RIGHT')
+
+RegisterCommand('BothHeadlights', function()
+    if not isOpen then
+        if inVehicle then
+            local vehicle = GetVehiclePedIsIn(ped, false)
+            if not bothState and not (leftState and rightState) then
+                bothState = true
+                if not rightState then
+                    rightState = true
+                    SetVehicleIndicatorLights(vehicle, 0, true)
+                    SendNUIMessage({
+                        action = "lightsHud",
+                        leftState = leftState,
+                        rightState = rightState
+                    })
+                end
+                if not leftState then
+                    leftState = true
+                    SetVehicleIndicatorLights(vehicle, 1, true)
+                    SendNUIMessage({
+                        action = "lightsHud",
+                        leftState = leftState,
+                        rightState = rightState
+                    })
+                end
+                TriggerServerEvent('ev-carhud:sync', 'both')
+            else
+                leftState = false
+                rightState = false
+                bothState = false
+                SetVehicleIndicatorLights(vehicle, 0, false)
+                SetVehicleIndicatorLights(vehicle, 1, false)
+                TriggerServerEvent('ev-carhud:sync', 'both')
+                SendNUIMessage({
+                    action = "lightsHud",
+                    leftState = leftState,
+                    rightState = rightState
+                })
+            end
+        end
+    end
+end)
+
+RegisterKeyMapping('BothHeadlights', 'test', 'keyboard', 'UP')
+
+-- Syncing headlights
+RegisterNetEvent('ev-carhud:sync')
+AddEventHandler('ev-carhud:sync', function(syncedPlayer, data)
+	if GetPlayerFromServerId(syncedPlayer) ~= PlayerId() then
+		local syncedPlayer = GetVehiclePedIsIn(GetPlayerPed(GetPlayerFromServerId(syncedPlayer)), false)
+		if data == 'left' then
+            if not leftState and not bothState then
+                leftState = true
+                if rightState then
+                    rightState = true
+                else
+                    rightState = false
+                end
+            elseif leftState and not bothState then
+                leftState = false
+                if rightState then
+                    rightState = true
+                else
+                    rightState = false
+                end
+            end
+		elseif data == 'right' then
+            if not rightState and not bothState then
+                rightState = true
+                if leftState then
+                    leftState = true
+                else
+                    leftState = false
+                end
+            elseif rightState and not bothState then
+                rightState = false
+                if leftState then
+                    leftState = true
+                else
+                    leftState = false
+                end
+            end
+		elseif data == 'both' then
+            if not bothState and not (leftState and rightState) then
+                bothState = true
+                rightState = true
+                leftState = true
+            else
+                leftState = false
+                rightState = false
+                bothState = false
+            end
+        end
+		SetVehicleIndicatorLights(syncedPlayer, 1, leftState)
+		SetVehicleIndicatorLights(syncedPlayer, 0, rightState)
+	end
+end)
 
 -- Handler
 AddEventHandler('playerSpawned', function()
 	Wait(3000)
     SendNUIMessage({action = 'setSlidersBack'})
     if ped == nil then
-        ped = ped
+        ped = PlayerPedId()
     end
 end)
 
