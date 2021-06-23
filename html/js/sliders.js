@@ -473,6 +473,31 @@ let dragBreak = ()=> {
   }
 }
 
+const setPositions = ()=> {
+	if (!null == (getNum('topDisplay') || getNum('leftDisplay'))) {
+		$(`#wrapper`).animate({ top: getNum('topDisplay'), left: getNum('leftDisplay')});
+	}
+	if (!null == (getNum('topIcons') || getNum('leftIcons'))) {
+		$(`#icon-wrapper`).animate({ top: getNum('topIcons'), left: getNum('leftIcons')});
+	}
+	if (!null == (getNum('dragFuelTop') || getNum('dragFuelLeft'))) {
+		$(`#fuel-container`).animate({ top: getNum('dragFuelTop'), left: getNum('dragFuelLeft')});
+	}
+	if (!null == (getNum('dragSpeedTop') || getNum('dragSpeedLeft'))) {
+		$(`#speed-container`).animate({ top: getNum('dragSpeedTop'), left: getNum('dragSpeedLeft')});
+	}
+	if (!null == (getNum('dragRpmTop') || getNum('dragRpmLeft'))) {
+		$(`#rpm-container`).animate({ top: getNum('dragRpmTop'), left: getNum('dragRpmLeft')});
+	}
+	setDrag('Seatbelt', 'seatbelt');
+	setDrag('Speedo', 'speedo');
+	setDrag('Headlight', 'headlight');
+	setDrag('Gear', 'gear');
+	setDrag('LeftArrow', 'left-arrow');
+	setDrag('Wrench', 'wrench');
+	setDrag('RightArrow', 'right-arrow');
+}
+
 const setSliders = ()=> {
   checkFuel.checked = getId("sliderFuel")
   checkSpeed.checked = getId("sliderSpeed")
@@ -538,10 +563,17 @@ function setFlexContainer(slider, check, container) {
   }
 }
 
+function setDrag(id, element) {
+	if (!null == (getNum(`drag${id}Top`) || getNum(`drag${id}Left`))) {
+		$(`#${element}`).animate({ top: getNum(`drag${id}Top`), left: getNum(`drag${id}Left`)});
+	} else {
+		console.log('a')
+	}
+}
 // Reset buttons functions
 const resetSpeedo = ()=> {
   saveId('topDisplay', '81%');
-  saveId('leftDisplay', '0px');
+  saveId('leftDisplay', '50%');
   saveId('dragFuelTop', '0px');
   saveId('dragFuelLeft', '9px');
   saveId('dragSpeedTop', '0px');
@@ -575,6 +607,7 @@ const resetButtons = ()=> {
 
   $("#icon-wrapper").animate({ top: "94%", left: "50%" });
   $("#seatbelt").animate({ top: "0px", left: "0px" });
+  $("#headlight").animate({ top: "0px", left: "0px" });
   $("#speedo").animate({ top: "0px", left: "0px" });
   $("#gear").animate({ top: "0px", left: "0px" });
   $("#left-arrow").animate({ top: "0px", left: "0px" });
