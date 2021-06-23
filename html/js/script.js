@@ -96,11 +96,17 @@ window.addEventListener("message", function(event) {
     switch (event.data.action) {
         // Receive Data
         case "hud":
+			if (event.data.speed > Config.MaxSpeed) {
+				$("#speed-text").text(event.data.speed)
+				gauge.set(1.0)
+			} else {
+				$("#speed-text").text(event.data.speed)
+				gauge.set(event.data.speed / Config.MaxSpeed)
+			}
             $("#speed-text").text(event.data.speed)
             $("#fuel-text").text(event.data.fuel)
             $("#rpm-text").text(event.data.rpm)
             $("#gear-text").text(event.data.gear)
-            gauge.set(event.data.speed / Config.MaxSpeed)
             rev.set(event.data.rpm / Config.MaxRPM)
             gas.set(event.data.fuel / Config.MaxFuel)
             changeWrench(event.data.damage)

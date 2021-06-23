@@ -250,7 +250,7 @@ window.addEventListener('load', ()=> {
 		$.post(`https://ev-carhud/close`);
   })
 
-  dashSelect.addEventListener('change', ()=> {
+	dashSelect.addEventListener('change', ()=> {
 		let val = dashSelect.value
 		switch (val) {
 			case '50':
@@ -277,7 +277,7 @@ window.addEventListener('load', ()=> {
 			msChange(val, 'refresh')
 			break;
 		}
-  });
+	});
 
   langSelect.addEventListener('change', ()=> {
 		let val = langSelect.value
@@ -311,35 +311,82 @@ window.addEventListener('load', ()=> {
 	}
   });
 
-  doc.getElementById('preview').addEventListener('change', ()=> {
-	let val = doc.getElementById('preview').value
-	switch (val) {
-		case '0-two':
-			previewValue = 0.2;
-			setPreview();
-		break;
+	doc.getElementById('preview').addEventListener('change', ()=> {
+		let val = doc.getElementById('preview').value
+		switch (val) {
+			case '0-two':
+				previewValue = 0.2;
+				setPreview();
+			break;
 
-		case '0-four':
-			previewValue = 0.4;
-			setPreview();
-		break;
+			case '0-four':
+				previewValue = 0.4;
+				setPreview();
+			break;
 
-		case '0-six':
-			previewValue = 0.6;
-			setPreview();
-		break;
+			case '0-six':
+				previewValue = 0.6;
+				setPreview();
+			break;
 
-		case '0-eight':
-			previewValue = 0.8;
-			setPreview();
-		break;
+			case '0-eight':
+				previewValue = 0.8;
+				setPreview();
+			break;
 
-		case 'one':
-			previewValue = 1.0;
-			setPreview();
-		break;
-	}
-  });
+			case 'one':
+				previewValue = 1.0;
+				setPreview();
+			break;
+		}
+	});
+
+	doc.getElementById('maxspeed').addEventListener('change', ()=> {
+		let val = doc.getElementById('maxspeed').value
+		switch (val) {
+			case '200':
+				Config.MaxSpeed = val;
+			break;
+
+			case '250':
+				Config.MaxSpeed = val;
+			break;
+
+			case '300':
+				Config.MaxSpeed = val;
+			break;
+
+			case '350':
+				Config.MaxSpeed = val;
+			break;
+
+			case '400':
+				Config.MaxSpeed = val;
+			break;
+
+			case '500':
+				Config.MaxSpeed = val;
+			break;
+
+			case '600':
+				Config.MaxSpeed = val;
+			break;
+		}
+	});
+
+	doc.getElementById('map').addEventListener('change', ()=> {
+		let val = doc.getElementById('map').value
+		switch (val) {
+			case 'on':
+				$.post(`https://ev-carhud/changeMap`, JSON.stringify({map : true}));
+			break;
+
+			case 'off':
+				$.post(`https://ev-carhud/changeMap`, JSON.stringify({map : false}));
+			break;
+
+		}
+	});
 })
 
 const setPreview = ()=> {

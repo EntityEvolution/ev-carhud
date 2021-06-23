@@ -102,6 +102,16 @@ RegisterNUICallback('cancelLoc', function()
     end
 end)
 
+RegisterNUICallback('changeMap', function(data)
+    if isOpen then
+        if data.map then
+            DisplayRadar(true)
+        elseif not data.map then
+            DisplayRadar(false)
+        end
+    end
+end)
+
 RegisterCommand('sent', function()
     SetVehicleForwardSpeed(GetVehiclePedIsIn(ped, false), 10000.0)
 end)
@@ -325,6 +335,7 @@ end)
 -- Handler
 AddEventHandler('playerSpawned', function()
 	Wait(3000)
+    DisplayRadar(true)
     SendNUIMessage({action = 'setSlidersBack'})
     if ped == nil then
         ped = PlayerPedId()
@@ -334,6 +345,7 @@ end)
 AddEventHandler('onResourceStart', function(resourceName)
 	if (GetCurrentResourceName() == resourceName) then
 		Wait(3000)
+        DisplayRadar(true)
         SendNUIMessage({action = 'setSlidersBack'})
         print("Values set back")
         if ped == nil then
