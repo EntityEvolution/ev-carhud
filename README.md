@@ -1,6 +1,8 @@
 ## ev-carhud
 A standalone vehicle HUD with multiple customization options.
 
+### [Forum](https://forum.cfx.re/t/ev-carhud-standalone-and-customizable-carhud/3536710)
+
 # License
 This project does not contain a license, therefore you are not allowed to add one and claim it as yours. You are not allowed to sell this nor re-distribute it. If you want to modify or make an agreement, you can contact me. Pull requests are accepted as long as they do not contain breaking changes. 
 
