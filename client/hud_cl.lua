@@ -18,7 +18,11 @@ CreateThread(function()
         if inVehicle then
             local fuel, speed, rpm, gear, damage
             if DoesEntityExist(vehicle) then
-                fuel = math.floor(GetVehicleFuelLevel(vehicle))
+                if GetVehicleClass(vehicle) ~= 13 then
+                    fuel = math.floor(GetVehicleFuelLevel(vehicle))
+                else
+                    fuel = 'bike'
+                end
                 speed = math.floor(GetEntitySpeed(vehicle) * speedNumber)
                 rpm = math.floor(GetVehicleCurrentRpm(vehicle) * 10000)
                 gear = GetVehicleCurrentGear(vehicle)
@@ -148,7 +152,7 @@ end)
 -- Commands
 RegisterCommand(Config.hudCommand, function()
     local ped = PlayerPedId()
-    if not isOpen then
+    if not isOpen and GetVehicleClass(GetVehiclePedIsIn(ped, false)) ~= 13 then
         isOpen = true
         if not IsPedInAnyVehicle(ped, false) and GetEntitySpeed(GetVehiclePedIsIn(ped, false)) == 0 then
             if not isForceOpen then
@@ -398,6 +402,5 @@ AddEventHandler('onResourceStart', function(resourceName)
 		Wait(3000)
         DisplayRadar(true)
         SendNUIMessage({action = 'setSlidersBack'})
-        print("Values set back")
 	end
 end)

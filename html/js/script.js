@@ -1,4 +1,5 @@
 let limiterState, rightLightState, leftLightState, seatbeltState, headlightState;
+let inBike = false;
 
 const wrenchWrap = doc.getElementById('wrench-wrap')
 const headId = doc.getElementById('headlight-icon')
@@ -78,8 +79,6 @@ let rev = new ProgressBar.SemiCircle('#rpm-container', {
 // Set to draggable on page load
 window.addEventListener('load', () => {
     doc.getElementById("default").click();
-    setSliders();
-    setPositions();
 });
 
 window.addEventListener(`DOMContentLoaded`, () => {
@@ -99,11 +98,25 @@ window.addEventListener("message", function(event) {
         // Receive Data
         case "hud":
 			if (event.data.speed > Config.MaxSpeed) {
-				$("#speed-text").text(event.data.speed)
 				gauge.set(1.0)
 			} else {
-				$("#speed-text").text(event.data.speed)
 				gauge.set(event.data.speed / Config.MaxSpeed)
+			}
+
+            if (event.data.fuel == 'bike') {
+                doc.getElementById('fuel-container').style.display = 'none'
+                inBike = true
+            } else if (inBike) {
+                inBike = false
+                if (fuel) {
+                    doc.getElementById('fuel-container').style.display = 'flex'
+                }
+            }
+
+            if (event.data.fuel > Config.MaxFuel || !inBike) {
+				gas.set(1.0)
+			} else if (!inBike) {
+                gas.set(event.data.fuel / Config.MaxFuel)
 			}
             $("#speed-text").text(event.data.speed)
             $("#fuel-text").text(event.data.fuel)

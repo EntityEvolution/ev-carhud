@@ -1,7 +1,7 @@
 Config = {}
 
 -- Wait times
-Config.VehicleTime  = 1000 -- Default time to check if ped is in veh
+Config.VehicleTime  = 800 -- Default time to check if ped is in veh
 
 -- Seatbelt
 Config.prevDmg      = true -- Prevent damage on crash
