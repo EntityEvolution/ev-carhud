@@ -20,6 +20,6 @@ AddEventHandler('onResourceStart', function(resourceName)
                 print(name .. " is updated. ^3Settings saved values to players...")
             end
         end
-		PerformHttpRequest("https://raw.githubusercontent.com/EntityEvolution/ev-hud/master/version", checkVersion, "GET")
+		PerformHttpRequest("https://raw.githubusercontent.com/EntityEvolution/ev-carhud/master/version", checkVersion, "GET")
 	end
 end)
