@@ -213,7 +213,6 @@ RegisterKeyMapping(Config.limiterCommand, Config.limiterDesc, 'keyboard', Config
 RegisterCommand(Config.seatbeltCommand, function()
     if not isOpen then
         if inVehicle then
-            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             if not seatbeltStatus then
                 seatbeltStatus = true
                 SendNUIMessage({

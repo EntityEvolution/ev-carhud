@@ -193,6 +193,7 @@ window.addEventListener("message", function(event) {
 
         case "setSlidersBack":
             setSliders();
+            setPositions();
             break;
 
         case "preview":
