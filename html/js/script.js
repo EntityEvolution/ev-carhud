@@ -105,6 +105,7 @@ window.addEventListener("message", function(event) {
 
             if (event.data.fuel == 'bike') {
                 doc.getElementById('fuel-container').style.display = 'none'
+
                 inBike = true
             } else if (inBike) {
                 inBike = false
@@ -113,13 +114,18 @@ window.addEventListener("message", function(event) {
                 }
             }
 
+            if (!inBike) {
+                $("#fuel-text").text(event.data.fuel)
+            } else {
+                $("#fuel-text").text('0')
+            }
+
             if (event.data.fuel > Config.MaxFuel || !inBike) {
 				gas.set(1.0)
 			} else if (!inBike) {
                 gas.set(event.data.fuel / Config.MaxFuel)
 			}
             $("#speed-text").text(event.data.speed)
-            $("#fuel-text").text(event.data.fuel)
             $("#rpm-text").text(event.data.rpm)
             $("#gear-text").text(event.data.gear)
             rev.set(event.data.rpm / Config.MaxRPM)
@@ -194,8 +200,8 @@ window.addEventListener("message", function(event) {
             break;
 
         case "hide":
-            $("#wrapper").fadeOut();
-            $("#icon-wrapper").fadeOut();
+            $("#wrapper").hide();
+            $("#icon-wrapper").hide();
             $("#tab").fadeOut();
             break;
 

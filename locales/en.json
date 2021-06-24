@@ -46,6 +46,7 @@
     "map" : "Map Toggle",
     "on" : "On",
     "off" : "Off",
+    "default_two" : "Default",
 
     "start" : "Start",
     "locations" : "Locations",

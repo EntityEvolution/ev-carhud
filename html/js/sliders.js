@@ -250,6 +250,13 @@ window.addEventListener('load', ()=> {
 		pickLanguage('en');
   })
 
+  doc.getElementById('reset-dash').addEventListener('click', ()=> {
+	doc.getElementById('maxspeed').value = '300';
+	Config.MaxSpeed = '300';
+	doc.getElementById('map').value = 'On';
+	$.post(`https://ev-carhud/changeMap`, JSON.stringify({map : true}));
+  })
+
   // GPS Buttons
   doc.getElementById('extras-start').addEventListener('click', ()=> {
 		$.post('https://ev-carhud/startLoc', JSON.stringify({"x" : currentWaypointX, "y" : currentWaypointY}));
@@ -735,6 +742,7 @@ const changeLanguage = (data)=> {
 		doc.getElementById('extras-bottom-title').innerHTML = data.gps
 
 		// Extras Tab
+		doc.getElementById('reset-dash').innerHTML = data.default_two
 		doc.getElementById('lights-text').innerHTML = data.headlights
 		doc.getElementById('extras-start').innerHTML = data.start
 		doc.getElementById('extras-cancel').innerHTML = data.cancel

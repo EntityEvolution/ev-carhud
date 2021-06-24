@@ -1,12 +1,7 @@
 [
     {
-      "location": "Police",
-      "x": 214.78,
-      "y" : -848.821
-    },
-    {
-      "location": "Ambulance",
-      "x": 214.78,
-      "y" : -848.821
+      "location": "MRPD",
+      "x": 401.51,
+      "y" : -973.51
     }
   ]

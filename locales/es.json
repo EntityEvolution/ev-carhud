@@ -2,7 +2,7 @@
 {
     "settings" : "Ajustes",
     "display" : "Visualizacion",
-    "display_description" : "Alterna partes de tu HUD on / off presionando un boton",
+    "display_description" : "Alterna partes de tu HUD on / off con botones",
     "movement" : "Movimiento",
     "movement_description" : "Reajusta, mueve, y cambia el lenguaje de tu HUD",
     "extras" : "Extras",
@@ -16,9 +16,9 @@
     "limiter" : "Limitador",
     "gears" : "Marchas",
     "motor" : "Motor",
-    "right_signal" : "R Signal",
-    "wrench" : "Wrench",
-    "left_signal" : "L Signal",
+    "right_signal" : "Señal D",
+    "wrench" : "Estado",
+    "left_signal" : "Señal I",
 
     "movement_sub" : "Movimiento",
     "visual_sub" : "Visual",
@@ -35,14 +35,20 @@
     "switches" : "Switches",
 
     "extra_hud" : "Hud Extra",
-    "missing" : "Faltante",
+    "dashboard" : "Tablero",
     "gps" : "GPS",
 
     "mileage" : "Kilometraje",
     "preview" : "Vista previa",
     "headlights" : "Luces",
 
+    "maxspeed" : "Max Vel",
+    "map" : "Mapa",
+    "on" : "On",
+    "off" : "Off",
+    "default_two" : "Default",
+
     "start" : "Iniciar",
-    "locations" : "Locatlizaciones",
+    "locations" : "Localizaciones",
     "cancel" : "Cancelar"
 }
