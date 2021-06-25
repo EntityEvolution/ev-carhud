@@ -7,6 +7,9 @@ Config.VehicleTime  = 1000 -- Default time to check if ped is in veh
 Config.prevDmg      = true -- Prevent damage on crash
 Config.prevDmgTime  = 2000 -- 2 seconds invincible
 
+Config.prevExit     = true -- Disable exiting from a vehicle
+Config.prevExitTime = 50 -- Thread running preventing exiting vehicle
+
 -- HUD Settings
 Config.hudCommand   = 'carhud' -- Open carhud command
 Config.hudDesc      = 'Open the car hud menu' -- Description of command

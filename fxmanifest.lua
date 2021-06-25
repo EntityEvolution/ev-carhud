@@ -6,7 +6,7 @@ lua54 'yes'
  
 description 'An standalone customizable car hud created by Project Entity'
  
-version '0.0.1'
+version '1.0.1'
  
 client_scripts {
     'config.lua',

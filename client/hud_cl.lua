@@ -88,6 +88,22 @@ CreateThread(function()
                 action = "hide"
             })
         end
+        if not inVehicle then
+            if seatbeltStatus then
+                seatbeltStatus = false
+                SendNUIMessage({
+                    action = "seatbeltHud",
+                    seatbelt = seatbeltStatus
+                })
+            end
+            if limiterState then
+                limiterState = false
+                SendNUIMessage({
+                    action = "iconhud",
+                    limiter = limiterState
+                })
+            end
+        end
         Wait(Config.VehicleTime)
     end
 end)
@@ -96,6 +112,15 @@ CreateThread(function()
     while isOpen do
         Wait(500)
         DisableControlAction(0, 322, true)
+    end
+end)
+
+CreateThread(function()
+    while true do
+        if seatbeltStatus then
+            DisableControlAction(0, 75, true)
+        end
+        Wait(Config.prevExitTime)
     end
 end)
 
