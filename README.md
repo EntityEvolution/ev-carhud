@@ -1,6 +1,7 @@
 ## ev-carhud
 A standalone vehicle HUD with multiple customization options.
 
+### [Discord](https://discord.com/invite/u4zk4tVTkG)
 ### [Forum](https://forum.cfx.re/t/ev-carhud-standalone-and-customizable-carhud/3536710)
 
 # License
