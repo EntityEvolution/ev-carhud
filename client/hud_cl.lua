@@ -3,7 +3,7 @@ local speedNumber = 3.6
 local inVehicle
 local refreshTime = 200
 
-local isOpen, isForceOpen = false, false
+local isOpen, isForceOpen, isPaused = false, false, false
 
 local limiterState, leftState, rightState, bothState, seatbeltStatus, headlight
 
@@ -104,6 +104,14 @@ CreateThread(function()
                 })
             end
         end
+
+		if IsPauseMenuActive() and not isPaused then
+			isPaused = true
+			SendNUIMessage({action = "isPaused"})
+		elseif not IsPauseMenuActive() and isPaused then
+			isPaused = false
+			SendNUIMessage({action = "notPaused"})
+		end
         Wait(Config.VehicleTime)
     end
 end)

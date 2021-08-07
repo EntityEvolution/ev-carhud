@@ -209,6 +209,16 @@ window.addEventListener("message", function(event) {
         case "hideMenu":
             $("#tab").fadeOut();
             break;
+
+        case "isPaused":
+            $("#wrapper").hide();
+            $("#icon-wrapper").hide();
+            break;
+        
+        case "notPaused":
+            $("#wrapper").show();
+            $("#icon-wrapper").show();
+            break
     }
 });
 
