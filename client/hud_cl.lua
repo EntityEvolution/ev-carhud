@@ -68,6 +68,14 @@ CreateThread(function()
                 damage = damage,
                 headlight = headlight
             })
+
+            if IsPauseMenuActive() and not isPaused then
+                isPaused = true
+                SendNUIMessage({action = "isPaused"})
+            elseif not IsPauseMenuActive() and isPaused then
+                isPaused = false
+                SendNUIMessage({action = "notPaused"})
+            end
         end
         Wait(refreshTime)
     end
@@ -104,14 +112,6 @@ CreateThread(function()
                 })
             end
         end
-
-		if IsPauseMenuActive() and not isPaused then
-			isPaused = true
-			SendNUIMessage({action = "isPaused"})
-		elseif not IsPauseMenuActive() and isPaused then
-			isPaused = false
-			SendNUIMessage({action = "notPaused"})
-		end
         Wait(Config.VehicleTime)
     end
 end)
