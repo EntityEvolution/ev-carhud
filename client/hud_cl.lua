@@ -68,11 +68,15 @@ CreateThread(function()
                 damage = damage,
                 headlight = headlight
             })
+        end
 
-            if IsPauseMenuActive() and not isPaused then
+        if IsPauseMenuActive() and not isPaused then
+            if inVehicle then
                 isPaused = true
                 SendNUIMessage({action = "isPaused"})
-            elseif not IsPauseMenuActive() and isPaused then
+            end
+        elseif not IsPauseMenuActive() and isPaused then
+            if inVehicle then
                 isPaused = false
                 SendNUIMessage({action = "notPaused"})
             end
@@ -85,7 +89,7 @@ CreateThread(function()
     while true do
         local ped = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(ped, false)
-        if IsPedInAnyVehicle(ped, false) and (GetPedInVehicleSeat(vehicle, -1) == ped) and not isForceOpen and not IsEntityDead(ped) then
+        if IsPedInAnyVehicle(ped, false) and (GetPedInVehicleSeat(vehicle, -1) == ped) and not isForceOpen and not IsEntityDead(ped) and not IsPauseMenuActive() then
             if not isPaused then
                 inVehicle = true
                 SendNUIMessage({
@@ -189,7 +193,7 @@ RegisterCommand(Config.hudCommand, function()
     local ped = PlayerPedId()
     if not isOpen and GetVehicleClass(GetVehiclePedIsIn(ped, false)) ~= 13 then
         isOpen = true
-        if not IsPedInAnyVehicle(ped, false) and GetEntitySpeed(GetVehiclePedIsIn(ped, false)) == 0 then
+        if not IsPedInAnyVehicle(ped, false) and GetEntitySpeed(GetVehiclePedIsIn(ped, false)) == 0 and not IsPauseMenuActive() then
             if not isForceOpen then
                 isForceOpen = true
                 SendNUIMessage({action = 'show'})
