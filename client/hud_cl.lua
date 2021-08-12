@@ -89,7 +89,7 @@ CreateThread(function()
     while true do
         local ped = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(ped, false)
-        if IsPedInAnyVehicle(ped, false) and (GetPedInVehicleSeat(vehicle, -1) == ped) and not isForceOpen and not IsEntityDead(ped) and not IsPauseMenuActive() then
+        if IsPedInAnyVehicle(ped, false) and (GetPedInVehicleSeat(vehicle, -1) == ped) and not isForceOpen and not IsEntityDead(ped) then
             if not isPaused then
                 inVehicle = true
                 SendNUIMessage({
