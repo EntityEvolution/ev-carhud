@@ -9,6 +9,7 @@ Config.prevDmgTime  = 2000 -- 2 seconds invincible
 
 Config.prevExit     = true -- Disable exiting from a vehicle
 Config.prevExitTime = 50 -- Thread running preventing exiting vehicle
+Config.MaxSpeedCrash = 80.0
 
 -- HUD Settings
 Config.hudCommand   = 'carhud' -- Open carhud command

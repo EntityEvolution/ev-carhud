@@ -38,13 +38,15 @@ CreateThread(function()
                     local vehicleAcceleration = (previousSpeed - currentSpeed) / GetFrameTime()
                     local gForce = (seatbeltEject * acceDueToGravity)
                     if speed and (previousSpeed > 45 / 2.237) and (GetEntitySpeedVector(vehicle, true).y > 1.0) and (vehicleAcceleration > gForce) then
-                        local coords = GetEntityCoords(ped)
-                        SetEntityCoords(ped, coords, true, true, true, false)
-                        SetPedToRagdoll(ped, 1000, 1000, 0, 0, 0, 0)
-                        if Config.prevDmg then
-                            SetEntityInvincible(ped, true)
-                            Wait(Config.prevDmgTime)
-                            SetEntityInvincible(ped, false)
+                        if speed > Config.MaxSpeedCrash then
+                            local coords = GetEntityCoords(ped)
+                            SetEntityCoords(ped, coords, true, true, true, false)
+                            SetPedToRagdoll(ped, 1000, 1000, 0, 0, 0, 0)
+                            if Config.prevDmg then
+                                SetEntityInvincible(ped, true)
+                                Wait(Config.prevDmgTime)
+                                SetEntityInvincible(ped, false)
+                            end
                         end
                     end
                 elseif seatbeltStatus and (currentSpeed > 0.0) then
