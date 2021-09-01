@@ -125,13 +125,6 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    while isOpen do
-        Wait(500)
-        DisableControlAction(0, 322, true)
-    end
-end)
-
-CreateThread(function()
     while true do
         if seatbeltStatus then
             DisableControlAction(0, 75, true)
